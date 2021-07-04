@@ -1,6 +1,10 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
+  // GET: all the games in the game catalog
+
+  // TODO: Add the functionality for users queries to be added to the search
+
   router.get('/', (req, res) => {
     db('games_catalog')
       .select()
@@ -16,6 +20,10 @@ module.exports = (db) => {
         });
       });
   });
+  // GET: A specific game from the catalog with its ratings and tags
+
+  // TODO: Fix the outerJoin from tags
+
   router.get('/:id', (req, res) => {
     db('games_catalog')
       .select('games_catalog.*', 'ratings.rating', 'tags.tag_name')

@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
+  // POST: a new rating
+  router.post('/', (req, res) => {
     res.json({ ratings: 'Works' });
   });
+  // GET: a games total ratings
   router.get('/:id', (req, res) => {
     res.json({ ratings: 'Works' });
   });

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
+  // GET: All the users in the database
   router.get('/', (req, res) => {
     db('users')
       .select()
@@ -16,6 +17,7 @@ module.exports = (db) => {
         });
       });
   });
+  // GET: A specific user, and each of their lists, lists_titles
   router.get('/:id', (req, res) => {
     db('users')
       .select()
@@ -35,6 +37,10 @@ module.exports = (db) => {
           Error: "Sorry! We couldn't find what you were looking for!",
         });
       });
+  });
+  // GET: A list of stats about the user
+  router.get('/stats/:id', (req, res) => {
+    res.status(200).json({ hello: 'works' });
   });
 
   return router;
