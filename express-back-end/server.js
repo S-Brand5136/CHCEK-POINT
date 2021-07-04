@@ -13,7 +13,7 @@ const games_route = require('./routes/games');
 const ratings_route = require('./routes/ratings');
 const users_lists_route = require('./routes/users_lists');
 
-//./ Configuration
+// Configuration
 const database = knex(knexfile);
 
 // Express Configuration

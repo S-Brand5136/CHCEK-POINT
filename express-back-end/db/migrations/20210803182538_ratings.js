@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable('ratings', (t) => {
-    t.integer('id').primary();
+    t.increments().primary();
     t.integer('user_id')
       .unsigned()
       .notNullable()
