@@ -6,8 +6,20 @@ module.exports = (db) => {
     res.json({ ratings: 'Works' });
   });
   // GET: a users details for login
-  router.get('/:id', (req, res) => {
-    res.json({ ratings: 'Works' });
+  router.get('/', (req, res) => {
+    const { email, password } = req.body;
+    db('users')
+      .select()
+      .where({ email: email, password: password })
+      .then((user) => {
+        if (user.length > 0) {
+          return res.status(200).json({ user });
+        }
+        throw Error;
+      })
+      .catch(() => {
+        res.status(401).json({ Error: 'Invalid Credentials' });
+      });
   });
   return router;
 };
