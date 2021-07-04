@@ -26,8 +26,7 @@ module.exports = (db) => {
           .where({ user_id: req.params.id })
           .groupBy('list_title')
           .then((list) => {
-            user['user_lists_titles'] = list;
-            return res.status(200).json({ user });
+            return res.status(200).json({ user, list });
           });
       })
       .catch((err) => {
