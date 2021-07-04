@@ -12,6 +12,8 @@ const users_route = require('./routes/users');
 const games_route = require('./routes/games');
 const ratings_route = require('./routes/ratings');
 const users_lists_route = require('./routes/users_lists');
+const login_route = require('./routes/login');
+const register_route = require('./routes/register');
 
 // Configuration
 const database = knex(knexfile);
@@ -26,6 +28,8 @@ app.use('/api/users', users_route(database));
 app.use('/api/games', games_route(database));
 app.use('/api/ratings', ratings_route(database));
 app.use('/api/lists', users_lists_route(database));
+app.use('/api/login', login_route(database));
+app.use('/api/register', register_route(database));
 
 app.listen(PORT, () => {
   console.log(
