@@ -1,4 +1,5 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   development: {
@@ -10,7 +11,6 @@ module.exports = {
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       port: process.env.DB_PORT,
-      ssl: process.env.DB_SSL,
     },
     migrations: {
       directory: './db/migrations',
