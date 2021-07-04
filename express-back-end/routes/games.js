@@ -21,6 +21,7 @@ module.exports = (db) => {
       });
   });
   // GET: A specific game from the catalog with its rating and tags
+  // RETURNS: A game object with all its info, rating and tags
   router.get('/:id', (req, res) => {
     db('games_catalog')
       .select('games_catalog.*', 'ratings.rating')
@@ -48,6 +49,7 @@ module.exports = (db) => {
       });
   });
   // GET: games by tag name
+  // RETURNS: An array of game objects
   router.get('/tags/search', (req, res) => {
     db('tags')
       .select('tag_name', 'games_catalog.*')
