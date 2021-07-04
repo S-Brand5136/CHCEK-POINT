@@ -27,7 +27,7 @@ app.use('/api/users', users_route(database));
 app.use('/api/games', games_route(database));
 app.use('/api/ratings', ratings_route(database));
 app.use('/api/lists', users_lists_route(database));
-app.use('/api/auth', login_route(database));
+app.use('/api/auth', auth_route(database));
 
 app.listen(PORT, () => {
   console.log(
