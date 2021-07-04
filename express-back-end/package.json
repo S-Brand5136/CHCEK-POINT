@@ -8,7 +8,8 @@
   "scripts": {
     "server": "nodemon server.js",
     "client": "npm start --prefix ../frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "db:reset": "npx knex migrate:rollback && npx knex migrate:rollback && npx knex migrate:latest && npx knex seed:run"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
