@@ -49,7 +49,22 @@ module.exports = (db) => {
   });
   // GET: games by tag name
   router.get('/tags/search', (req, res) => {
-    res.json({ Hello: 'works' });
+    db('tags')
+      .select('tag_name', 'games_catalog.*')
+      .where('tag_name', 'ilike', `%${req.body.tag_name}%`)
+      .leftOuterJoin('games_catalog', 'games_catalog.id', '=', 'tags.game_id')
+      .groupBy('tag_name', 'games_catalog.id')
+      .orderBy('games_catalog.id')
+      .then((list) => {
+        if (list.length > 0) {
+          return res.status(200).json({ list });
+        }
+        throw Error;
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(404).json({ Error: 'No games found with that tag!' });
+      });
   });
 
   return router;
