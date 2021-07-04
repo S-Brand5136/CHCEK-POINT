@@ -20,7 +20,7 @@ module.exports = (db) => {
         });
       });
   });
-  // GET: A specific game from the catalog with its ratings and tags
+  // GET: A specific game from the catalog with its rating and tags
   router.get('/:id', (req, res) => {
     db('games_catalog')
       .select('games_catalog.*', 'ratings.rating')
@@ -46,6 +46,10 @@ module.exports = (db) => {
           Error: "Sorry! We couldn't find what you were looking for!",
         });
       });
+  });
+  // GET: games by tag name
+  router.get('/tags/search', (req, res) => {
+    res.json({ Hello: 'works' });
   });
 
   return router;
