@@ -18,9 +18,10 @@ module.exports = (db) => {
   });
   router.get('/:id', (req, res) => {
     db('games_catalog')
-      .select('games_catalog.*', 'ratings.rating')
+      .select('games_catalog.*', 'ratings.rating', 'tags.tag_name')
       .where({ 'games_catalog.id': req.params.id })
       .leftOuterJoin('ratings', 'games_catalog.id', '=', 'ratings.game_id')
+      .leftOuterJoin('tags', 'tags.game_id', '=', 'games_catalog.id')
       .then((game) => {
         if (game.length > 0) {
           return res.status(200).json({ game });
