@@ -21,12 +21,17 @@ module.exports = (db) => {
       .select()
       .where({ id: req.params.id })
       .then((user) => {
-        if (user.length > 0) {
-          return res.status(200).json({ user });
-        }
-        throw Error;
+        db('users_lists')
+          .select('list_title')
+          .where({ user_id: req.params.id })
+          .groupBy('list_title')
+          .then((list) => {
+            user['user_lists_titles'] = list;
+            return res.status(200).json({ user });
+          });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         res.status(500).json({
           Error: "Sorry! We couldn't find what you were looking for!",
         });

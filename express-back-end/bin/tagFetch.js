@@ -3,7 +3,7 @@ const fs = require('fs');
 let tags = [];
 let savefile = 'tag.js';
 
-gameData.forEach((data) => {
+gameData.forEach((data, index1) => {
   data.dTag.forEach((gameTag) => {
     if (
       tags.some((tag) => {
@@ -13,6 +13,7 @@ gameData.forEach((data) => {
       //do nothing
     } else {
       tags.push({
+        game_id: index + 1,
         name: gameTag.name,
         image_background: gameTag.image_background,
       });

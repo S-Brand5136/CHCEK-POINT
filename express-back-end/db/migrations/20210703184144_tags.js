@@ -8,7 +8,7 @@ exports.up = function (knex) {
       .inTable('games_catalog')
       .onDelete('CASCADE');
     t.string('tag_name');
-    t.integer('rating').defaultTo(0);
+    t.string('image_background');
   });
 };
 
