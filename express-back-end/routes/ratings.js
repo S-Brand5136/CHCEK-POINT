@@ -16,8 +16,29 @@ module.exports = (db) => {
       });
   });
   // GET: a games total ratings
+  // RETURN: average rating, games name
   router.get('/:id', (req, res) => {
-    res.json({ ratings: 'Works' });
+    const { id } = req.params;
+    db('ratings')
+      .select('games_catalog.name')
+      .avg('rating')
+      .where({ game_id: id })
+      .leftOuterJoin(
+        'games_catalog',
+        'games_catalog.id',
+        '=',
+        'ratings.game_id'
+      )
+      .groupBy('games_catalog.name')
+      .then((game) => {
+        return res.status(200).json({ game });
+      })
+      .catch((err) => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ Error: 'Sorry, there was an error during rating post!' });
+      });
   });
 
   return router;

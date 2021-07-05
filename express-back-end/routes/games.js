@@ -24,11 +24,11 @@ module.exports = (db) => {
   // RETURNS: A game object with all its info, rating and tags
   router.get('/:id', (req, res) => {
     db('games_catalog')
-      .select('games_catalog.*', 'ratings.rating')
-      .sum('ratings.rating')
+      .select('games_catalog.*')
+      .avg('rating')
       .where({ 'games_catalog.id': req.params.id })
       .leftOuterJoin('ratings', 'games_catalog.id', '=', 'ratings.game_id')
-      .groupBy('games_catalog.id', 'ratings.rating')
+      .groupBy('games_catalog.id')
       .then((game) => {
         db('tags')
           .select('tag_name')
