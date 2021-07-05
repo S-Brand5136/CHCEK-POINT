@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import axios from 'axios';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);

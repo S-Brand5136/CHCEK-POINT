@@ -1,4 +1,5 @@
-import '../styles/App.scss';
+import '../styles/App.less';
+import 'antd/dist/antd.less';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 
