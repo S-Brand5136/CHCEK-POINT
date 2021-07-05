@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 module.exports = (db) => {
   // POST: a new rating
+  // RETURNS: true if succesful
   router.post('/', (req, res) => {
     const { user_id, game_id, rating } = req.body;
     db('ratings')
