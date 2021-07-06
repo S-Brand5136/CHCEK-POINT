@@ -71,10 +71,9 @@ module.exports = (db) => {
   });
 
   router.get('/keyword/search', (req, res) => {
-    console.log('Search requestionion', req.params);
     db('games_catalog')
       .select('games_catalog.*')
-      .where('name', 'ilike', `%${req.body.name}%`)
+      .where('name', 'ilike', `%${req.query.search}%`)
       .orderBy('games_catalog.id')
       .then((list) => {
         if (list.length > 0) {
