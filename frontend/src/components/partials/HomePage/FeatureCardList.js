@@ -23,13 +23,7 @@ const FeatureCardList = () => {
     },
     {
       title: ` Connect`,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-      consectetur nihil dicta numquam quidem laborum placeat, maiores
-      aspernatur molestiae enim quaerat, vitae aut provident ut
-      temporibus! Esse labore molestiae sed. Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Eos nulla et iure quia, ipsam,
-      molestias asperiores velit architecto sunt eius ad nam. Ipsum odit
-      explicabo officia libero dolorem reiciendis autem.`,
+      description: `View activity of other Users as well as your own in the comfort of your own home page. User activity is also displayed on their profile, along with additional information about them, from consoles to in-game names, and much more!`,
       icon: <MessageOutlined className='icon-highlight' />,
     },
   ];

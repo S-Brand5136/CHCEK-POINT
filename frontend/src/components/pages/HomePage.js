@@ -18,8 +18,14 @@ const HomePage = () => {
     <Layout>
       <Layout.Content style={{ padding: '0 50px' }}>
         <div className='hero-section'>
-          {!user ? <VisitorHero /> : <UserHero />}
-          <BrowseSection />
+          {!user ? (
+            <>
+              <VisitorHero />
+              <BrowseSection />
+            </>
+          ) : (
+            <UserHero username={user.username} />
+          )}
         </div>
       </Layout.Content>
     </Layout>

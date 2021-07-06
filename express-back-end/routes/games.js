@@ -51,10 +51,10 @@ module.exports = (db) => {
   });
   // GET: games by tag name
   // RETURNS: An array of game objects
-  router.get('/tags/search', (req, res) => {
+  router.get('/tags/:search', (req, res) => {
     db('tags')
       .select('tag_name', 'games_catalog.*')
-      .where('tag_name', 'ilike', `%${req.body.tag_name}%`)
+      .where('tag_name', 'ilike', `%${req.params.search}%`)
       .leftOuterJoin('games_catalog', 'games_catalog.id', '=', 'tags.game_id')
       .groupBy('tag_name', 'games_catalog.id')
       .orderBy('games_catalog.id')
