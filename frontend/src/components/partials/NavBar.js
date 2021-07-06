@@ -6,11 +6,13 @@ import { Button, Image } from 'antd';
 import { authContext } from '../../providers/AuthProvider';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
+import SearchForm from '../partials/SearchForm';
 import logo from '../../img/logo.png';
 
 const NavLinks = () => {
   const [isLoginVisible, setisLoginVisible] = useState(false);
   const [isRegisterVisible, setisRegisterVisible] = useState(false);
+  const [isSearchVisible, setisSearchVisible] = useState(false);
 
   const showLoginModal = () => {
     setisLoginVisible(true);
@@ -20,23 +22,30 @@ const NavLinks = () => {
     setisRegisterVisible(true);
   };
 
+  const showSearchModal = () => {
+    setisSearchVisible(true);
+  };
+
   return (
     <nav className='nav-links'>
       <div className='nav-logo-links'>
         <Title></Title>
       </div>
       <div className='nav-center-links'>
-        <a className='nav-link' href='/'>
-          Browse
-        </a>
+        <button className='nav-link'>Browse</button>
 
-        <a className='nav-link' href='/'>
+        <button className='nav-link' onClick={showSearchModal}>
           Search
-        </a>
+        </button>
 
-        <a className='nav-link' href='/'>
+        <SearchForm
+          visible={isSearchVisible}
+          setVisible={() => setisSearchVisible(!isSearchVisible)}
+        />
+
+        <button className='nav-link' href='/'>
           Collection
-        </a>
+        </button>
       </div>
       <div className='nav-user-links'>
         <div>

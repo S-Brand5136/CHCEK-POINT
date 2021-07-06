@@ -1,9 +1,13 @@
 import { useContext, useEffect } from 'react';
 import '../styles/App.less';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+
+// Partials
 import NavLinks from './partials/NavBar';
-import { authContext } from '../providers/AuthProvider';
+import Footer from './partials/Footer';
+
+// Pages
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -14,6 +18,7 @@ function App() {
           <Route path='/' component={HomePage} exact />
         </div>
       </Router>
+      <Footer />
     </div>
   );
 }

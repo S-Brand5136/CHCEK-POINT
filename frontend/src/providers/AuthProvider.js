@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   // Perform login process for the user & save authID, etc
   const login = async function (email, password) {

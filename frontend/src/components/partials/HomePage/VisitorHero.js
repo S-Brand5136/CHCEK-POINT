@@ -21,15 +21,15 @@ const VisitorHero = () => {
 
   return (
     <>
-      <Row justify='center' gutter='16'>
+      <Row justify='center'>
         <Col lg={12} sm={24}>
-          <Typography.Title className='hero-text-large'>
+          <Typography.Title className='hero-text-large main-font'>
             Tired of forgetting your progress?
           </Typography.Title>
-          <Typography.Title level={3} className='hero-text-medium'>
+          <Typography.Title level={3} className='hero-text-medium main-font'>
             Don't worry, we can track that for you.
           </Typography.Title>
-          <Typography.Text className='hero-text-small'>
+          <Typography.Text className='hero-text-small main-font'>
             Discover new games, keep track of your current playthroughs,
             completed games, and even games you kicked to the curb.
           </Typography.Text>
@@ -66,7 +66,9 @@ const VisitorHero = () => {
           </div>
         </Col>
         <Col lg={7} sm={24}>
-          <Image height={400} preview={false} src={mascot} />
+          <Row justify='center'>
+            <Image height={400} preview={false} src={mascot} />
+          </Row>
         </Col>
       </Row>
       <Row>

@@ -9,6 +9,7 @@ const FeatureCard = ({ title, description, icon }) => {
         <Typography.Title level={2} style={{ margin: '0' }}>
           {icon}
           {title}
+          <span className='divider'> |</span>
         </Typography.Title>
       </div>
       <div className='card-body'>

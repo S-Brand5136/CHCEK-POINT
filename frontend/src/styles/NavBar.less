@@ -42,22 +42,24 @@
     font-size: smaller;
   }
 
-  a {
+  button {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     transition: @fade-in;
   }
 
-  a:hover {
+  button:hover {
     transition: @fade-in;
   }
 
-  a.nav-link {
-    color: white;
+  button.nav-link {
+    color: none;
     position: relative;
+    background-color: transparent;
+    border: 0px;
   }
 
-  a.nav-link:before {
+  button.nav-link:before {
     content: '';
     position: absolute;
     width: 0;
@@ -69,7 +71,7 @@
     transition: all @fade-in;
   }
 
-  a.nav-link:hover:before {
+  button.nav-link:hover:before {
     visibility: visible;
     width: 100%;
   }

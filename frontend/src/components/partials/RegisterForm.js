@@ -1,15 +1,6 @@
-import { useState, useContext } from 'react';
-import { authContext } from '../../providers/AuthProvider';
 import { Button, Form, Input, Modal, Spin } from 'antd';
-import Notification from './Notification';
 
 const LoginForm = ({ visible, setVisible }) => {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [loading, setLoading] = useState(false);
-
   const submitHandler = (e) => {
     e.preventDefault();
   };
@@ -24,7 +15,7 @@ const LoginForm = ({ visible, setVisible }) => {
           name='email'
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
-          <Input onChange={(e) => setEmail(e.target.value)} />
+          <Input />
         </Form.Item>
 
         <Form.Item
@@ -32,7 +23,7 @@ const LoginForm = ({ visible, setVisible }) => {
           name='Username'
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input onChange={(e) => setUsername(e.target.value)} />
+          <Input />
         </Form.Item>
 
         <Form.Item
@@ -40,7 +31,7 @@ const LoginForm = ({ visible, setVisible }) => {
           name='password'
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
-          <Input.Password onChange={(e) => setPassword(e.target.value)} />
+          <Input.Password />
         </Form.Item>
 
         <Form.Item
@@ -48,24 +39,18 @@ const LoginForm = ({ visible, setVisible }) => {
           name='confirm_password'
           rules={[{ required: true, message: 'Please confirm your password!' }]}
         >
-          <Input.Password
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-          />
+          <Input.Password />
         </Form.Item>
 
         <Form.Item>
-          {!loading ? (
-            <Button
-              type='primary'
-              onClick={(e) => submitHandler(e)}
-              shape='round'
-              block
-            >
-              Register
-            </Button>
-          ) : (
-            <Spin />
-          )}
+          <Button
+            type='primary'
+            onClick={(e) => submitHandler(e)}
+            shape='round'
+            block
+          >
+            Register
+          </Button>
         </Form.Item>
       </Form>
     </Modal>

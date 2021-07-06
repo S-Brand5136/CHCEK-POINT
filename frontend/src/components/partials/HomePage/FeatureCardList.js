@@ -12,24 +12,13 @@ const FeatureCardList = () => {
   const cards = [
     {
       title: ` Track Games`,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-      consectetur nihil dicta numquam quidem laborum placeat, maiores
-      aspernatur molestiae enim quaerat, vitae aut provident ut
-      temporibus! Esse labore molestiae sed. Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Eos nulla et iure quia, ipsam,
-      molestias asperiores velit architecto sunt eius ad nam. Ipsum odit
-      explicabo officia libero dolorem reiciendis autem.`,
+      description: `
+      Each gamer has their own list of games they play, played, and put off. Keep track of those titles with ease by adding them to a Collection: Current, Completed, Backlog, and Dropped. Want to sort games further? Users are also able to create custom lists to add games to, which can be displayed on your profile.`,
       icon: <ExclamationCircleOutlined className='icon-highlight' />,
     },
     {
       title: ` Discover`,
-      description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-      consectetur nihil dicta numquam quidem laborum placeat, maiores
-      aspernatur molestiae enim quaerat, vitae aut provident ut
-      temporibus! Esse labore molestiae sed. Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Eos nulla et iure quia, ipsam,
-      molestias asperiores velit architecto sunt eius ad nam. Ipsum odit
-      explicabo officia libero dolorem reiciendis autem.`,
+      description: `Browse through the widest range of video games, and filter through them too! With hundreds of titles to choose from, and various tags to sort them with, you can find games that suit your taste best and add them to your Collection or Lists. View a game's overall score based on how Users rate them.`,
       icon: <MonitorOutlined className='icon-highlight' />,
     },
     {
@@ -44,8 +33,8 @@ const FeatureCardList = () => {
       icon: <MessageOutlined className='icon-highlight' />,
     },
   ];
-  const cardList = cards.map((card) => (
-    <Col size='small' bordered={false} className='card'>
+  const cardList = cards.map((card, index) => (
+    <Col size='small' lg={5} key={index} bordered='false' className='card'>
       <FeatureCard
         title={card.title}
         description={card.description}
@@ -55,7 +44,7 @@ const FeatureCardList = () => {
   ));
 
   return (
-    <Row justify='center' style={{ margin: '10rem 11rem 0 11rem' }}>
+    <Row justify='space-around' style={{ marginTop: '10rem' }}>
       {cardList}
     </Row>
   );

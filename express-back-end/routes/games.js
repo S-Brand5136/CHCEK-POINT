@@ -8,6 +8,7 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     db('games_catalog')
       .select()
+      .limit(req.query.limit || 100)
       .then((catalog) => {
         if (catalog.length > 0) {
           return res.status(200).json({ catalog });
@@ -66,6 +67,24 @@ module.exports = (db) => {
       .catch((err) => {
         console.log(err);
         res.status(404).json({ Error: 'No games found with that tag!' });
+      });
+  });
+
+  router.get('/keyword/search', (req, res) => {
+    console.log('Search requestionion', req.params);
+    db('games_catalog')
+      .select('games_catalog.*')
+      .where('name', 'ilike', `%${req.body.name}%`)
+      .orderBy('games_catalog.id')
+      .then((list) => {
+        if (list.length > 0) {
+          return res.status(200).json({ list });
+        }
+        throw Error;
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(404).json({ Error: 'No games found with that keyword!' });
       });
   });
 

@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 
 // components
 import VisitorHero from '../partials/HomePage/VisitorHero';
+import UserHero from '../partials/HomePage/UserHero';
 import BrowseSection from '../partials/HomePage/BrowseSection';
 
 const HomePage = () => {
@@ -17,7 +18,7 @@ const HomePage = () => {
     <Layout>
       <Layout.Content style={{ padding: '0 50px' }}>
         <div className='hero-section'>
-          <VisitorHero />
+          {!user ? <VisitorHero /> : <UserHero />}
           <BrowseSection />
         </div>
       </Layout.Content>
