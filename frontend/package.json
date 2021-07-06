@@ -11,6 +11,7 @@
     "antd": "^4.16.6",
     "axios": "^0.21.1",
     "chart.js": "^3.4.1",
+    "craco": "0.0.3",
     "craco-less": "^1.18.0",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.3",
@@ -44,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "install-peers": "^1.0.3",
     "sass": "^1.35.1"
   }
 }
