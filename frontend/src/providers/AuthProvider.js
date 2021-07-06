@@ -3,16 +3,45 @@ import axios from 'axios';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
-  const [user, setUser] = useState({ email: '', name: '', id: '' });
+  const [user, setUser] = useState({});
 
   // Perform login process for the user & save authID, etc
-  const login = function (email, password) {
-    setUser({ email, name: 'Test User' });
-    setAuth(true);
+  const login = async function (email, password) {
+    await axios
+      .get('/api/auth/', { params: { email, password } })
+      .then((res) => {
+        const {
+          id,
+          username,
+          email,
+          platforms,
+          bio,
+          in_game_usernames,
+          pronoun,
+          birthdate,
+          timezone,
+          discord_username,
+          created_at,
+        } = res.data.user[0];
+        setUser({
+          id,
+          username,
+          email,
+          platforms,
+          bio,
+          in_game_usernames,
+          pronoun,
+          birthdate,
+          timezone,
+          discord_username,
+          created_at,
+        });
+        setAuth(true);
+      });
   };
 
   const logout = function (email, password) {
-    setUser({ email: '', name: '' });
+    setUser({});
     setAuth(false);
   };
 

@@ -6,8 +6,8 @@ module.exports = (db) => {
     const { username, password, email } = req.body;
     db('users')
       .insert({ email, username, password })
-      .then(() => {
-        return res.status(200).json({ success: true });
+      .then((user) => {
+        return res.status(200).json({ success: true, user });
       })
       .catch(() => {
         res
@@ -18,7 +18,7 @@ module.exports = (db) => {
   // GET: a users details for login
   // RETURNS: A user object
   router.get('/', (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
     db('users')
       .select()
       .where({ email, password })

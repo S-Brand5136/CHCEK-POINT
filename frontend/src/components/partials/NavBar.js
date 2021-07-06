@@ -1,28 +1,65 @@
 import React from 'react';
-import 'styles/NavBar.scss';
-
-const Title = () => {
-  return (
-    <div className='title'>
-      <h1>
-        <a href='/'>CHECK-POINT</a>
-      </h1>
-    </div>
-  );
-};
+import '../../styles/NavBar.less';
+import Title from './Title';
+import { useState, useContext } from 'react';
+import { Button, Image } from 'antd';
+import { authContext } from '../../providers/AuthProvider';
+import LoginForm from '../partials/LoginForm';
+import RegisterForm from '../partials/RegisterForm';
+import logo from '../../img/logo.png';
 
 const NavLinks = () => {
+  const [isLoginVisible, setisLoginVisible] = useState(false);
+  const [isRegisterVisible, setisRegisterVisible] = useState(false);
+
+  const showLoginModal = () => {
+    setisLoginVisible(true);
+  };
+
+  const showRegisterModal = () => {
+    setisRegisterVisible(true);
+  };
+
   return (
-    <div className='nav-links'>
-      <a className='nav-link' href='/'>
-        Link
-      </a>
-      <a className='nav-link' href='/'>
-        Link
-      </a>
-      <a className='nav-link' href='/'>
-        Link
-      </a>
-    </div>
+    <nav className='nav-links'>
+      <div className='nav-logo-links'>
+        <Title></Title>
+      </div>
+      <div className='nav-center-links'>
+        <a className='nav-link' href='/'>
+          Browse
+        </a>
+
+        <a className='nav-link' href='/'>
+          Search
+        </a>
+
+        <a className='nav-link' href='/'>
+          Collection
+        </a>
+      </div>
+      <div className='nav-user-links'>
+        <div>
+          <Button type='primary' onClick={showLoginModal}>
+            Login
+          </Button>
+          <Button type='primary' onClick={showRegisterModal}>
+            Register
+          </Button>
+          <LoginForm
+            visible={isLoginVisible}
+            setVisible={() => setisLoginVisible(!isLoginVisible)}
+          />
+          <RegisterForm
+            visible={isRegisterVisible}
+            setVisible={() => {
+              setisRegisterVisible(false);
+            }}
+          />
+        </div>
+      </div>
+    </nav>
   );
 };
+
+export default NavLinks;

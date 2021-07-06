@@ -1,21 +1,27 @@
-import { useState } from 'react';
-import { Button } from 'antd';
-import LoginForm from '../partials/LoginForm';
+import { useEffect, useContext } from 'react';
+import { authContext } from '../../providers/AuthProvider';
+import { Layout } from 'antd';
+
+// components
+import VisitorHero from '../partials/HomePage/VisitorHero';
+import BrowseSection from '../partials/HomePage/BrowseSection';
 
 const HomePage = () => {
-  const [isVisible, setisVisible] = useState(false);
+  const { user } = useContext(authContext);
 
-  const showModal = () => {
-    setisVisible(true);
-  };
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
-    <div>
-      <Button type='primary' onClick={showModal}>
-        Open Login Modal
-      </Button>
-      <LoginForm visible={isVisible} setVisible={() => setisVisible(false)} />
-    </div>
+    <Layout>
+      <Layout.Content style={{ padding: '0 50px' }}>
+        <div className='hero-section'>
+          <VisitorHero />
+          <BrowseSection />
+        </div>
+      </Layout.Content>
+    </Layout>
   );
 };
 

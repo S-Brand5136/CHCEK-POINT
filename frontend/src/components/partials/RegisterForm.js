@@ -5,48 +5,19 @@ import Notification from './Notification';
 
 const LoginForm = ({ visible, setVisible }) => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useContext(authContext);
 
-  // its gross I know :(
   const submitHandler = (e) => {
     e.preventDefault();
-    if (email && password) {
-      setLoading(true);
-      login(email, password)
-        .then(() => {
-          Notification({
-            type: 'success',
-            description: 'Succesfully logged in!',
-            title: 'Success',
-          });
-          setTimeout(() => {
-            setLoading(false);
-            setVisible();
-          }, 2000);
-        })
-        .catch(() => {
-          Notification({
-            type: 'error',
-            description: 'Incorrect Email or Password, Try again!',
-            title: 'Error',
-          });
-          setLoading(false);
-        });
-    } else {
-      Notification({
-        type: 'error',
-        description: 'Email or Password is needed!',
-        title: 'Error',
-      });
-    }
   };
 
   return (
     <Modal centered footer={<Footer />} visible={visible} onCancel={setVisible}>
-      <h2 style={{ textAlign: 'center' }}>Welcome Back to CHECK-POINT!</h2>
-      <h3 style={{ textAlign: 'center' }}>Login</h3>
+      <h2 style={{ textAlign: 'center' }}>Welcome to CHECK-POINT!</h2>
+      <h3 style={{ textAlign: 'center' }}>Register</h3>
       <Form name='login' layout='vertical'>
         <Form.Item
           label='Email'
@@ -57,13 +28,32 @@ const LoginForm = ({ visible, setVisible }) => {
         </Form.Item>
 
         <Form.Item
+          label='Username'
+          name='Username'
+          rules={[{ required: true, message: 'Please input your username!' }]}
+        >
+          <Input onChange={(e) => setUsername(e.target.value)} />
+        </Form.Item>
+
+        <Form.Item
           label='Password'
           name='password'
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password onChange={(e) => setPassword(e.target.value)} />
         </Form.Item>
-        <Form.Item style={{ textAlign: 'center' }}>
+
+        <Form.Item
+          label='Confirm Password'
+          name='confirm_password'
+          rules={[{ required: true, message: 'Please confirm your password!' }]}
+        >
+          <Input.Password
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item>
           {!loading ? (
             <Button
               type='primary'
@@ -71,7 +61,7 @@ const LoginForm = ({ visible, setVisible }) => {
               shape='round'
               block
             >
-              Login
+              Register
             </Button>
           ) : (
             <Spin />
@@ -86,7 +76,7 @@ const Footer = () => {
   return [
     <footer key={1}>
       <h3 key={2} style={{ textAlign: 'center' }}>
-        Not a member yet? <a>Sign Up</a>
+        Already a member? <a>Login</a>
       </h3>
     </footer>,
   ];

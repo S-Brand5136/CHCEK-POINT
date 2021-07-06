@@ -1,16 +1,76 @@
-@import 'variables.scss';
+@import 'variables.less';
 
 .title {
-  font-family: $title-font;
-  color: $mascot-purple-1;
+  font-family: @title-font;
+  font-size: x-large;
+  padding-top: 2.5vh;
+
+  .title-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding-left: 0px;
+  }
+
+  .title-link:hover {
+    color: @mascot-purple-1;
+  }
 }
 
 .nav-links {
   display: flex;
-  justify-content: space-evenly;
-  font-family: $main-font;
+  justify-content: space-between;
+  align-items: center;
+  font-family: @main-font;
+  height: 10vh;
+  padding: 5px;
+  background-image: linear-gradient(to right, @pinky-purple, @gengar);
 
-  .nav-link {
-    color: $mascot-purple-3;
+  .nav-logo-links {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-center-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .nav-user-links {
+    font-size: smaller;
+  }
+
+  a {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    transition: @fade-in;
+  }
+
+  a:hover {
+    transition: @fade-in;
+  }
+
+  a.nav-link {
+    color: white;
+    position: relative;
+  }
+
+  a.nav-link:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    visibility: hidden;
+    transition: all @fade-in;
+  }
+
+  a.nav-link:hover:before {
+    visibility: visible;
+    width: 100%;
   }
 }
