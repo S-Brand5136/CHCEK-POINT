@@ -969,7 +969,8 @@ module.exports = [
     released: '2004-07-15',
     metacritic_score: null,
     playtime: 0,
-    background_image: null,
+    background_image:
+      'https://images-na.ssl-images-amazon.com/images/I/518MGMV6A0L._SX258_BO1,204,203,200_.jpg',
     description:
       'Hamtaro is a series of video games based on the Hamtaro anime series.',
     dTag: [
