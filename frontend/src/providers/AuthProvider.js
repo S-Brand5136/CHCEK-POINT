@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import axios from 'axios';
+import Notification from '../components/partials/Notification';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
@@ -50,8 +51,13 @@ export default function AuthProvider(props) {
   };
 
   const logout = function (email, password) {
-    setUser({});
+    setUser(null);
     setAuth(false);
+    Notification({
+      type: 'success',
+      description: 'Succesfully Logged out!',
+      title: 'Success',
+    });
   };
 
   // authContext will expose these items

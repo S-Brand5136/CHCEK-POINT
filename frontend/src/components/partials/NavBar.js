@@ -1,7 +1,8 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import '../../styles/NavBar.less';
 import Title from './Title';
 import { useState, useContext } from 'react';
+
 import { Button, Image } from 'antd';
 import { authContext } from '../../providers/AuthProvider';
 import LoginForm from '../partials/LoginForm';
@@ -26,13 +27,27 @@ const NavLinks = () => {
     setisSearchVisible(true);
   };
 
+  const navigateBrowse = () => {
+    window.location = '/browse';
+  };
+
+  const { user, getUserDetails, logout } = useContext(authContext);
+
+  useEffect(() => {
+    if (user) {
+      getUserDetails(user.id);
+    }
+  }, [user, getUserDetails]);
+
   return (
     <nav className='nav-links'>
       <div className='nav-logo-links'>
         <Title></Title>
       </div>
       <div className='nav-center-links'>
-        <button className='nav-link'>Browse</button>
+        <button className='nav-link' onClick={navigateBrowse}>
+          Browse
+        </button>
 
         <button className='nav-link' onClick={showSearchModal}>
           Search
@@ -48,24 +63,35 @@ const NavLinks = () => {
         </button>
       </div>
       <div className='nav-user-links'>
-        <div>
-          <Button type='primary' onClick={showLoginModal}>
-            Login
-          </Button>
-          <Button type='primary' onClick={showRegisterModal}>
-            Register
-          </Button>
-          <LoginForm
-            visible={isLoginVisible}
-            setVisible={() => setisLoginVisible(!isLoginVisible)}
-          />
-          <RegisterForm
-            visible={isRegisterVisible}
-            setVisible={() => {
-              setisRegisterVisible(false);
-            }}
-          />
-        </div>
+        {!user ? (
+          <div>
+            <Button type='primary' onClick={showLoginModal}>
+              Login
+            </Button>
+            <Button type='primary' onClick={showRegisterModal}>
+              Register
+            </Button>
+            <LoginForm
+              visible={isLoginVisible}
+              setVisible={() => setisLoginVisible(!isLoginVisible)}
+            />
+            <RegisterForm
+              visible={isRegisterVisible}
+              setVisible={() => {
+                setisRegisterVisible(false);
+              }}
+            />
+          </div>
+        ) : (
+          <>
+            <div className='loggedinmessage'>
+              Hey, {user.username}!
+              <Button type='primary' onClick={logout}>
+                Logout
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );
