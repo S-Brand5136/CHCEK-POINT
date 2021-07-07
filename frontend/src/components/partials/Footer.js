@@ -8,7 +8,8 @@ const Footer = () => {
       <Typography.Paragraph>
         © 2021 <strong>CHECK-POINT</strong>
         <span className='divider-highlight'> | </span>
-        Created by Brandon, Astrid, Pavneet during their time at Lighthouse Labs
+        Created by Brandon, Astrid, and Pavneet during their time at Lighthouse
+        Labs
       </Typography.Paragraph>
     </div>
   );

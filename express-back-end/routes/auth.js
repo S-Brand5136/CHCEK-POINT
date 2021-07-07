@@ -15,20 +15,22 @@ module.exports = (db) => {
           .json({ Error: 'Sorry, there was an error during registration' });
       });
   });
+
   // GET: a users details for login
   // RETURNS: A user object
-  router.get('/', (req, res) => {
+  router.get('/', async (req, res) => {
     const { email, password } = req.query;
     db('users')
       .select()
       .where({ email, password })
       .then((user) => {
         if (user.length > 0) {
-          return res.status(200).json({ user });
+          return res.json({ user });
         }
         throw Error;
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         res.status(401).json({ Error: 'Invalid Credentials' });
       });
   });

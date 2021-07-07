@@ -24,9 +24,10 @@ const LoginForm = ({ visible, setVisible }) => {
           setTimeout(() => {
             setLoading(false);
             setVisible();
-          }, 2000);
+          }, 1000);
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           Notification({
             type: 'error',
             description: 'Incorrect Email or Password, Try again!',

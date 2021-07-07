@@ -23,12 +23,50 @@ module.exports = (db) => {
       .select()
       .where({ id: req.params.id })
       .then((user) => {
-        db('users_lists')
-          .select('list_title')
-          .where({ user_id: req.params.id })
-          .groupBy('list_title')
+        db('game')
+          .select(
+            'list_title',
+            'games_catalog.name',
+            'game.num_hours_played',
+            'category',
+            'background_image'
+          )
+          .leftOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
+          .join('users_lists', { 'game.list_id': 'users_lists.id' })
+          .where('users_lists.user_id', req.params.id)
+          .orderBy('list_id')
           .then((list) => {
-            return res.status(200).json({ user, list });
+            const collection = {};
+            const lists = {};
+
+            for (const item of list) {
+              if (item.category === 'Stats' && !collection[item.list_title]) {
+                collection[item.list_title] = [];
+                const category = item.category;
+                collection[item.list_title].push(category);
+              }
+              if (item.category === 'Stats' && collection[item.list_title]) {
+                collection[item.list_title].push({
+                  name: item.name,
+                  hours_played: item.num_hours_played,
+                  background_image: item.background_image,
+                });
+              }
+              if (item.category !== 'Stats' && !lists[item.list_title]) {
+                lists[item.list_title] = [];
+                const category = item.category;
+                lists[item.list_title].push(category);
+              }
+              if (item.category !== 'Stats' && lists[item.list_title]) {
+                lists[item.list_title].push({
+                  name: item.name,
+                  hours_played: item.num_hours_played,
+                  background_image: item.background_image,
+                });
+              }
+            }
+
+            return res.status(200).json({ user, collection, lists });
           });
       })
       .catch((err) => {

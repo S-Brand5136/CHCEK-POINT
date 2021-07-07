@@ -4,6 +4,8 @@ import axios from 'axios';
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState(null);
+  const [userCollection, setUsersCollection] = useState(null);
+  const [userLists, setUsersLists] = useState(null);
 
   // Perform login process for the user & save authID, etc
   const login = async function (email, password) {
@@ -40,13 +42,28 @@ export default function AuthProvider(props) {
       });
   };
 
+  const getUserDetails = async function (id) {
+    await axios.get(`/api/users/${user.id}`).then((res) => {
+      setUsersCollection(res.data.collection);
+      setUsersLists(res.data.lists);
+    });
+  };
+
   const logout = function (email, password) {
     setUser({});
     setAuth(false);
   };
 
   // authContext will expose these items
-  const userData = { auth, user, login, logout };
+  const userData = {
+    auth,
+    user,
+    userLists,
+    userCollection,
+    getUserDetails,
+    login,
+    logout,
+  };
 
   // We can use this component to wrap any content we want to share this context
   return (

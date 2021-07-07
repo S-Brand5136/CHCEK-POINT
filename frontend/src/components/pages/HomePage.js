@@ -3,19 +3,22 @@ import { authContext } from '../../providers/AuthProvider';
 import { Layout } from 'antd';
 
 // components
-import VisitorHero from '../partials/HomePage/VisitorHero';
-import UserHero from '../partials/HomePage/UserHero';
-import BrowseSection from '../partials/HomePage/BrowseSection';
+import VisitorHero from '../partials/HomePagePartials/VisitorHero';
+import UserHero from '../partials/HomePagePartials/UserHero';
+import BrowseSection from '../partials/HomePagePartials/BrowseSection';
 
 const HomePage = () => {
-  const { user } = useContext(authContext);
+  const { user, getUserDetails, userLists, userCollection } =
+    useContext(authContext);
 
   useEffect(() => {
-    console.log(user);
+    if (user) {
+      getUserDetails(user.id);
+    }
   }, [user]);
 
   return (
-    <Layout>
+    <Layout style={{ paddingBottom: '5rem' }}>
       <Layout.Content style={{ padding: '0 50px' }}>
         <div className='hero-section'>
           {!user ? (
@@ -24,7 +27,11 @@ const HomePage = () => {
               <BrowseSection />
             </>
           ) : (
-            <UserHero username={user.username} />
+            <UserHero
+              user={user}
+              lists={userLists}
+              collections={userCollection}
+            />
           )}
         </div>
       </Layout.Content>
