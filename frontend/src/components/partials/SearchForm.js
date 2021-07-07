@@ -40,7 +40,7 @@ const SearchForm = ({ visible, setVisible }) => {
         setGames([]);
       }}
     >
-      <h2 style={{ textAlign: 'center' }}>Search For Games</h2>
+      <h2 style={{ textAlign: 'center' }}>Search by name</h2>
       <Form name='Search' layout='vertical'>
         <Form.Item name='search'>
           <Input
