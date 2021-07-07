@@ -43,7 +43,7 @@ export default function AuthProvider(props) {
       });
   };
 
-  const getUserDetails = async function (id) {
+  const getUserDetails = async function () {
     await axios.get(`/api/users/${user.id}`).then((res) => {
       setUsersCollection(res.data.collection);
       setUsersLists(res.data.lists);
@@ -52,6 +52,7 @@ export default function AuthProvider(props) {
 
   const logout = function (email, password) {
     setUser(null);
+    // localStorage.setItem('user', '');
     setAuth(false);
     Notification({
       type: 'success',

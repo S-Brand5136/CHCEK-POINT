@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Spin } from 'antd';
+import { Button, Form, Input, Modal } from 'antd';
 
 const LoginForm = ({ visible, setVisible }) => {
   const submitHandler = (e) => {
@@ -61,7 +61,7 @@ const Footer = () => {
   return [
     <footer key={1}>
       <h3 key={2} style={{ textAlign: 'center' }}>
-        Already a member? <a>Login</a>
+        Already a member? <a href='/'>Login</a>
       </h3>
     </footer>,
   ];

@@ -35,23 +35,21 @@ const VisitorHero = () => {
           </Typography.Text>
           <div style={{ marginTop: '1rem' }}>
             <Button
-              type='primary'
+              className='visitor-btn'
               style={{ marginRight: '1rem' }}
               size='large'
-              ghost
               shape='round'
               onClick={showLoginModal}
             >
-              <span className='text-highlight'>Login</span>
+              <span>Login</span>
             </Button>
             <Button
-              type='primary'
+              className='visitor-btn'
               shape='round'
-              ghost
               size='large'
               onClick={showRegisterModal}
             >
-              <span className='text-highlight'>Register</span>
+              <span>Register</span>
             </Button>
             <LoginForm
               visible={isLoginVisible}

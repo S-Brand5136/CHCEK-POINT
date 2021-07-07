@@ -1,4 +1,3 @@
-import { useContext, useEffect } from 'react';
 import '../styles/App.less';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

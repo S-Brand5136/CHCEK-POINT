@@ -3,12 +3,11 @@ import '../../styles/NavBar.less';
 import Title from './Title';
 import { useState, useContext } from 'react';
 
-import { Button, Image } from 'antd';
+import { Button } from 'antd';
 import { authContext } from '../../providers/AuthProvider';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
 import SearchForm from '../partials/SearchForm';
-import logo from '../../img/logo.png';
 
 const NavLinks = () => {
   const [isLoginVisible, setisLoginVisible] = useState(false);
@@ -37,7 +36,7 @@ const NavLinks = () => {
     if (user) {
       getUserDetails(user.id);
     }
-  }, [user, getUserDetails]);
+  }, [user]);
 
   return (
     <nav className='nav-links'>

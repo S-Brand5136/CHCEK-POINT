@@ -9,7 +9,6 @@ const LoginForm = ({ visible, setVisible }) => {
   const [loading, setLoading] = useState(false);
   const { login } = useContext(authContext);
 
-  // its gross I know :(
   const submitHandler = (e) => {
     e.preventDefault();
     if (email && password) {
@@ -24,7 +23,7 @@ const LoginForm = ({ visible, setVisible }) => {
           setTimeout(() => {
             setLoading(false);
             setVisible();
-          }, 1000);
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
@@ -87,7 +86,7 @@ const Footer = () => {
   return [
     <footer key={1}>
       <h3 key={2} style={{ textAlign: 'center' }}>
-        Not a member yet? <a>Sign Up</a>
+        Not a member yet? <a href='/'>Sign Up</a>
       </h3>
     </footer>,
   ];

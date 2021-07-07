@@ -19,7 +19,7 @@ const GameHeader = ({ game }) => {
       <div className='header-items'>
         <div className='game-rating-bar'>
           <Button
-            type='primary'
+            type='info'
             size='large'
             className='game-add-btn'
             shape='round'

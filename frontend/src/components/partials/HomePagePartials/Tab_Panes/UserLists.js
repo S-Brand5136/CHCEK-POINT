@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Typography } from 'antd';
 
 const UserLists = ({ lists }) => {
-  console.log(lists);
   return (
     <Row>
       {Object.keys(lists).length <= 0 ? (
@@ -11,7 +10,7 @@ const UserLists = ({ lists }) => {
             You havn't made any lists yet
           </Typography.Title>
           <Typography.Title level={5}>
-            <a>Click Here</a> to start creating your own!
+            <a href='/games'>Click Here</a> to start creating your own!
           </Typography.Title>
         </Col>
       ) : (

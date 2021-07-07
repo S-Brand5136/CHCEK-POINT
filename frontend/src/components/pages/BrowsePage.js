@@ -14,7 +14,7 @@ const BrowsePage = (tag) => {
   const [singleplayerList, setsingleplayerList] = useState(null);
   const [explorationList, setexplorationList] = useState(null);
   const [fpsList, setfpsList] = useState(null);
-  const [tagList, settagList] = useState(null);
+  // const [tagList, settagList] = useState(null);
 
   useEffect(() => {
     Promise.all([
