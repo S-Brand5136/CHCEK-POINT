@@ -1,0 +1,115 @@
+section.game-page {
+  min-height: 100vh;
+  margin-bottom: 5rem;
+
+  // HEADER
+  .game-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8rem;
+
+    .game-header-title {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-right: 2px solid black;
+      font-family: @title-font;
+      width: 95%;
+      text-align: right;
+      z-index: -1;
+      bottom: 30rem;
+      position: absolute;
+
+      h1 {
+        margin-bottom: 0;
+        padding: 3rem;
+        margin-right: 5rem;
+        font-size: 3rem;
+      }
+    }
+
+    .game-add-btn {
+      font-family: @main-font;
+      font-size: 1.3rem;
+      width: 10rem;
+      height: 3rem;
+      text-align: center;
+    }
+
+    img {
+      margin-left: 10rem;
+      z-index: 10;
+
+      .game-card-image {
+        object-fit: contain;
+        height: 50%;
+        width: 50%;
+      }
+    }
+
+    .header-items {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      margin-left: 5rem;
+      height: 300px;
+
+      .game-rating-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        h4 {
+          margin-bottom: 2px;
+        }
+
+        .progress-bar {
+          border: 1px solid black;
+          border-radius: 10px;
+          height: 20px;
+          width: 500px;
+          display: block;
+
+          .health {
+            border-radius: 10px;
+            background-image: linear-gradient(to right, @pinky-purple, @gengar);
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  // TAGS ASIDE
+
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5rem;
+
+    aside.game-tags {
+      border: 1px solid black;
+      padding: 20px;
+      position: relative;
+      left: 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-row: auto;
+      gap: 20px;
+      height: 75%;
+      width: 35%;
+    }
+
+    section.game-desc {
+      margin-left: 12rem;
+      border: 1px solid black;
+      padding: 2rem;
+      width: 45%;
+      height: 40%;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
