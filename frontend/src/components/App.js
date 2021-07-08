@@ -14,14 +14,14 @@ import UserPage from './pages/UserPage';
 function App() {
   return (
     <div className='App'>
-      <NavLinks />
       <Router>
+        <NavLinks />
         <div>
           <Route path='/' component={HomePage} exact />
           <Route path='/games/:id' component={GamePage} exact />
           <Route path='/games' component={BrowsePage} exact />
           <Route path='/users/:id' component={UserPage} exact />
-          <Route path='/browse' component={BrowsePage} exact />
+          <Route path='/browse/:tag' component={BrowsePage} />
         </div>
       </Router>
       <Footer />
