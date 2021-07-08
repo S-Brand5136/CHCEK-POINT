@@ -33,12 +33,11 @@ module.exports = (db) => {
             'game.list_id',
             'games_catalog.id'
           )
-          .join('games_catalog', 'game_id', '=', 'games_catalog.id')
-          .join('users_lists', { 'game.list_id': 'users_lists.id' })
+          .rightOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
+          .rightOuterJoin('users_lists', { 'game.list_id': 'users_lists.id' })
           .where('users_lists.user_id', req.params.id)
           .orderBy('list_id')
           .then((list) => {
-            console.log(list);
             const collection = {};
             const lists = {};
 
@@ -74,10 +73,6 @@ module.exports = (db) => {
                 });
               }
             }
-
-            console.log(collection);
-            console.log(lists);
-
             return res.status(200).json({ user, collection, lists });
           });
       })
