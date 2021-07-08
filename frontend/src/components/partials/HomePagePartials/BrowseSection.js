@@ -10,15 +10,17 @@ const BrowseSection = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('/api/games', { params: { limit: 8 } })
-      .then((res) => {
-        setGames(res.data.catalog);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (games.length <= 0) {
+      axios
+        .get('/api/games', { params: { limit: 8 } })
+        .then((res) => {
+          setGames(res.data.catalog);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [games]);
 
   const gameCards = games.map((game) => (
     <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>

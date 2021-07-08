@@ -17,7 +17,7 @@ const UserHero = ({ user, lists, collections }) => {
         Welcome Back, {user.username}!
       </Typography.Title>
       <Tabs tabPosition='left'>
-        <Tabs.TabPane tab='Browse' key='1'>
+        <Tabs.TabPane tab='Explore' key='1'>
           <WelcomeBack />
         </Tabs.TabPane>
         <Tabs.TabPane tab='Activity' key='2'>

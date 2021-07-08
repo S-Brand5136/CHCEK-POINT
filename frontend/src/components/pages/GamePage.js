@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { authContext } from '../../providers/AuthProvider';
 
 import GameHeader from '../partials/GamePagePartials/GameHeader';
 import TagsAside from '../partials/GamePagePartials/TagsAside';
+import UserDashboard from '../partials/GamePagePartials/UserDashboard';
 
 const GamePage = ({ location }) => {
   const [game, setGame] = useState(null);
   const [tags, setTags] = useState(null);
+
+  const { user, userLists, userCollection, getUserDetails } =
+    useContext(authContext);
 
   useEffect(() => {
     const gameId = location.pathname.slice(-2);
@@ -18,7 +23,13 @@ const GamePage = ({ location }) => {
 
   return (
     <section className='game-page'>
-      <GameHeader game={game} />
+      <GameHeader
+        game={game}
+        user={user}
+        userCollection={userCollection}
+        lists={userLists}
+        getDetails={getUserDetails}
+      />
       <main>
         <TagsAside tags={tags} />
         <section className='game-desc'>
@@ -28,14 +39,9 @@ const GamePage = ({ location }) => {
           <div>
             <p>{game && game.description}</p>
           </div>
-          <div>
-            <h4>MetaCritic Score</h4>
-          </div>
-          <div>
-            <h4>ESRB Rating</h4>
-          </div>
         </section>
       </main>
+      <footer>{user && <UserDashboard />}</footer>
     </section>
   );
 };

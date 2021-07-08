@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Typography, Tabs } from 'antd';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import TaggedGames from '../partials/HomePagePartials/userPartials/TaggedGames';
 
-const BrowsePage = (tag) => {
+const BrowsePage = () => {
   const [allList, setallList] = useState(null);
   const [actionList, setActionList] = useState(null);
   const [adventureList, setAdventureList] = useState(null);
@@ -14,8 +15,11 @@ const BrowsePage = (tag) => {
   const [singleplayerList, setsingleplayerList] = useState(null);
   const [explorationList, setexplorationList] = useState(null);
   const [fpsList, setfpsList] = useState(null);
-  // const [tagList, settagList] = useState(null);
-
+  const [tagList, settagList] = useState(null);
+  let { tag } = useParams();
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   useEffect(() => {
     Promise.all([
       axios.get('/api/games/tags/action'),
@@ -27,6 +31,7 @@ const BrowsePage = (tag) => {
       axios.get('/api/games/tags/Exploration'),
       axios.get('/api/games/tags/FPS'),
       axios.get('/api/games'),
+      ...(tag !== 'games' ? [axios.get(`/api/games/tags/${tag}`)] : []),
     ]).then((all) => {
       setActionList(all[0].data.list.slice(1, 8));
       setAdventureList(all[1].data.list.slice(1, 8));
@@ -37,8 +42,9 @@ const BrowsePage = (tag) => {
       setexplorationList(all[6].data.list.slice(1, 8));
       setfpsList(all[7].data.list.slice(1, 8));
       setallList(all[8].data.catalog);
+      if (tag !== 'games') settagList(all[9].data.list.slice(1, 8));
     });
-  }, [tag]);
+  }, []);
   return (
     <>
       <Typography.Title level={3} className='main-font'>
@@ -46,16 +52,25 @@ const BrowsePage = (tag) => {
       </Typography.Title>
       <br />
       <Tabs tabPosition='left'>
-        <Tabs.TabPane tab='All' key='1'>
+        {tag === 'games' ? (
+          <></>
+        ) : (
+          <Tabs.TabPane tab={capitalizeFirstLetter(tag)} key='1'>
+            {tagList && (
+              <TaggedGames games={tagList} tag={tag} showAdd={false} />
+            )}
+          </Tabs.TabPane>
+        )}
+        <Tabs.TabPane tab='All' key='2'>
           {allList && <TaggedGames games={allList} tag='All' showAdd={false} />}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='Action' key='2'>
+        <Tabs.TabPane tab='Action' key='3'>
           {actionList && (
             <TaggedGames games={actionList} tag='Action' showAdd={false} />
           )}
         </Tabs.TabPane>
 
-        <Tabs.TabPane tab='Atmospheric' key='3'>
+        <Tabs.TabPane tab='Atmospheric' key='4'>
           {atmosphericList && (
             <TaggedGames
               games={atmosphericList}
@@ -65,7 +80,7 @@ const BrowsePage = (tag) => {
           )}
         </Tabs.TabPane>
 
-        <Tabs.TabPane tab='Adventure' key='4'>
+        <Tabs.TabPane tab='Adventure' key='5'>
           {adventureList && (
             <TaggedGames
               games={adventureList}
@@ -74,7 +89,7 @@ const BrowsePage = (tag) => {
             />
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='Singleplayer' key='5'>
+        <Tabs.TabPane tab='Singleplayer' key='6'>
           {singleplayerList && (
             <TaggedGames
               games={singleplayerList}
@@ -83,7 +98,7 @@ const BrowsePage = (tag) => {
             />
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='Multiplayer' key='6'>
+        <Tabs.TabPane tab='Multiplayer' key='7'>
           {multiplayerList && (
             <TaggedGames
               games={multiplayerList}
@@ -92,12 +107,12 @@ const BrowsePage = (tag) => {
             />
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='Sandbox' key='7'>
+        <Tabs.TabPane tab='Sandbox' key='8'>
           {sandboxList && (
             <TaggedGames games={sandboxList} tag='Sandbox' showAdd={false} />
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='Exploration' key='8'>
+        <Tabs.TabPane tab='Exploration' key='9'>
           {explorationList && (
             <TaggedGames
               games={explorationList}
@@ -106,7 +121,7 @@ const BrowsePage = (tag) => {
             />
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab='FPS' key='9'>
+        <Tabs.TabPane tab='FPS' key='10'>
           {fpsList && <TaggedGames games={fpsList} tag='FPS' showAdd={false} />}
         </Tabs.TabPane>
       </Tabs>

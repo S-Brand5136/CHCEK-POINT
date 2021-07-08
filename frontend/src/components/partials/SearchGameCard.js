@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Card } from 'antd';
 
 const GameCard = ({ image, title, id }) => {
@@ -8,7 +8,7 @@ const GameCard = ({ image, title, id }) => {
       style={{ borderRadius: '20px' }}
       hoverable
       cover={
-        <a href={`/games/${id}`}>
+        <Link to={`/games/${id}`}>
           <img
             style={{ borderRadius: '20px' }}
             className='search-card-image'
@@ -16,7 +16,7 @@ const GameCard = ({ image, title, id }) => {
             src={image}
             height={'200vh'}
           />
-        </a>
+        </Link>
       }
     >
       <Card.Meta className='main-font' title={title} />

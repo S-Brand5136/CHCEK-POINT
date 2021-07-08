@@ -1,13 +1,13 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import '../../styles/NavBar.less';
 import Title from './Title';
-import { useState, useContext } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { authContext } from '../../providers/AuthProvider';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
 import SearchForm from '../partials/SearchForm';
+import Notification from './Notification';
 
 const NavLinks = () => {
   const [isLoginVisible, setisLoginVisible] = useState(false);
@@ -26,17 +26,11 @@ const NavLinks = () => {
     setisSearchVisible(true);
   };
 
-  const navigateBrowse = () => {
-    window.location = '/browse';
+  const showcollectionModal = () => {
+    setisSearchVisible(true);
   };
 
-  const { user, getUserDetails, logout } = useContext(authContext);
-
-  useEffect(() => {
-    if (user) {
-      getUserDetails(user.id);
-    }
-  }, [user]);
+  const { user, logout } = useContext(authContext);
 
   return (
     <nav className='nav-links'>
@@ -44,10 +38,12 @@ const NavLinks = () => {
         <Title></Title>
       </div>
       <div className='nav-center-links'>
-        <button className='nav-link' onClick={navigateBrowse}>
-          Browse
-        </button>
-
+        <Link
+          to={`/browse/${'games'}`}
+          style={{ color: 'inherit', textDecoration: 'inherit' }}
+        >
+          <button className='nav-link'>Browse</button>
+        </Link>
         <button className='nav-link' onClick={showSearchModal}>
           Search
         </button>
@@ -56,10 +52,15 @@ const NavLinks = () => {
           visible={isSearchVisible}
           setVisible={() => setisSearchVisible(!isSearchVisible)}
         />
-
-        <button className='nav-link' href='/'>
-          Collection
-        </button>
+        {!user ? (
+          <button className='nav-link' href='/'>
+            Collection
+          </button>
+        ) : (
+          <button className='nav-link' href='/'>
+            Collection
+          </button>
+        )}
       </div>
       <div className='nav-user-links'>
         {!user ? (

@@ -7,7 +7,7 @@ const UserCollections = ({ collections }) => {
       <div>
         {collections && (
           <TaggedGames
-            games={collections.Current.splice(1)}
+            games={collections.Current.splice(2)}
             tag='Current'
             showAdd={true}
           />
@@ -16,7 +16,7 @@ const UserCollections = ({ collections }) => {
       <div>
         {collections && (
           <TaggedGames
-            games={collections.Backlog.splice(1)}
+            games={collections.Backlog.splice(2)}
             tag='Backlog'
             showAdd={true}
           />
@@ -25,7 +25,7 @@ const UserCollections = ({ collections }) => {
       <div>
         {collections && (
           <TaggedGames
-            games={collections.Completed.splice(1)}
+            games={collections.Completed.splice(2)}
             tag='Completed'
             showAdd={true}
           />
@@ -34,7 +34,7 @@ const UserCollections = ({ collections }) => {
       <div>
         {collections && (
           <TaggedGames
-            games={collections.Dropped.splice(1)}
+            games={collections.Dropped.splice(2)}
             tag='Dropped'
             showAdd={true}
           />

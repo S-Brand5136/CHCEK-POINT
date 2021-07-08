@@ -8,14 +8,16 @@ const SearchForm = ({ visible, setVisible }) => {
   const [games, setGames] = useState([]);
 
   const submitHandler = (e) => {
-    axios
-      .get('/api/games/keyword/search', { params: { search: Search } })
-      .then((res) => {
-        setGames(res.data.list);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (Search) {
+      axios
+        .get('/api/games/keyword/search', { params: { search: Search } })
+        .then((res) => {
+          setGames(res.data.list);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   var gameCards = games.map((game) => (

@@ -8,14 +8,7 @@ import UserHero from '../partials/HomePagePartials/UserHero';
 import BrowseSection from '../partials/HomePagePartials/BrowseSection';
 
 const HomePage = () => {
-  const { user, getUserDetails, userLists, userCollection } =
-    useContext(authContext);
-
-  useEffect(() => {
-    if (user) {
-      getUserDetails(user.id);
-    }
-  }, [user]);
+  const { user, userLists, userCollection } = useContext(authContext);
 
   return (
     <Layout style={{ paddingBottom: '5rem' }}>
