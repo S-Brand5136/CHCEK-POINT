@@ -29,7 +29,9 @@ module.exports = (db) => {
             'games_catalog.name',
             'game.num_hours_played',
             'category',
-            'background_image'
+            'background_image',
+            'game.list_id',
+            'game.game_id'
           )
           .leftOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
           .join('users_lists', { 'game.list_id': 'users_lists.id' })
@@ -43,25 +45,31 @@ module.exports = (db) => {
               if (item.category === 'Stats' && !collection[item.list_title]) {
                 collection[item.list_title] = [];
                 const category = item.category;
+                const id = item.list_id;
                 collection[item.list_title].push(category);
+                collection[item.list_title].push(id);
               }
               if (item.category === 'Stats' && collection[item.list_title]) {
                 collection[item.list_title].push({
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
+                  game_id: item.game_id,
                 });
               }
               if (item.category !== 'Stats' && !lists[item.list_title]) {
                 lists[item.list_title] = [];
                 const category = item.category;
+                const id = item.list_id;
                 lists[item.list_title].push(category);
+                lists[item.list_title].push(id);
               }
               if (item.category !== 'Stats' && lists[item.list_title]) {
                 lists[item.list_title].push({
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
+                  game_id: item.game_id,
                 });
               }
             }
