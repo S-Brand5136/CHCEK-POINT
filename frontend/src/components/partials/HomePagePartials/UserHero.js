@@ -7,6 +7,8 @@ import UserLists from './Tab_Panes/UserLists';
 import UserActivity from './Tab_Panes/UserActivity';
 
 const UserHero = ({ user, lists, collections }) => {
+  console.log(collections);
+
   return (
     <>
       <Typography.Title

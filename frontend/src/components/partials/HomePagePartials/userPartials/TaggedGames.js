@@ -7,14 +7,9 @@ import GameCard from '../GameCard';
 import EmptyCard from './EmptyCard';
 
 const TaggedGames = ({ games, tag, showAdd }) => {
-  console.log(games);
   const gameCards = games.map((game, index) => (
     <Col lg={3} key={index}>
-      <GameCard
-        image={game.background_image}
-        title={game.name}
-        id={game.game_id}
-      />
+      <GameCard image={game.background_image} title={game.name} id={game.id} />
     </Col>
   ));
   return (

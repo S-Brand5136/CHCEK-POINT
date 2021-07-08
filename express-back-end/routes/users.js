@@ -31,13 +31,14 @@ module.exports = (db) => {
             'category',
             'background_image',
             'game.list_id',
-            'game.game_id'
+            'games_catalog.id'
           )
-          .leftOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
+          .join('games_catalog', 'game_id', '=', 'games_catalog.id')
           .join('users_lists', { 'game.list_id': 'users_lists.id' })
           .where('users_lists.user_id', req.params.id)
           .orderBy('list_id')
           .then((list) => {
+            console.log(list);
             const collection = {};
             const lists = {};
 
@@ -54,7 +55,7 @@ module.exports = (db) => {
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
-                  game_id: item.game_id,
+                  id: item.id,
                 });
               }
               if (item.category !== 'Stats' && !lists[item.list_title]) {
@@ -69,10 +70,13 @@ module.exports = (db) => {
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
-                  game_id: item.game_id,
+                  id: item.id,
                 });
               }
             }
+
+            console.log(collection);
+            console.log(lists);
 
             return res.status(200).json({ user, collection, lists });
           });

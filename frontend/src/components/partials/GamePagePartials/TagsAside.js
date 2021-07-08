@@ -1,8 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 
 const TagsAside = ({ tags }) => {
+  let history = useHistory();
+
+  const clickHandler = (item) => {
+    history.push(`/browse/${item.tag_name}`);
+  };
+
   return (
     <aside className='game-tags'>
       <h2>
@@ -12,16 +17,15 @@ const TagsAside = ({ tags }) => {
       <div></div>
       {tags &&
         tags.map((item, index) => (
-          <Link to={`/browse/${item.tag_name}`}>
-            <Button
-              key={index}
-              className='tag-button'
-              type='round'
-              size='large'
-            >
-              {item.tag_name}
-            </Button>
-          </Link>
+          <Button
+            key={index}
+            className='tag-button'
+            type='round'
+            size='large'
+            onClick={() => clickHandler(item)}
+          >
+            {item.tag_name}
+          </Button>
         ))}
     </aside>
   );

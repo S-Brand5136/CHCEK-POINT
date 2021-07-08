@@ -26,8 +26,12 @@ const NavLinks = () => {
     setisSearchVisible(true);
   };
 
-  const showcollectionModal = () => {
-    setisSearchVisible(true);
+  const showCollectionNotification = () => {
+    Notification({
+      type: 'error',
+      description: 'You must be logged in to access Collections!',
+      title: 'Error',
+    });
   };
 
   const { user, logout } = useContext(authContext);
@@ -53,13 +57,15 @@ const NavLinks = () => {
           setVisible={() => setisSearchVisible(!isSearchVisible)}
         />
         {!user ? (
-          <button className='nav-link' href='/'>
+          <button className='nav-link' onClick={showCollectionNotification}>
             Collection
           </button>
         ) : (
-          <button className='nav-link' href='/'>
-            Collection
-          </button>
+          <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+            <button className='nav-link' href='/'>
+              Collection
+            </button>
+          </Link>
         )}
       </div>
       <div className='nav-user-links'>
