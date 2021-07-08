@@ -63,7 +63,7 @@ section.game-page {
       justify-content: flex-end;
       align-items: center;
       margin-left: 5rem;
-      height: 300px;
+      height: 400px;
 
       .game-rating-bar {
         display: flex;
@@ -113,11 +113,11 @@ section.game-page {
       grid-row: auto;
       gap: 20px;
       height: 75%;
-      width: 35%;
+      width: 38%;
     }
 
     section.game-desc {
-      margin-left: 12rem;
+      margin-left: 10rem;
       border: 1px solid black;
       padding: 2rem;
       width: 45%;
@@ -128,11 +128,53 @@ section.game-page {
     }
     .tag-button {
       background-color: @steel-blue;
+      max-width: 220px;
     }
 
     .tag-button:hover {
       color: white;
       border-color: white;
     }
+  }
+
+  .rating_container {
+    position: relative;
+    top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .score_container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 50px;
+      width: 50px;
+      border-radius: 12px;
+      margin-left: 1rem;
+    }
+
+    .score {
+      font-family: @main-font;
+      font-weight: 800;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .esrb_container {
+      img {
+        object-fit: contain;
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+
+  // DASHBOARD
+
+  div.user-dashboard {
+    margin: 5rem 5rem 0 5rem;
+    padding: 5rem;
+    border: 1px solid black;
   }
 }
