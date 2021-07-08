@@ -19,6 +19,8 @@ exports.seed = function (knex) {
         { user_id: 3, list_title: 'Backlog', category: 'Stats' },
         { user_id: 3, list_title: 'Completed', category: 'Stats' },
         { user_id: 3, list_title: 'Dropped', category: 'Stats' },
+        { user_id: 3, list_title: 'Wishlist', category: 'user_made' },
+        { user_id: 3, list_title: 'Favourites', category: 'user_made' },
       ]);
     });
 };

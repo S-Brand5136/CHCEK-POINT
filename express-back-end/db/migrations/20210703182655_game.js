@@ -14,6 +14,7 @@ exports.up = function (knex) {
       .inTable('games_catalog')
       .onDelete('CASCADE');
     t.integer('num_hours_played');
+    t.timestamp('created_on').defaultTo(knex.fn.now());
   });
 };
 

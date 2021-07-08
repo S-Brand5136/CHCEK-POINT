@@ -11,6 +11,10 @@ exports.seed = function (knex) {
         { list_id: 10, game_id: 52, num_hours_played: 45 },
         { list_id: 11, game_id: 74, num_hours_played: 0 },
         { list_id: 12, game_id: 50, num_hours_played: 0 },
+        { list_id: 13, game_id: 74, num_hours_played: 0 },
+        { list_id: 13, game_id: 75, num_hours_played: 0 },
+        { list_id: 14, game_id: 55, num_hours_played: 0 },
+        { list_id: 14, game_id: 36, num_hours_played: 0 },
       ]);
     });
 };
