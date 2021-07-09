@@ -25,6 +25,7 @@ module.exports = (db) => {
       .then((user) => {
         db('game')
           .select(
+            'game.list_id',
             'list_title',
             'games_catalog.name',
             'game.num_hours_played',
@@ -42,10 +43,12 @@ module.exports = (db) => {
             const lists = {};
 
             for (const item of list) {
+              console.log(item);
               if (item.category === 'Stats' && !collection[item.list_title]) {
                 collection[item.list_title] = [];
                 const category = item.category;
-                const id = item.list_id;
+                console.log(item);
+                const id = item[game.list_id];
                 collection[item.list_title].push(category);
                 collection[item.list_title].push(id);
               }

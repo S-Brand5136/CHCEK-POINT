@@ -14,14 +14,14 @@ section.game-page {
       border-right: 2px solid linear-gradient(rgba(123, 88, 156, 0.5), #fff);
       background: linear-gradient(
         rgba(123, 88, 156, 0.8),
-        rgba(186, 165, 206, 0.2)
+        rgba(214, 196, 229, 0.2)
       );
       border-radius: 3px;
       font-family: @title-font;
       width: 95%;
       text-align: right;
       z-index: -1;
-      bottom: 30rem;
+      bottom: 35rem;
       position: absolute;
 
       h1 {
@@ -62,8 +62,8 @@ section.game-page {
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      margin-left: 5rem;
-      height: 400px;
+      margin-left: 10rem;
+      height: 450px;
 
       .game-rating-bar {
         display: flex;
@@ -73,24 +73,32 @@ section.game-page {
         h4 {
           margin-bottom: 2px;
         }
+      }
+    }
+    div.button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-        .progress-bar {
-          border: 1px solid black;
-          border-radius: 10px;
-          height: 20px;
-          width: 500px;
-          display: block;
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+    .progress-bar {
+      border: 1px solid black;
+      border-radius: 10px;
+      height: 20px;
+      width: 500px;
+      display: block;
 
-          .health {
-            border-radius: 10px;
-            background-image: linear-gradient(
-              to right,
-              rgb(37, 73, 117),
-              @light-blue
-            );
-            height: 100%;
-          }
-        }
+      .health {
+        border-radius: 10px;
+        background-image: linear-gradient(
+          to right,
+          rgb(37, 73, 117),
+          @light-blue
+        );
+        height: 100%;
       }
     }
   }
@@ -104,10 +112,13 @@ section.game-page {
     margin-top: 5rem;
 
     aside.game-tags {
-      border: 1px solid black;
+      // border: 1px solid black;
+      box-shadow: 15px 18px 18px #d1d9e6;
+      box-shadow: 15px -18px -18px #fff;
+      background-color: #ecf0f3;
       padding: 20px;
       position: relative;
-      left: 6rem;
+      left: 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-row: auto;
@@ -118,10 +129,12 @@ section.game-page {
 
     section.game-desc {
       margin-left: 10rem;
-      border: 1px solid black;
       padding: 2rem;
       width: 45%;
       height: 40%;
+      box-shadow: 15px 18px 18px #d1d9e6;
+      box-shadow: 15px -18px -18px #fff;
+      background-color: #ecf0f3;
       p {
         font-size: 16px;
       }
@@ -173,8 +186,23 @@ section.game-page {
   // DASHBOARD
 
   div.user-dashboard {
-    margin: 5rem 5rem 0 5rem;
+    margin: 5rem 5.5rem 0 8.3rem;
     padding: 5rem;
-    border: 1px solid black;
+    box-shadow: 15px 18px 18px #d1d9e6;
+    box-shadow: 15px -18px -18px #fff;
+    background-color: #ecf0f3;
+  }
+}
+
+.rating-bar {
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 20px;
+  width: 500px;
+  display: block;
+  .rating-health {
+    border-radius: 10px;
+    background-image: linear-gradient(to right, rgb(37, 73, 117), @light-blue);
+    height: 100%;
   }
 }

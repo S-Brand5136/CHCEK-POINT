@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
 import BrowsePage from './pages/BrowsePage';
 import UserPage from './pages/UserPage';
+import AddToListPage from './pages/AddToListPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/games' component={BrowsePage} exact />
           <Route path='/users/:id' component={UserPage} exact />
           <Route path='/browse/:tag' component={BrowsePage} />
+          <Route path='/lists' component={AddToListPage} />
         </div>
       </Router>
       <Footer />

@@ -7,12 +7,21 @@ import pending from '../../../img/esrb_pending.png';
 import { Button, Typography } from 'antd';
 
 import ListModal from './ListModal';
+import RatingModal from './RatingModal';
 
-const GameHeader = ({ game, user, lists, userCollection, getDetails }) => {
+const GameHeader = ({
+  game,
+  user,
+  lists,
+  userCollection,
+  getDetails,
+  reload,
+}) => {
   const [scoreColour, setScoreColour] = useState('red');
   const [textColour, setTextColour] = useState('white');
   const [esrbRating, setEsrbRating] = useState(pending);
   const [isVisible, setIsVisible] = useState(false);
+  const [isRatingVisible, setIsRatingVisible] = useState(false);
 
   useEffect(() => {
     if (game) {
@@ -53,15 +62,26 @@ const GameHeader = ({ game, user, lists, userCollection, getDetails }) => {
       <div className='header-items'>
         <div className='game-rating-bar'>
           {user && (
-            <Button
-              type='info'
-              size='large'
-              className='game-add-btn'
-              shape='round'
-              onClick={() => setIsVisible(true)}
-            >
-              Add To...
-            </Button>
+            <div className='button-container'>
+              <Button
+                type='info'
+                size='large'
+                className='game-add-btn'
+                shape='round'
+                onClick={() => setIsVisible(true)}
+              >
+                Add To...
+              </Button>
+              <Button
+                type='info'
+                size='large'
+                className='game-add-btn'
+                shape='round'
+                onClick={() => setIsRatingVisible(true)}
+              >
+                Rate Game
+              </Button>
+            </div>
           )}
           <div style={{ marginLeft: '5rem' }}>
             <h4>
@@ -94,6 +114,13 @@ const GameHeader = ({ game, user, lists, userCollection, getDetails }) => {
           </div>
         </div>
       </div>
+      <RatingModal
+        user={user}
+        game={game}
+        visible={isRatingVisible}
+        cancel={() => setIsRatingVisible(false)}
+        reload={reload}
+      />
       <ListModal
         userId={user && user.id}
         lists={lists}

@@ -72,8 +72,9 @@ export default function AuthProvider(props) {
   const getUserDetails = async function (id) {
     await axios.get(`/api/users/${id}`).then((res) => {
       setUsersCollection(res.data.collection);
+      console.log('yes hello', res);
       setUsersLists(res.data.lists);
-      console.log(res);
+
       localStorage.setItem('collection', JSON.stringify(res.data.collection));
       localStorage.setItem('lists', JSON.stringify(res.data.lists));
     });

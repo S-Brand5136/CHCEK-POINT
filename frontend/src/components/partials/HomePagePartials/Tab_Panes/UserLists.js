@@ -1,7 +1,22 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Row, Col, Typography } from 'antd';
 
+import ListRow from '../userPartials/ListRow';
+
 const UserLists = ({ lists }) => {
+  const [userLists, setUserLists] = useState([]);
+
+  useEffect(() => {
+    console.log('here');
+    if (lists) {
+      const result = [];
+      for (const list in lists) {
+        result.push([list, ...lists[list]]);
+      }
+      setUserLists(result);
+    }
+  }, [lists]);
+
   return (
     <Row>
       {Object.keys(lists).length <= 0 ? (
@@ -14,7 +29,10 @@ const UserLists = ({ lists }) => {
           </Typography.Title>
         </Col>
       ) : (
-        <div> </div>
+        <div>
+          {userLists.length > 0 &&
+            userLists.map((item, index) => <ListRow key={index} list={item} />)}
+        </div>
       )}
     </Row>
   );

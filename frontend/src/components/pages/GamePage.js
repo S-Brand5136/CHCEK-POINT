@@ -6,9 +6,12 @@ import GameHeader from '../partials/GamePagePartials/GameHeader';
 import TagsAside from '../partials/GamePagePartials/TagsAside';
 import UserDashboard from '../partials/GamePagePartials/UserDashboard';
 
+import { CalendarOutlined } from '@ant-design/icons';
+
 const GamePage = ({ location }) => {
   const [game, setGame] = useState(null);
   const [tags, setTags] = useState(null);
+  const [reload, setReload] = useState(null);
 
   const { user, userLists, userCollection, getUserDetails } =
     useContext(authContext);
@@ -18,8 +21,10 @@ const GamePage = ({ location }) => {
     axios.get(`/api/games/${gameId}`).then((res) => {
       setGame(res.data.game[0]);
       setTags(res.data.tag_list);
+      console.log(res.data.game[0]);
     });
-  }, [location.pathname]);
+    setReload(null);
+  }, [location.pathname, reload]);
 
   return (
     <section className='game-page'>
@@ -29,10 +34,17 @@ const GamePage = ({ location }) => {
         userCollection={userCollection}
         lists={userLists}
         getDetails={getUserDetails}
+        reload={() => setReload(true)}
       />
       <main>
         <TagsAside tags={tags} />
         <section className='game-desc'>
+          <h2>
+            Released <span className='divider'> |</span>
+          </h2>
+          <p>
+            <CalendarOutlined /> {game && game.released.slice(0, 10)}
+          </p>
           <h2>
             About <span className='divider'> |</span>
           </h2>
@@ -41,7 +53,14 @@ const GamePage = ({ location }) => {
           </div>
         </section>
       </main>
-      <footer>{user && <UserDashboard />}</footer>
+      <footer>
+        {user && (
+          <UserDashboard
+            title={game && game.name}
+            lists={userLists && { ...userLists, ...userCollection }}
+          />
+        )}
+      </footer>
     </section>
   );
 };

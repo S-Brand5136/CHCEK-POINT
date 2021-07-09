@@ -92,9 +92,11 @@ const NavLinks = () => {
           <>
             <div className='loggedinmessage'>
               Hey, {user.username}!
-              <Button type='primary' onClick={logout}>
-                Logout
-              </Button>
+              <Link to='/'>
+                <Button type='primary' onClick={logout}>
+                  Logout
+                </Button>
+              </Link>
             </div>
           </>
         )}

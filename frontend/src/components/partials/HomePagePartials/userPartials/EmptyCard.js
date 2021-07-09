@@ -1,9 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Card, Row, Col } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
 const EmptyCard = () => {
+  const history = useHistory();
+
+  const clickHandler = () => {
+    history.push('/lists');
+  };
+
   return (
     <Card
       style={{ borderRadius: '20px' }}
@@ -23,9 +30,9 @@ const EmptyCard = () => {
           </Col>
         </Row>
       }
-      onClick={() => console.log('clicked')}
+      onClick={clickHandler}
     >
-      <Card.Meta className='main-font' title='Add to your list!' />
+      <Card.Meta className='main-font' title='Add to one of your lists!' />
     </Card>
   );
 };

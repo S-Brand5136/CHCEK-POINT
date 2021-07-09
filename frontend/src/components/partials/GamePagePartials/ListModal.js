@@ -26,7 +26,7 @@ const ListModal = ({
   const [insert, setInsert] = useState(null);
   const [numHours, setNumHours] = useState(0);
   const [userLists, setUserLists] = useState(null);
-
+  console.log(collection);
   useEffect(() => {
     if (lists) {
       setUserLists(getNames(lists, collection));
@@ -35,6 +35,7 @@ const ListModal = ({
 
   const submitHandler = (e) => {
     if (insert) {
+      console.log(userLists);
       const id = userLists.filter((item) => item.title === insert)[0].id;
       const newGame = {
         num_hours_played: numHours,
