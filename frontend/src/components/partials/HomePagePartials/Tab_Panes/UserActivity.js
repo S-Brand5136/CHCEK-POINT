@@ -12,6 +12,7 @@ const UserActivity = () => {
   ];
   const [activity, setActivity] = useState(['']);
   useEffect(() => {
+    console.log('wtffffffffffffffffffffffffffffffffffffff');
     axios.get('/api/lists/activity').then((res) => {
       console.log(res.data.list);
       let mappedActivity = res.data.list.map((item) => {

@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { Row, Col, Select, Form, Button, Spin, Input } from 'antd';
 import getNames from '../../../helpers/get_list_names';
+import GameInfo from './GameInfo';
+
+import { Row, Col, Select, Form, Button, Spin, Input } from 'antd';
 
 const AddForm = ({ userId }) => {
   const [loading, setLoading] = useState(false);
   const [userLists, setUserLists] = useState(null);
   const [games, setGames] = useState(null);
+  const [game, setGame] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/lists/${userId}`).then((res) => {
-      setUserLists(res.data.data);
-    });
+    if (userId) {
+      axios.get(`/api/lists/${userId}`).then((res) => {
+        setUserLists(res.data.data);
+      });
+    }
     axios.get(`/api/games`).then((res) => {
       setGames(res.data.catalog);
     });
@@ -33,8 +38,11 @@ const AddForm = ({ userId }) => {
           ]}
         >
           <Select
+            onChange={(value) =>
+              setGame(games.filter((item) => item.id === value))
+            }
             showSearch
-            placeholder='Search lists..'
+            placeholder='Search catalog..'
             optionFilterProp='children'
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -45,15 +53,16 @@ const AddForm = ({ userId }) => {
                 .localeCompare(optionB.children.toLowerCase())
             }
           >
-            {' '}
             {games !== null &&
               games.map((item, index) => (
-                <Select.Option value={item.name} key={index}>
+                <Select.Option value={item.id} key={index}>
                   {item.name}
                 </Select.Option>
               ))}
           </Select>
         </Form.Item>
+
+        <GameInfo game={game} />
 
         <Form.Item
           label='Select which collection or list to add too!'

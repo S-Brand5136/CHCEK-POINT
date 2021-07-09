@@ -9,8 +9,7 @@ import { Typography } from 'antd';
 import {} from '@ant-design/icons';
 
 const AddToListPage = () => {
-  const { user, userLists, userCollection, getUserDetails } =
-    useContext(authContext);
+  const { user } = useContext(authContext);
 
   return (
     <main className='list-page'>

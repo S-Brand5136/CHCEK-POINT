@@ -48,7 +48,7 @@ module.exports = (db) => {
                 collection[item.list_title] = [];
                 const category = item.category;
                 console.log(item);
-                const id = item[game.list_id];
+                const id = item.list_id;
                 collection[item.list_title].push(category);
                 collection[item.list_title].push(id);
               }
