@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Typography } from 'antd';
-
+import { Link } from 'react-router-dom';
 import ListRow from '../userPartials/ListRow';
 
 const UserLists = ({ lists }) => {
@@ -25,7 +25,7 @@ const UserLists = ({ lists }) => {
             You havn't made any lists yet
           </Typography.Title>
           <Typography.Title level={5}>
-            <a href='/games'>Click Here</a> to start creating your own!
+            <Link to='/lists'>Click Here</Link> to start creating your own!
           </Typography.Title>
         </Col>
       ) : (

@@ -20,7 +20,15 @@ module.exports = (db) => {
   // GET: A specific user, and each of their lists, lists_titles
   router.get('/:id', (req, res) => {
     db('users')
-      .select()
+      .select(
+        'email',
+        'platforms',
+        'bio',
+        'birthdate',
+        'timezone',
+        'discord_username',
+        'in_game_usernames'
+      )
       .where({ id: req.params.id })
       .then((user) => {
         db('game')
@@ -32,14 +40,7 @@ module.exports = (db) => {
             'category',
             'background_image',
             'game.list_id',
-            'games_catalog.id as gameID',
-            'email',
-            'platform',
-            'bio',
-            'birthdate',
-            'timezone',
-            'discord_name',
-            'in_game_usernames'
+            'games_catalog.id as gameID'
           )
           .rightOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
           .rightOuterJoin('users_lists', 'users_lists.id', '=', 'game.list_id')
@@ -80,6 +81,7 @@ module.exports = (db) => {
                 });
               }
             }
+
             return res.status(200).json({ user, collection, lists });
           });
       })
