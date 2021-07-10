@@ -4,6 +4,8 @@ import Notification from '../Notification';
 
 import { Row, Col, Typography, Button, Spin, Divider } from 'antd';
 
+// TODO: Hook up fake way of udpating info ( ant.design typography editable is being dumb )
+
 const UserAbout = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [editable, setEditable] = useState(false);
