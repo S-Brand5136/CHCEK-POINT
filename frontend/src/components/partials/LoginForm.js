@@ -29,7 +29,7 @@ const LoginForm = ({ visible, setVisible }) => {
           console.log(err);
           Notification({
             type: 'error',
-            description: 'Incorrect Email or Password, Try again!',
+            description: 'Incorrect email or password, try again!',
             title: 'Error',
           });
           setLoading(false);
@@ -37,7 +37,7 @@ const LoginForm = ({ visible, setVisible }) => {
     } else {
       Notification({
         type: 'error',
-        description: 'Email or Password is needed!',
+        description: 'Email or password is needed!',
         title: 'Error',
       });
     }

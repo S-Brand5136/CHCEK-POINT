@@ -2,6 +2,7 @@ import { Row } from 'antd';
 import TaggedGames from '../userPartials/TaggedGames';
 
 const UserCollections = ({ collections }) => {
+  console.log(collections);
   return (
     <Row justify='center'>
       <div>

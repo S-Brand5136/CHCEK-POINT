@@ -1,5 +1,6 @@
 import { Typography, Tabs } from 'antd';
-
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 // components
 import WelcomeBack from './Tab_Panes/WelcomeBack';
 import UserCollections from './Tab_Panes/UserCollections';
@@ -7,18 +8,21 @@ import UserLists from './Tab_Panes/UserLists';
 import UserActivity from './Tab_Panes/UserActivity';
 
 const UserHero = ({ user, lists, collections }) => {
-  console.log(collections);
+  let { key } = useParams();
 
   return (
     <>
       <Typography.Title
         level={1}
         className='main-font'
-        style={{ marginBottom: '2rem' }}
+        style={{
+          margin: '0rem 0rem 2rem 1rem',
+          padding: '2rem 0rem 1rem 2rem',
+        }}
       >
         Welcome Back, {user.username}!
       </Typography.Title>
-      <Tabs tabPosition='left'>
+      <Tabs tabPosition='left' activeKey={undefined}>
         <Tabs.TabPane tab='Explore' key='1'>
           <WelcomeBack />
         </Tabs.TabPane>

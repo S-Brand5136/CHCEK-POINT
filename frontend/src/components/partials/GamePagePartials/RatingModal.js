@@ -64,7 +64,7 @@ const RatingModal = ({ visible, cancel, game, user, reload }) => {
               shape='round'
               block
             >
-              Rate !
+              Rate!
             </Button>
           </Col>
         </Row>

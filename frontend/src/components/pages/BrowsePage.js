@@ -46,86 +46,99 @@ const BrowsePage = () => {
     });
   }, []);
   return (
-    <>
-      <Typography.Title level={3} className='main-font'>
-        Explore through our Titles! Find Something New!
-      </Typography.Title>
-      <br />
-      <Tabs tabPosition='left'>
-        {tag === 'games' ? (
-          <></>
-        ) : (
-          <Tabs.TabPane tab={capitalizeFirstLetter(tag)} key='1'>
-            {tagList && (
-              <TaggedGames games={tagList} tag={tag} showAdd={false} />
+    <main className='background-container' style={{ padding: '4rem 0 4rem 0' }}>
+      <section
+        className='hero-section'
+        style={{ margin: '0 3rem 0  3rem', padding: '1rem 2rem 1rem 2rem' }}
+      >
+        <Typography.Title
+          level={3}
+          style={{ margin: '0rem 0rem 2rem 1rem', paddingTop: '1rem' }}
+          className='main-font'
+        >
+          Explore through our Titles! Find something new!
+        </Typography.Title>
+        <br />
+        <Tabs tabPosition='left'>
+          {tag === 'games' ? (
+            <></>
+          ) : (
+            <Tabs.TabPane tab={capitalizeFirstLetter(tag)} key='1'>
+              {tagList && (
+                <TaggedGames games={tagList} tag={tag} showAdd={false} />
+              )}
+            </Tabs.TabPane>
+          )}
+          <Tabs.TabPane tab='All' key='2'>
+            {allList && (
+              <TaggedGames games={allList} tag='All' showAdd={false} />
             )}
           </Tabs.TabPane>
-        )}
-        <Tabs.TabPane tab='All' key='2'>
-          {allList && <TaggedGames games={allList} tag='All' showAdd={false} />}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='Action' key='3'>
-          {actionList && (
-            <TaggedGames games={actionList} tag='Action' showAdd={false} />
-          )}
-        </Tabs.TabPane>
+          <Tabs.TabPane tab='Action' key='3'>
+            {actionList && (
+              <TaggedGames games={actionList} tag='Action' showAdd={false} />
+            )}
+          </Tabs.TabPane>
 
-        <Tabs.TabPane tab='Atmospheric' key='4'>
-          {atmosphericList && (
-            <TaggedGames
-              games={atmosphericList}
-              tag='Atmospheric'
-              showAdd={false}
-            />
-          )}
-        </Tabs.TabPane>
+          <Tabs.TabPane tab='Atmospheric' key='4'>
+            {atmosphericList && (
+              <TaggedGames
+                games={atmosphericList}
+                tag='Atmospheric'
+                showAdd={false}
+              />
+            )}
+          </Tabs.TabPane>
 
-        <Tabs.TabPane tab='Adventure' key='5'>
-          {adventureList && (
-            <TaggedGames
-              games={adventureList}
-              tag='Adventure'
-              showAdd={false}
-            />
-          )}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='Singleplayer' key='6'>
-          {singleplayerList && (
-            <TaggedGames
-              games={singleplayerList}
-              tag='Singleplayer'
-              showAdd={false}
-            />
-          )}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='Multiplayer' key='7'>
-          {multiplayerList && (
-            <TaggedGames
-              games={multiplayerList}
-              tag='Multiplayer'
-              showAdd={false}
-            />
-          )}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='Sandbox' key='8'>
-          {sandboxList && (
-            <TaggedGames games={sandboxList} tag='Sandbox' showAdd={false} />
-          )}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='Exploration' key='9'>
-          {explorationList && (
-            <TaggedGames
-              games={explorationList}
-              tag='Exploration'
-              showAdd={false}
-            />
-          )}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab='FPS' key='10'>
-          {fpsList && <TaggedGames games={fpsList} tag='FPS' showAdd={false} />}
-        </Tabs.TabPane>
-      </Tabs>
-    </>
+          <Tabs.TabPane tab='Adventure' key='5'>
+            {adventureList && (
+              <TaggedGames
+                games={adventureList}
+                tag='Adventure'
+                showAdd={false}
+              />
+            )}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='Singleplayer' key='6'>
+            {singleplayerList && (
+              <TaggedGames
+                games={singleplayerList}
+                tag='Singleplayer'
+                showAdd={false}
+              />
+            )}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='Multiplayer' key='7'>
+            {multiplayerList && (
+              <TaggedGames
+                games={multiplayerList}
+                tag='Multiplayer'
+                showAdd={false}
+              />
+            )}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='Sandbox' key='8'>
+            {sandboxList && (
+              <TaggedGames games={sandboxList} tag='Sandbox' showAdd={false} />
+            )}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='Exploration' key='9'>
+            {explorationList && (
+              <TaggedGames
+                games={explorationList}
+                tag='Exploration'
+                showAdd={false}
+              />
+            )}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='FPS' key='10'>
+            {fpsList && (
+              <TaggedGames games={fpsList} tag='FPS' showAdd={false} />
+            )}
+          </Tabs.TabPane>
+        </Tabs>
+      </section>
+    </main>
   );
 };
 

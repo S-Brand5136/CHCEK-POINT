@@ -25,30 +25,34 @@ module.exports = (db) => {
       .then((user) => {
         db('game')
           .select(
-            'game.list_id',
+            'users_lists.id as listID',
             'list_title',
             'games_catalog.name',
             'game.num_hours_played',
             'category',
             'background_image',
             'game.list_id',
-            'games_catalog.id'
+            'games_catalog.id as gameID',
+            'email',
+            'platform',
+            'bio',
+            'birthdate',
+            'timezone',
+            'discord_name',
+            'in_game_usernames'
           )
           .rightOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
-          .rightOuterJoin('users_lists', { 'game.list_id': 'users_lists.id' })
+          .rightOuterJoin('users_lists', 'users_lists.id', '=', 'game.list_id')
           .where('users_lists.user_id', req.params.id)
           .orderBy('list_id')
           .then((list) => {
             const collection = {};
             const lists = {};
-
             for (const item of list) {
-              console.log(item);
               if (item.category === 'Stats' && !collection[item.list_title]) {
                 collection[item.list_title] = [];
                 const category = item.category;
-                console.log(item);
-                const id = item.list_id;
+                const id = item.listID;
                 collection[item.list_title].push(category);
                 collection[item.list_title].push(id);
               }
@@ -57,13 +61,13 @@ module.exports = (db) => {
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
-                  id: item.id,
+                  id: item.gameID,
                 });
               }
               if (item.category !== 'Stats' && !lists[item.list_title]) {
                 lists[item.list_title] = [];
                 const category = item.category;
-                const id = item.list_id;
+                const id = item.listID;
                 lists[item.list_title].push(category);
                 lists[item.list_title].push(id);
               }
@@ -72,7 +76,7 @@ module.exports = (db) => {
                   name: item.name,
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
-                  id: item.id,
+                  id: item.gameID,
                 });
               }
             }

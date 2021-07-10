@@ -24,6 +24,7 @@ function App() {
           <Route path='/users/:id' component={UserPage} exact />
           <Route path='/browse/:tag' component={BrowsePage} />
           <Route path='/lists' component={AddToListPage} />
+          <Route path='/collections' component={HomePage} exact />
         </div>
       </Router>
       <Footer />

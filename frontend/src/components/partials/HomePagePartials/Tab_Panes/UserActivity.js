@@ -12,16 +12,14 @@ const UserActivity = () => {
   ];
   const [activity, setActivity] = useState(['']);
   useEffect(() => {
-    console.log('wtffffffffffffffffffffffffffffffffffffff');
-    axios.get('/api/lists/activity').then((res) => {
-      console.log(res.data.list);
+    axios.get('/api/lists/users/activity').then((res) => {
       let mappedActivity = res.data.list.map((item) => {
         return (
           <Link
             to={`/games/${item.game_id}`}
             style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
-            <i class='fas fa-list'></i> {item.username} added {item.name} to
+            <i className='fas fa-list'></i> {item.username} added {item.name} to
             their list: {item.list_title}
           </Link>
         );

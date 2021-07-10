@@ -4,7 +4,10 @@ module.exports = (db) => {
   // GET: User lists
   router.get('/:userId', (req, res) => {
     db('users_lists')
-      .select('list_title', 'id')
+      .select('users_lists.list_title', 'users_lists.id')
+      .count('game.id')
+      .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
+      .groupBy('users_lists.list_title', 'users_lists.id')
       .where('user_id', req.params.userId)
       .then((data) => {
         return res.status(200).json({ data });
@@ -32,7 +35,7 @@ module.exports = (db) => {
       });
   });
 
-  router.get('/activity', (req, res) => {
+  router.get('/users/activity', (req, res) => {
     db('game')
       .select(
         'list_id',

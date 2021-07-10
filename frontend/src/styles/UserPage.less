@@ -1,0 +1,122 @@
+.userpage-container {
+  min-height: 100vh;
+  background-image: url('../img/60-lines.png');
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .panel-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: @title-font;
+    letter-spacing: 2px;
+    font-size: 32px;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .panel-body {
+    border: 1px solid black;
+    height: 450px;
+    width: 800px;
+  }
+}
+
+// HEADER
+.user-header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2rem;
+
+  .user-header-title {
+    border-top: 2px solid rgba(123, 88, 156, 0.8);
+    border-bottom: 2px solid linear-gradient(rgba(123, 88, 156, 0.8), #fff);
+    border-right: 2px solid linear-gradient(rgba(123, 88, 156, 0.5), #fff);
+    background: linear-gradient(
+      rgba(123, 88, 156, 0.8),
+      rgba(204, 172, 230, 0.2)
+    );
+    border-radius: 3px;
+    font-family: @title-font;
+    width: 45%;
+    text-align: right;
+    z-index: -1;
+    top: 12rem;
+    position: absolute;
+
+    h1 {
+      margin-bottom: 0;
+      padding: 3rem;
+      margin-right: 5rem;
+      font-size: 3rem;
+    }
+  }
+
+  img {
+    margin-top: 1.5rem;
+    margin-left: 10rem;
+    z-index: 10;
+
+    .game-card-image {
+      object-fit: contain;
+      height: 50%;
+      width: 50%;
+    }
+  }
+}
+
+.userinfo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5rem;
+
+  //ABOUT
+  section.user-info {
+    border-radius: 20px;
+    height: 400px;
+    width: 20%;
+    box-shadow: 15px 15px 12px #afb4bd;
+    background-color: #ecf0f3;
+    padding: 1rem 2rem 1rem 2rem;
+  }
+
+  //INFO
+  section.user-about {
+    border-radius: 20px;
+    height: 400px;
+    width: 60%;
+    box-shadow: 15px 15px 12px #b1b6be;
+    background-color: #ecf0f3;
+  }
+}
+
+.user-collections-container {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex-direction: row;
+  width: 87%;
+  height: auto;
+  margin: 5rem 0 5rem 0;
+  padding: 2rem;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 15px 15px 12px #b1b5bd;
+  background-color: #ecf0f3;
+
+  .collections-container {
+  }
+  .user-lists-container {
+  }
+
+  .user-activity-container {
+  }
+
+  .user-stats-container {
+  }
+}

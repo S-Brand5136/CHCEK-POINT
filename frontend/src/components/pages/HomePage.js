@@ -11,7 +11,7 @@ const HomePage = () => {
   const { user, userLists, userCollection } = useContext(authContext);
 
   return (
-    <Layout style={{ paddingBottom: '5rem' }}>
+    <Layout className='background-container' style={{ paddingBottom: '5rem' }}>
       <Layout.Content style={{ padding: '0 50px' }}>
         <div className='hero-section'>
           {!user ? (

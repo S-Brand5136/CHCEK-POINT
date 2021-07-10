@@ -21,7 +21,6 @@ const GamePage = ({ location }) => {
     axios.get(`/api/games/${gameId}`).then((res) => {
       setGame(res.data.game[0]);
       setTags(res.data.tag_list);
-      console.log(res.data.game[0]);
     });
     setReload(null);
   }, [location.pathname, reload]);
@@ -54,12 +53,7 @@ const GamePage = ({ location }) => {
         </section>
       </main>
       <footer>
-        {user && (
-          <UserDashboard
-            title={game && game.name}
-            lists={userLists && { ...userLists, ...userCollection }}
-          />
-        )}
+        <UserDashboard />
       </footer>
     </section>
   );
