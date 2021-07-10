@@ -5,8 +5,6 @@ import { Typography } from 'antd';
 import avatar from '../../../img/avatars/villain.png';
 
 const UserHeader = ({ user }) => {
-  console.log(user);
-
   return (
     <header className='user-header'>
       <div className='user-header-title'>

@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Row, Col, Typography, Divider, Button, Spin } from 'antd';
 import Notification from '../Notification';
 
-// Hook up fake way of udpating info
+// TODO: Hook up fake way of udpating info ( ant.design typography editable is being dumb )
 
 const UserInfo = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [editInfo, setEditInfo] = useState(false);
+
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      setUserDetails(user);
+    }
+  }, [user]);
 
   const clickHandler = () => {
     setEditInfo((state) => !state);
@@ -28,8 +36,8 @@ const UserInfo = ({ user }) => {
     <section className='user-info'>
       <Row justify='center' align='middle'>
         <Col span={24}>
-          <Typography.Title underline level={5}>
-            User Info:{' '}
+          <Typography.Title style={{ marginBottom: '1rem' }} level={5}>
+            User Info <span className='divider-highlight'> | </span>
           </Typography.Title>
         </Col>
       </Row>
@@ -42,12 +50,8 @@ const UserInfo = ({ user }) => {
           </Typography.Text>
         </Col>
         <Col>
-          <Typography.Text
-            editable={editInfo}
-            level={4}
-            style={{ margin: '0' }}
-          >
-            {user && `${user.username}`}
+          <Typography.Text level={4} style={{ margin: '0' }}>
+            {userDetails && `${userDetails.username}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -66,7 +70,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.email}`}
+            {userDetails && `${userDetails.email}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -85,7 +89,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.discord_username}`}
+            {userDetails && `${userDetails.discord_username}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -104,7 +108,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.timezone}`}
+            {userDetails && `${userDetails.timezone}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -123,7 +127,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.pronoun}`}
+            {userDetails && `${userDetails.pronoun}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -142,7 +146,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.birthdate.slice(0, 10)}`}
+            {userDetails && `${userDetails.birthdate.slice(0, 10)}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
@@ -161,7 +165,7 @@ const UserInfo = ({ user }) => {
             level={4}
             style={{ margin: '0', textAlign: 'center' }}
           >
-            {user && `${user.created_at.slice(0, 10)}`}
+            {userDetails && `${userDetails.created_at.slice(0, 10)}`}
           </Typography.Text>
         </Col>
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />

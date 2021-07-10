@@ -7,26 +7,31 @@ import { Typography, Row, Col } from 'antd';
 import GameCard from './GameCard';
 
 const BrowseSection = () => {
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState(null);
 
   useEffect(() => {
-    if (games.length <= 0) {
-      axios
-        .get('/api/games', { params: { limit: 8 } })
-        .then((res) => {
-          setGames(res.data.catalog);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [games]);
+    let mounted = true;
+    axios.get('/api/games', { params: { limit: 8 } }).then((res) => {
+      if (mounted) {
+        setGames((state) => res.data.catalog);
+      }
+    });
+    return function cleanup() {
+      mounted = false;
+    };
+  }, []);
 
-  const gameCards = games.map((game) => (
-    <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>
-      <GameCard image={game.background_image} title={game.name} id={game.id} />
-    </Col>
-  ));
+  function gameCards() {
+    games.map((game) => (
+      <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>
+        <GameCard
+          image={game.background_image}
+          title={game.name}
+          id={game.id}
+        />
+      </Col>
+    ));
+  }
 
   return (
     <section className='browse-section'>
@@ -34,7 +39,7 @@ const BrowseSection = () => {
         Check out These Titles <span className='divider'>|</span>{' '}
       </Typography.Title>
       <Row justify='center' gutter='20'>
-        {games.length > 0 && gameCards}
+        {games && gameCards}
       </Row>
     </section>
   );

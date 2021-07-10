@@ -15,8 +15,21 @@ module.exports = (db) => {
   });
 
   // POST: A new list to the users collection
-  router.post('/:id', (req, res) => {
-    res.json({ users_list: 'Works' });
+  router.post('/create', (req, res) => {
+    const { user_id, list_title, category } = req.body;
+    db('users_lists')
+      .insert({ user_id, list_title, category })
+      .then((users_lists) => {
+        return res.status(200).json({ success: true, users_lists });
+      })
+      .catch((err) => {
+        console.log(err);
+        res
+          .status(500)
+          .json({
+            Error: 'Sorry, there was an error while creating the list!',
+          });
+      });
   });
 
   // PUT: A new game into an existing users list

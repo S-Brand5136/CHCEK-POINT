@@ -61,12 +61,12 @@ const NavLinks = () => {
             Collection
           </button>
         ) : (
-          <Link
-            to='/collections'
+          <a
+            href='/collections'
             style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
             <button className='nav-link'>Collection</button>
-          </Link>
+          </a>
         )}
       </div>
       <div className='nav-user-links'>

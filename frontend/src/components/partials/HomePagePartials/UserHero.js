@@ -9,6 +9,10 @@ import UserActivity from './Tab_Panes/UserActivity';
 
 const UserHero = ({ user, lists, collections }) => {
   let { key } = useParams();
+  if (key === 'collections') key = '4';
+  setTimeout(() => {
+    key = undefined;
+  }, 2000);
 
   return (
     <>
@@ -22,7 +26,7 @@ const UserHero = ({ user, lists, collections }) => {
       >
         Welcome Back, {user.username}!
       </Typography.Title>
-      <Tabs tabPosition='left' activeKey={undefined}>
+      <Tabs tabPosition='left' activeKey={key}>
         <Tabs.TabPane tab='Explore' key='1'>
           <WelcomeBack />
         </Tabs.TabPane>

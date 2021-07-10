@@ -13,6 +13,7 @@ const UserLists = ({ lists }) => {
       for (const list in lists) {
         result.push([list, ...lists[list]]);
       }
+      console.log(result);
       setUserLists(result);
     }
   }, [lists]);
@@ -25,13 +26,17 @@ const UserLists = ({ lists }) => {
             You havn't made any lists yet
           </Typography.Title>
           <Typography.Title level={5}>
-            <Link to='/lists'>Click Here</Link> to start creating your own!
+            <Link to='/createList'>Click Here</Link> to start creating your own!
           </Typography.Title>
         </Col>
       ) : (
         <div>
           {userLists.length > 0 &&
             userLists.map((item, index) => <ListRow key={index} list={item} />)}
+          <br />
+          <Typography.Title level={5}>
+            <Link to='/createList'>Click Here</Link> to create a new list!
+          </Typography.Title>
         </div>
       )}
     </Row>

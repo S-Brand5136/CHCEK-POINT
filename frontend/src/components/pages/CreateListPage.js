@@ -1,22 +1,20 @@
 import { useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 
-import AddForm from '../partials/ListPagePartials/AddForm';
+import CreateForm from '../partials/ListPagePartials/CreateForm';
 import logo from '../../img/mascot1.png';
 import buttons from '../../img/button-faces.webp';
 
 import { Typography } from 'antd';
 
-const AddToListPage = () => {
+const CreateListPage = () => {
   const { user, getUserDetails } = useContext(authContext);
 
   return (
     <main className='list-page'>
       <div className='container'>
         <div className='form-info'>
-          <Typography.Title level={1}>
-            Add to your Created Lists!
-          </Typography.Title>
+          <Typography.Title level={1}>Create a new List!</Typography.Title>
           <Typography.Title level={3}>
             CHECK-POINT supports any type of list you can think of!{' '}
           </Typography.Title>
@@ -25,10 +23,10 @@ const AddToListPage = () => {
             <img src={logo} alt='' />
           </div>
         </div>
-        <AddForm userId={user && user.id} getDetails={getUserDetails} />
+        <CreateForm userId={user && user.id} getDetails={getUserDetails} />
       </div>
     </main>
   );
 };
 
-export default AddToListPage;
+export default CreateListPage;
