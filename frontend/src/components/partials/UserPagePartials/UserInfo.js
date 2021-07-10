@@ -36,7 +36,11 @@ const UserInfo = ({ user }) => {
     <section className='user-info'>
       <Row justify='center' align='middle'>
         <Col span={24}>
-          <Typography.Title style={{ marginBottom: '1rem' }} level={5}>
+          <Typography.Title
+            className='title-font'
+            level={3}
+            style={{ marginBottom: '1rem' }}
+          >
             User Info <span className='divider-highlight'> | </span>
           </Typography.Title>
         </Col>

@@ -29,8 +29,9 @@ const UserAbout = ({ user }) => {
     <section className='user-about'>
       <Row justify='center' align='middle' style={{ marginBottom: '3rem' }}>
         <Col span={24}>
-          <Typography.Title level={4}>
+          <Typography.Title className='title-font' level={2}>
             More about {user && user.username}
+            <span className='divider-highlight'> | </span>
           </Typography.Title>
           <Typography.Text editable={editable}>
             {user && user.bio}
@@ -40,8 +41,9 @@ const UserAbout = ({ user }) => {
       </Row>
       <Row justify='center' gutter={12} align='middle'>
         <Col span={12}>
-          <Typography.Title level={4}>
+          <Typography.Title className='title-font' level={2}>
             Find this user under these names
+            <span className='divider-highlight'> | </span>
           </Typography.Title>
           <div className='about-section'>
             <Typography.Text editable={editable}>
@@ -51,8 +53,9 @@ const UserAbout = ({ user }) => {
         </Col>
 
         <Col span={12}>
-          <Typography.Title level={4}>
+          <Typography.Title className='title-font' level={2}>
             {user && user.username}'s platforms
+            <span className='divider-highlight'> | </span>
           </Typography.Title>
           <div className='about-section'>
             <Typography.Text editable={editable}>
