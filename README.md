@@ -1,45 +1,123 @@
-# React + Express No-Fluff Boilerplate
+# CHECK-POINT 🕹️
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
+Track and get stats of what to play, when to play, and what you’ve played with CHECK-POINT !
+<br />
+<br />
+This video game tracker app has a catalogue for any user to browse through games, and view details on specific titles they’re interested in. Users can add ratings to the game, which will contribute to the game’s overall rating as well as their profile stats. On the main feed, users can view their collections of games they’re currently playing, wanting to play, have completed, and have dropped, as well as view other user’s activity. Outside of collections, users are also able to create their own lists of their choosing, and add games to them accordingly.
 
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
+## Table of Contents 📖
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
+1. [Dependencies](#dependencies)
+2. [Screenshots](#screenshots)
+3. [Set up](#setUp)
+4. [How to](#howTo)
+5. [Contributors](#contributors)
 
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
+## Target Audienece 🙇
 
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
+Target Audience:
 
-## Running the projects
+- any avid gamer with internet access and a video game backlog
+- those who may have trouble keeping track of their gaming
+- anyone that wants to see reliable reviews for games before trying them out/purchasing
 
-You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
+## Dependencies <a name='dependencies'></a>
 
-In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser.
+- Backend
 
-In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
+  - [body-parser](https://expressjs.com/en/resources/middleware/body-parser.html)
+  - [dotenv](https://www.npmjs.com/package/dotenv)
+  - [express](https://expressjs.com/)
+  - [knex](https://knexjs.org/)
+  - [nodemon](https://www.npmjs.com/package/nodemon)
+  - [pg](https://www.npmjs.com/package/pg)
 
-In the browser, you can click on the button and see the data get loaded.
+- Frontend
+  - [Axios](https://axios-http.com/docs/intro)
+  - [React](https://reactjs.org/)
+  - [Ant.Design](https://ant.design/)
+  - [Craco](https://www.npmjs.com/package/@craco/craco)
+  - [Less](https://lesscss.org/)
+  - [Chartjs](https://www.chartjs.org/)
+  - [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)
 
-If this doesn't work, please message me!
+#### - Dev Dependencies
 
-## Next steps
+- [Storybook](https://storybook.js.org/)
+- [node-sass](https://www.npmjs.com/package/node-sass)
+- [prop-types](https://www.npmjs.com/package/prop-types)
+- [react-hooks-testing-library](https://react-hooks-testing-library.com/)
+- [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
 
-From here, you can start working on your project!
+## Screenshots <a name='screenshots'></a>
 
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
+THEY WILL EVENTUALLY GO HERE
 
-At some point, you'll likely want to install and configure a database driver for Postgres or MongoDB-- Refer to past projects for hints on how to do this.
+## Set up <a name='setUp'></a>
 
-And don't forget to update the README!
+make a git clone of this repository.
 
-## Example Projects
+```bash
+  $ git clone https://github.com/S-Brand5136/CHECK-POINT
+```
 
-You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
+2. Install backend dependencies by first navigating to the `express-backend-server` directory and running `npm install` in the command line.
 
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
+```bash
+  $ npm install
+```
 
-If you'd like your project added to the list, please shoot me a message.
+3. Install frontend dependencies by navigating to the `frontend` directory and running `npm install` in the command line.
+
+```bash
+  $ npm install
+```
+
+4. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8000/>.
+
+```bash
+  $ npm run local
+```
+
+5. Go to <http://localhost:8000/> in your browser.
+
+## How to <a name='howTo'></a>
+
+Once the project has succesfully installed and been started up, feel free to log in with one of the following built in users.
+
+```JSON
+        {
+          "password": "123",
+          "email": "pav@example.com"
+        },
+        {
+          "password": "67890",
+          "email": "fakerinne@example.com"
+        },
+        {
+          "password": "12345",
+          "email": "Brandon.Shemilt@example.com"
+        },
+
+```
+
+You can now start querying for games, and checking out their stats before or after logging in!
+
+## Contributors <a name='contributors'></a>
+
+- Brandon Shemilt
+
+  - [Github](https://github.com/S-Brand5136)
+  - [Linkedin](www.linkedin.com/in/brandon-shemilt-89a9401b1)
+
+- Pavneet Kang
+
+  - [Github](https://github.com/Pavneetk)
+  - [Linkedin](https://www.linkedin.com/in/astrid-ch-aguilar/)
+
+- Astrid Aguilar
+  - [Github](https://github.com/astridcha1x)
+  - [Linkedin](https://www.linkedin.com/in/pavneet-k-a139b3108/)
 
 ## Contact
 
