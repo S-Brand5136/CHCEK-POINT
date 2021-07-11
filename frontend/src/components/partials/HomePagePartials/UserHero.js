@@ -1,5 +1,6 @@
 import { Typography, Tabs } from 'antd';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 // components
 import WelcomeBack from './Tab_Panes/WelcomeBack';
 import UserCollections from './Tab_Panes/UserCollections';
@@ -7,8 +8,14 @@ import UserLists from './Tab_Panes/UserLists';
 import UserActivity from './Tab_Panes/UserActivity';
 
 const UserHero = ({ user, lists, collections }) => {
+  const [activeKey, setActiveKey] = useState('1');
   let { key } = useParams();
-  console.log(key);
+  const onChange = (event) => {
+    setActiveKey(event);
+  };
+  useEffect(() => {
+    if (key === 'collections') setActiveKey('4');
+  }, []);
   return (
     <>
       <Typography.Title
@@ -21,7 +28,7 @@ const UserHero = ({ user, lists, collections }) => {
       >
         Welcome Back, {user.username}!
       </Typography.Title>
-      <Tabs tabPosition='left'>
+      <Tabs tabPosition='left' activeKey={activeKey} onChange={onChange}>
         <Tabs.TabPane tab='Explore' key='1'>
           <WelcomeBack />
         </Tabs.TabPane>

@@ -17,7 +17,7 @@ const TaggedGames = ({ games, tag, showAdd }) => {
     <>
       <Divider orientation='left'>{tag}</Divider>
       {showAdd && <EmptyCard />}
-      {games[0].id !== null && gameCards}
+      {games.length !== 0 && games[0].id !== null && gameCards}
     </>
   );
 };

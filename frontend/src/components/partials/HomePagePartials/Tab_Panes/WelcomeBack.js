@@ -43,16 +43,20 @@ const WelcomeBack = () => {
               showAdd={false}
             />
           ) : (
-            <>
+            <div className='fetch'>
+              <br />
               <br />
               <Spin
                 size='large'
                 tip='Fetching Games'
-                style={{ color: 'inherit', textDecoration: 'inherit' }}
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'inherit',
+                }}
               >
                 <Alert message='' description='' type='info' />
               </Spin>
-            </>
+            </div>
           )}
         </Row>
       </div>
