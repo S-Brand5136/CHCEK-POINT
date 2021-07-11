@@ -54,7 +54,11 @@ const UserInfo = ({ user }) => {
           </Typography.Text>
         </Col>
         <Col>
-          <Typography.Text level={4} style={{ margin: '0' }}>
+          <Typography.Text
+            editable={editInfo}
+            level={4}
+            style={{ margin: '0' }}
+          >
             {userDetails && `${userDetails.username}`}
           </Typography.Text>
         </Col>

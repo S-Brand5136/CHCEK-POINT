@@ -13,7 +13,7 @@ const EmptyCard = () => {
 
   return (
     <Card
-      style={{ borderRadius: '20px' }}
+      style={{ borderRadius: '20px', maxHeight: '17.15rem' }}
       hoverable
       cover={
         <Row justify='center'>
@@ -23,7 +23,7 @@ const EmptyCard = () => {
                 borderRadius: '20px',
                 fontSize: '3rem',
                 position: 'relative',
-                top: '3.5rem',
+                top: '5.5rem',
               }}
               className='game-card-image'
             />

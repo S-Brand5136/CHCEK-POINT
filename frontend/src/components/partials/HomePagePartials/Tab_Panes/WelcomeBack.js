@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Row, Typography, Skeleton, Spin, Alert } from 'antd';
+import { Row, Typography, Spin, Alert } from 'antd';
 import axios from 'axios';
 
 // components
@@ -30,12 +30,12 @@ const WelcomeBack = () => {
   }, []);
 
   return (
-    <Row justify='left'>
+    <Row justify='left' style={{ paddingRight: '4rem' }}>
       <div>
-        <Typography.Title level={3} className='main-font'>
+        <Typography.Title level={1} className='title-font'>
           Check out these games you might not know!
         </Typography.Title>
-        <div>
+        <Row gutter='20'>
           {!loading ? (
             <TaggedGames
               games={adventureList}
@@ -54,14 +54,14 @@ const WelcomeBack = () => {
               </Spin>
             </>
           )}
-        </div>
+        </Row>
       </div>
-      <div>
+      <Row gutter='20'>
         {!loading && (
           <TaggedGames games={actionList} tag='Action' showAdd={false} />
         )}
-      </div>
-      <div>
+      </Row>
+      <Row gutter='20'>
         {!loading && (
           <TaggedGames
             games={atmosphericList}
@@ -69,7 +69,7 @@ const WelcomeBack = () => {
             showAdd={false}
           />
         )}
-      </div>
+      </Row>
     </Row>
   );
 };

@@ -14,7 +14,7 @@ const UserHero = ({ user, lists, collections }) => {
     <>
       <Typography.Title
         level={1}
-        className='main-font'
+        className='title-font'
         style={{
           margin: '0rem 0rem 2rem 1rem',
           padding: '2rem 0rem 1rem 2rem',

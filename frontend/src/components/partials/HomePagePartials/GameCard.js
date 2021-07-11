@@ -17,7 +17,6 @@ const GameCard = ({ image, title, id }) => {
             src={image}
           />
         }
-        onClick={() => console.log(id)}
       >
         <Card.Meta className='main-font' title={title} />
       </Card>

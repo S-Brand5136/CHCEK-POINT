@@ -3,8 +3,8 @@ import TaggedGames from '../userPartials/TaggedGames';
 
 const UserCollections = ({ collections }) => {
   return (
-    <Row justify='center'>
-      <div>
+    <div>
+      <Row gutter='20'>
         {collections && (
           <TaggedGames
             games={collections.Current.splice(2)}
@@ -12,8 +12,8 @@ const UserCollections = ({ collections }) => {
             showAdd={true}
           />
         )}
-      </div>
-      <div>
+      </Row>
+      <Row gutter='20'>
         {collections && (
           <TaggedGames
             games={collections.Backlog.splice(2)}
@@ -21,8 +21,8 @@ const UserCollections = ({ collections }) => {
             showAdd={true}
           />
         )}
-      </div>
-      <div>
+      </Row>
+      <Row gutter='20'>
         {collections && (
           <TaggedGames
             games={collections.Completed.splice(2)}
@@ -30,8 +30,8 @@ const UserCollections = ({ collections }) => {
             showAdd={true}
           />
         )}
-      </div>
-      <div>
+      </Row>
+      <Row gutter='20' style={{ marginBottom: '2rem' }}>
         {collections && (
           <TaggedGames
             games={collections.Dropped.splice(2)}
@@ -39,8 +39,8 @@ const UserCollections = ({ collections }) => {
             showAdd={true}
           />
         )}
-      </div>
-    </Row>
+      </Row>
+    </div>
   );
 };
 

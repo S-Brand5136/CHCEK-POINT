@@ -21,25 +21,22 @@ const BrowseSection = () => {
     };
   }, []);
 
-  function gameCards() {
-    games.map((game) => (
-      <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>
-        <GameCard
-          image={game.background_image}
-          title={game.name}
-          id={game.id}
-        />
-      </Col>
-    ));
-  }
-
   return (
     <section className='browse-section'>
       <Typography.Title level={1} className='title'>
         Check out these Titles <span className='divider'>|</span>{' '}
       </Typography.Title>
       <Row justify='center' gutter='20'>
-        {games && gameCards}
+        {games &&
+          games.map((game) => (
+            <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>
+              <GameCard
+                image={game.background_image}
+                title={game.name}
+                id={game.id}
+              />
+            </Col>
+          ))}
       </Row>
     </section>
   );
