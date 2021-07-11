@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+// TODO: Add delete route
+
 module.exports = (db) => {
   // GET: User lists
   router.get('/:userId', (req, res) => {
@@ -24,11 +26,9 @@ module.exports = (db) => {
       })
       .catch((err) => {
         console.log(err);
-        res
-          .status(500)
-          .json({
-            Error: 'Sorry, there was an error while creating the list!',
-          });
+        res.status(500).json({
+          Error: 'Sorry, there was an error while creating the list!',
+        });
       });
   });
 
