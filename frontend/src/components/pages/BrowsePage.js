@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import TaggedGames from '../partials/HomePagePartials/userPartials/TaggedGames';
+import { Row } from 'antd';
 
 const BrowsePage = () => {
   const [allList, setallList] = useState(null);
@@ -73,14 +74,15 @@ const BrowsePage = () => {
           ) : (
             <Tabs.TabPane tab={capitalizeFirstLetter(tag)} key='1'>
               {!loading ? (
-                tagList.length > 0 ? (
-                  <TaggedGames
-                    games={tagList}
-                    tag={capitalizeFirstLetter(tag)}
-                    showAdd={false}
-                  />
-                ) : (
-                  <>No Games found Dodo bird says hi!</>
+                tagList.length > 0 && (
+                  <Row gutter='20'>
+                    <TaggedGames
+                      games={tagList}
+                      tag={capitalizeFirstLetter(tag)}
+                      showAdd={false}
+                      style={{ marginBottom: '1rem' }}
+                    />
+                  </Row>
                 )
               ) : (
                 <>
@@ -98,7 +100,9 @@ const BrowsePage = () => {
           )}
           <Tabs.TabPane tab='All' key='2'>
             {!loading ? (
-              <TaggedGames games={allList} tag='All' showAdd={false} />
+              <Row gutter='20'>
+                <TaggedGames games={allList} tag='All' showAdd={false} />
+              </Row>
             ) : (
               <>
                 <br />
@@ -114,64 +118,84 @@ const BrowsePage = () => {
           </Tabs.TabPane>
           <Tabs.TabPane tab='Action' key='3'>
             {actionList && (
-              <TaggedGames games={actionList} tag='Action' showAdd={false} />
+              <Row gutter='20'>
+                <TaggedGames games={actionList} tag='Action' showAdd={false} />
+              </Row>
             )}
           </Tabs.TabPane>
 
           <Tabs.TabPane tab='Atmospheric' key='4'>
             {atmosphericList && (
-              <TaggedGames
-                games={atmosphericList}
-                tag='Atmospheric'
-                showAdd={false}
-              />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={atmosphericList}
+                  tag='Atmospheric'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
 
           <Tabs.TabPane tab='Adventure' key='5'>
             {adventureList && (
-              <TaggedGames
-                games={adventureList}
-                tag='Adventure'
-                showAdd={false}
-              />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={adventureList}
+                  tag='Adventure'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='Singleplayer' key='6'>
             {singleplayerList && (
-              <TaggedGames
-                games={singleplayerList}
-                tag='Singleplayer'
-                showAdd={false}
-              />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={singleplayerList}
+                  tag='Singleplayer'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='Multiplayer' key='7'>
             {multiplayerList && (
-              <TaggedGames
-                games={multiplayerList}
-                tag='Multiplayer'
-                showAdd={false}
-              />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={multiplayerList}
+                  tag='Multiplayer'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='Sandbox' key='8'>
             {sandboxList && (
-              <TaggedGames games={sandboxList} tag='Sandbox' showAdd={false} />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={sandboxList}
+                  tag='Sandbox'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='Exploration' key='9'>
             {explorationList && (
-              <TaggedGames
-                games={explorationList}
-                tag='Exploration'
-                showAdd={false}
-              />
+              <Row gutter='20'>
+                <TaggedGames
+                  games={explorationList}
+                  tag='Exploration'
+                  showAdd={false}
+                />
+              </Row>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='FPS' key='10'>
             {fpsList && (
-              <TaggedGames games={fpsList} tag='FPS' showAdd={false} />
+              <Row gutter='20'>
+                <TaggedGames games={fpsList} tag='FPS' showAdd={false} />
+              </Row>
             )}
           </Tabs.TabPane>
         </Tabs>
