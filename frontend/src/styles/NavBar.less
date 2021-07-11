@@ -18,13 +18,17 @@
   }
 }
 
+.drop-down:hover {
+  cursor: pointer;
+}
+
 .nav-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: @main-font;
   height: 10vh;
-  padding: 5px;
+  padding: 5px 3rem 5px 3rem;
   background-image: linear-gradient(to right, @pinky-purple, @gengar);
 
   .nav-logo-links {
@@ -52,10 +56,12 @@
   }
 
   button.nav-link {
-    color: none;
+    color: white;
+    margin-right: 2.5rem;
     position: relative;
     background-color: transparent;
     border: 0px;
+    font-size: 16px;
   }
 
   button.nav-link:before {
@@ -75,7 +81,7 @@
     width: 100%;
   }
 
-  .loggedinmessage {
+  .logged-in-message {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,4 +93,48 @@
 
 .ant-dropdown-link {
   color: white;
+}
+
+.menu {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.menu-item {
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.menu-item:hover {
+  background-color: rgba(150, 187, 232, 0.4);
+}
+
+.nav-button {
+  margin-right: 1rem;
+  background-color: #834ab5;
+}
+
+.nav-button:hover {
+  background-color: #834ab58e;
+}
+
+.animation:hover {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 8px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
 }
