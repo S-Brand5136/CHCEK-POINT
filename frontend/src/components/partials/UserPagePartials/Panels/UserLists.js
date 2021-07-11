@@ -6,8 +6,6 @@ import PanelHeader from './PanelHeader';
 import { Typography } from 'antd';
 
 const UserLists = ({ lists }) => {
-  console.log(lists);
-
   const history = useHistory();
 
   const clickHandler = () => {

@@ -1,5 +1,4 @@
 import { Typography, Tabs } from 'antd';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 // components
 import WelcomeBack from './Tab_Panes/WelcomeBack';

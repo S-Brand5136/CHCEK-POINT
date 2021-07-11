@@ -52,7 +52,7 @@ const BrowsePage = () => {
           setLoading(false);
         }, 1500);
       });
-  }, []);
+  }, [tag]);
 
   return (
     <main className='background-container' style={{ padding: '4rem 0 4rem 0' }}>

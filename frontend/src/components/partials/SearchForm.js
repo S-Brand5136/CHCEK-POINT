@@ -1,17 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import GameCard from './SearchGameCard';
-import {
-  Button,
-  Form,
-  Input,
-  Modal,
-  Row,
-  Col,
-  Skeleton,
-  Spin,
-  Alert,
-} from 'antd';
+import { Button, Form, Input, Modal, Row, Col, Spin, Alert } from 'antd';
 
 const SearchForm = ({ visible, setVisible }) => {
   const [Search, setSearch] = useState('');

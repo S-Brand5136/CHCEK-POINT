@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col, Divider } from 'antd';
+import { Col, Divider } from 'antd';
 
 // components
 import GameCard from '../GameCard';

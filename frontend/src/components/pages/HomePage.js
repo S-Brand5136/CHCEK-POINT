@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 import { Layout } from 'antd';
 
