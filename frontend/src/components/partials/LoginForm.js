@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 import { Button, Form, Input, Modal, Spin } from 'antd';
 import Notification from './Notification';
@@ -8,6 +9,8 @@ const LoginForm = ({ visible, setVisible }) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useContext(authContext);
+
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ const LoginForm = ({ visible, setVisible }) => {
           setTimeout(() => {
             setLoading(false);
             setVisible();
+            history.push('/');
           }, 3000);
         })
         .catch((err) => {
