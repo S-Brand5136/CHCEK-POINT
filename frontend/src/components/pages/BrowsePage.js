@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Typography, Tabs } from 'antd';
+import { Typography, Tabs, Spin, Alert } from 'antd';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ const BrowsePage = () => {
   const [explorationList, setexplorationList] = useState(null);
   const [fpsList, setfpsList] = useState(null);
   const [tagList, settagList] = useState(null);
+  const [loading, setLoading] = useState(true);
   let { tag } = useParams();
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -32,19 +33,26 @@ const BrowsePage = () => {
       axios.get('/api/games/tags/FPS'),
       axios.get('/api/games'),
       ...(tag !== 'games' ? [axios.get(`/api/games/tags/${tag}`)] : []),
-    ]).then((all) => {
-      setActionList(all[0].data.list.slice(1, 8));
-      setAdventureList(all[1].data.list.slice(1, 8));
-      setAtmosphericList(all[2].data.list.slice(1, 8));
-      setmultiplayerList(all[3].data.list.slice(1, 8));
-      setsandboxList(all[4].data.list.slice(1, 8));
-      setsingleplayerList(all[5].data.list.slice(1, 8));
-      setexplorationList(all[6].data.list.slice(1, 8));
-      setfpsList(all[7].data.list.slice(1, 8));
-      setallList(all[8].data.catalog);
-      if (tag !== 'games') settagList(all[9].data.list.slice(1, 8));
-    });
+    ])
+      .then((all) => {
+        setActionList(all[0].data.list.slice(1, 8));
+        setAdventureList(all[1].data.list.slice(1, 8));
+        setAtmosphericList(all[2].data.list.slice(1, 8));
+        setmultiplayerList(all[3].data.list.slice(1, 8));
+        setsandboxList(all[4].data.list.slice(1, 8));
+        setsingleplayerList(all[5].data.list.slice(1, 8));
+        setexplorationList(all[6].data.list.slice(1, 8));
+        setfpsList(all[7].data.list.slice(1, 8));
+        setallList(all[8].data.catalog);
+        if (tag !== 'games') settagList(all[9].data.list.slice(1, 8));
+      })
+      .then(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+      });
   }, []);
+
   return (
     <main className='background-container' style={{ padding: '4rem 0 4rem 0' }}>
       <section
@@ -64,14 +72,44 @@ const BrowsePage = () => {
             <></>
           ) : (
             <Tabs.TabPane tab={capitalizeFirstLetter(tag)} key='1'>
-              {tagList && (
-                <TaggedGames games={tagList} tag={tag} showAdd={false} />
+              {!loading ? (
+                tagList.length > 0 ? (
+                  <TaggedGames
+                    games={tagList}
+                    tag={capitalizeFirstLetter(tag)}
+                    showAdd={false}
+                  />
+                ) : (
+                  <>No Games found Dodo bird says hi!</>
+                )
+              ) : (
+                <>
+                  <br />
+                  <Spin
+                    size='large'
+                    tip='Fetching Games'
+                    style={{ color: 'inherit', textDecoration: 'inherit' }}
+                  >
+                    <Alert message='' description='' type='info' />
+                  </Spin>
+                </>
               )}
             </Tabs.TabPane>
           )}
           <Tabs.TabPane tab='All' key='2'>
-            {allList && (
+            {!loading ? (
               <TaggedGames games={allList} tag='All' showAdd={false} />
+            ) : (
+              <>
+                <br />
+                <Spin
+                  size='large'
+                  tip='Fetching Games'
+                  style={{ color: 'inherit', textDecoration: 'inherit' }}
+                >
+                  <Alert message='' description='' type='info' />
+                </Spin>
+              </>
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab='Action' key='3'>

@@ -1,14 +1,15 @@
 import React from 'react';
 
 import PanelHeader from './PanelHeader';
-
-import { Typography } from 'antd';
+import Activity from '../../HomePagePartials/Tab_Panes/UserActivity';
 
 const UserActivity = () => {
   return (
-    <div className='user-lists-activity'>
+    <div className='user-activity-container'>
       <PanelHeader name='ACTIVITY' />
-      <main className='panel-body'></main>
+      <main className='panel-body'>
+        <Activity limit={5} />
+      </main>
     </div>
   );
 };

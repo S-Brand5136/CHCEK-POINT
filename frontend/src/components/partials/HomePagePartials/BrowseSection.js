@@ -36,7 +36,7 @@ const BrowseSection = () => {
   return (
     <section className='browse-section'>
       <Typography.Title level={1} className='title'>
-        Check out These Titles <span className='divider'>|</span>{' '}
+        Check out these Titles <span className='divider'>|</span>{' '}
       </Typography.Title>
       <Row justify='center' gutter='20'>
         {games && gameCards}

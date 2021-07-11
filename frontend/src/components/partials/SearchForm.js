@@ -1,18 +1,35 @@
 import { useState } from 'react';
 import axios from 'axios';
 import GameCard from './SearchGameCard';
-import { Button, Form, Input, Modal, Row, Col } from 'antd';
+import {
+  Button,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Col,
+  Skeleton,
+  Spin,
+  Alert,
+} from 'antd';
 
 const SearchForm = ({ visible, setVisible }) => {
   const [Search, setSearch] = useState('');
   const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = (e) => {
+    setLoading(true);
     if (Search) {
       axios
         .get('/api/games/keyword/search', { params: { search: Search } })
         .then((res) => {
           setGames(res.data.list);
+        })
+        .then(() => {
+          setTimeout(() => {
+            setLoading(false);
+          }, 1500);
         })
         .catch((err) => {
           console.log(err);
@@ -42,7 +59,7 @@ const SearchForm = ({ visible, setVisible }) => {
         setGames([]);
       }}
     >
-      <h2 style={{ textAlign: 'center' }}>Search by name</h2>
+      <h2 style={{ textAlign: 'center' }}>Search by Name</h2>
       <Form name='Search' layout='vertical'>
         <Form.Item name='search'>
           <Input
@@ -63,7 +80,20 @@ const SearchForm = ({ visible, setVisible }) => {
         </Form.Item>
         <Form.Item name='results' align='middle' justify='center'>
           <Col justify='center' gutter='20' align='middle'>
-            {games.length > 0 && gameCards}
+            {loading ? (
+              <>
+                <br />
+                <Spin
+                  size='large'
+                  tip='Looking for Games'
+                  style={{ color: 'inherit', textDecoration: 'inherit' }}
+                >
+                  <Alert message='' description='' type='info' />
+                </Spin>
+              </>
+            ) : (
+              gameCards
+            )}
           </Col>
         </Form.Item>
       </Form>

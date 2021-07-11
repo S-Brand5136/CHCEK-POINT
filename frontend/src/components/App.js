@@ -24,9 +24,9 @@ function App() {
           <Route path='/games' component={BrowsePage} exact />
           <Route path='/users/:id' component={UserPage} exact />
           <Route path='/browse/:tag' component={BrowsePage} />
-          <Route path='/lists' component={AddToListPage} />
-          <Route path='/createList' component={CreateListPage} exact />
-          <Route path='/collections' component={HomePage} exact />
+          <Route path='/game/add' component={AddToListPage} />
+          <Route path='/list/create' component={CreateListPage} exact />
+          <Route path='/:key' component={HomePage} exact />
         </div>
       </Router>
       <Footer />

@@ -8,7 +8,7 @@ const EmptyCard = () => {
   const history = useHistory();
 
   const clickHandler = () => {
-    history.push('/lists');
+    history.push('/game/add');
   };
 
   return (

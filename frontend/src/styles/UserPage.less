@@ -20,7 +20,7 @@
   }
 
   .panel-body {
-    border: 1px solid black;
+    // border: 1px solid black;
     height: 450px;
     width: 800px;
   }
@@ -116,11 +116,51 @@
   background-color: #ecf0f3;
 
   .collections-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    section {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      div {
+        border-radius: 7px;
+        height: 175px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.35s ease;
+        color: white;
+        h3 {
+          color: white;
+        }
+        h4 {
+          color: white;
+        }
+      }
+    }
+
+    div:hover {
+      box-shadow: 12px 13px 10px #afb4bd;
+      cursor: pointer;
+      background-color: rgba(54, 69, 79, 0.9);
+    }
   }
   .user-lists-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: auto;
   }
 
   .user-activity-container {
+    main {
+      padding: 2rem;
+    }
   }
 
   .user-stats-container {

@@ -65,7 +65,7 @@ const UserInfo = ({ user }) => {
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
-            email:
+            Email:
           </Typography.Text>
         </Col>
         <Col>
@@ -84,7 +84,7 @@ const UserInfo = ({ user }) => {
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
-            Discord Userame:
+            Discord Tag:
           </Typography.Text>
         </Col>
         <Col>
@@ -122,7 +122,7 @@ const UserInfo = ({ user }) => {
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
-            pro-noun:
+            Pronouns:
           </Typography.Text>
         </Col>
         <Col>

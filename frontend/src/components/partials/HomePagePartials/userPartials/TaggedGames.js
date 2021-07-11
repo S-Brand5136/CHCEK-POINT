@@ -12,6 +12,7 @@ const TaggedGames = ({ games, tag, showAdd }) => {
       <GameCard image={game.background_image} title={game.name} id={game.id} />
     </Col>
   ));
+
   return (
     <section>
       <Row gutter='20'>
@@ -19,7 +20,7 @@ const TaggedGames = ({ games, tag, showAdd }) => {
           {tag}
         </Divider>
         {showAdd && <EmptyCard />}
-        {games && gameCards}
+        {games[0].id !== null && gameCards}
       </Row>
     </section>
   );
