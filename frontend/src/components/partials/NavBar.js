@@ -1,20 +1,30 @@
-import { React, useEffect, useState, useContext } from 'react';
-import '../../styles/NavBar.less';
-import Title from './Title';
-import { Link } from 'react-router-dom';
-import { Button, Menu, Dropdown, Image } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { React, useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
+
+// components
+import Title from './Title';
 import avatar from '../../img/avatars/villain.png';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
 import SearchForm from '../partials/SearchForm';
 import Notification from './Notification';
 
+// ant
+import { Button, Menu, Dropdown, Image } from 'antd';
+import {
+  DownOutlined,
+  ProfileOutlined,
+  UnorderedListOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons';
+
 const NavLinks = () => {
   const [isLoginVisible, setisLoginVisible] = useState(false);
   const [isRegisterVisible, setisRegisterVisible] = useState(false);
   const [isSearchVisible, setisSearchVisible] = useState(false);
+
+  const history = useHistory();
 
   const showLoginModal = () => {
     setisLoginVisible(true);
@@ -38,16 +48,34 @@ const NavLinks = () => {
 
   const { user, logout } = useContext(authContext);
 
+  const logoutHandler = () => {
+    logout();
+    history.push('/');
+  };
+
   const userMenu = (
-    <Menu>
-      <Menu.Item key='0'>
-        <a href='/users/:id'>View Profile</a>
+    <Menu className='menu'>
+      <Menu.Item key='0' className='menu-item'>
+        <a href='/users/:id'>
+          <ProfileOutlined
+            style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
+          />{' '}
+          View Profile
+        </a>
       </Menu.Item>
-      <Menu.Item key='1'>
-        <a href='/list/create'>Create List</a>
+      <Menu.Item key='1' className='menu-item'>
+        <a href='/list/create'>
+          <UnorderedListOutlined
+            style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
+          />{' '}
+          Create List
+        </a>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key='3' onClick={logout}>
+      <Menu.Item key='3' onClick={() => logoutHandler()} className='menu-item'>
+        <LogoutOutlined
+          style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
+        />{' '}
         Logout
       </Menu.Item>
     </Menu>
@@ -89,10 +117,20 @@ const NavLinks = () => {
       <div className='nav-user-links'>
         {!user ? (
           <div>
-            <Button type='primary' onClick={showLoginModal}>
+            <Button
+              type='primary'
+              shape='round'
+              className='nav-button'
+              onClick={showLoginModal}
+            >
               Login
             </Button>
-            <Button type='primary' onClick={showRegisterModal}>
+            <Button
+              className='nav-button'
+              type='primary'
+              shape='round'
+              onClick={showRegisterModal}
+            >
               Register
             </Button>
             <LoginForm
@@ -108,16 +146,12 @@ const NavLinks = () => {
           </div>
         ) : (
           <>
-            <div className='loggedinmessage'>
-              {/* Hey, {user.username}! */}
+            <div className='logged-in-message'>
               <Dropdown overlay={userMenu} trigger={['click']}>
-                <a
-                  className='ant-dropdown-link'
-                  onClick={(e) => e.preventDefault()}
-                >
+                <div className='ant-dropdown-link animation drop-down'>
                   <Image width={60} preview={false} src={avatar} />
-                  <DownOutlined />
-                </a>
+                  <DownOutlined style={{ fontSize: '18px' }} />
+                </div>
               </Dropdown>
             </div>
           </>
