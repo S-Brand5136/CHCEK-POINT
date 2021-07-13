@@ -50,7 +50,7 @@ const BrowsePage = () => {
       .then(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 1500);
+        }, 1000);
       });
   }, [tag]);
 
