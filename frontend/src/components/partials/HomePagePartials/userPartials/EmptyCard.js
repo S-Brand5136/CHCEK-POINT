@@ -13,7 +13,7 @@ const EmptyCard = () => {
 
   return (
     <Card
-      style={{ borderRadius: '20px', maxHeight: '17.15rem' }}
+      style={{ borderRadius: '20px', maxHeight: '17.15rem', minWidth: '15rem' }}
       hoverable
       cover={
         <Row justify='center'>
@@ -32,7 +32,11 @@ const EmptyCard = () => {
       }
       onClick={clickHandler}
     >
-      <Card.Meta className='main-font' title='Add to one of your lists!' />
+      <Card.Meta
+        className='main-font'
+        style={{ textAlign: 'center' }}
+        title='Add to your list!'
+      />
     </Card>
   );
 };
