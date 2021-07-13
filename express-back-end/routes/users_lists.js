@@ -16,6 +16,87 @@ module.exports = (db) => {
       });
   });
 
+  // GET: User lists
+  router.get('/user/:userId', (req, res) => {
+    db('game')
+      .select(
+        'users_lists.id as listID',
+        'list_title',
+        'games_catalog.name',
+        'game.num_hours_played',
+        'category',
+        'background_image',
+        'game.list_id',
+        'games_catalog.id as gameID',
+        'game.id as game_id'
+      )
+      .rightOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
+      .rightOuterJoin('users_lists', 'users_lists.id', '=', 'game.list_id')
+      .where('users_lists.user_id', req.params.userId)
+      .orderBy('list_id')
+      .then((list) => {
+        // const collection = {};
+        // const lists = {};
+
+        // for (const item of list) {
+        //   if (item.category === 'Stats' && !collection[item.list_title]) {
+        //     collection[item.list_title] = [];
+        //     const category = item.category;
+        //     const id = item.listID;
+        //     collection[item.list_title].push(category);
+        //     collection[item.list_title].push(id);
+        //   }
+
+        //   if (item.category === 'Stats' && collection[item.list_title]) {
+        //     collection[item.list_title].push({
+        //       name: item.name,
+        //       hours_played: item.num_hours_played,
+        //       background_image: item.background_image,
+        //       id: item.gameID,
+        //       game_id: item.game_id,
+        //     });
+        //   }
+        // }
+
+        // for (const item of list) {
+        //   if (item.category !== 'Stats' && !lists[item.list_title]) {
+        //     lists[item.list_title] = [];
+        //     const category = item.category;
+        //     const id = item.listID;
+        //     lists[item.list_title].push(category);
+        //     lists[item.list_title].push(id);
+        //   }
+
+        //   if (item.category !== 'Stats' && lists[item.list_title]) {
+        //     lists[item.list_title].push({
+        //       name: item.name,
+        //       hours_played: item.num_hours_played,
+        //       background_image: item.background_image,
+        //       id: item.gameID,
+        //       game_id: item.game_id,
+        //     });
+        //   }
+        // }
+
+        // return res.status(200).json({ list, collection, lists });
+        return res.status(200).json({ list });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  router.delete('/delete/:id', (req, res) => {
+    db('game')
+      .where('game.id', req.params.id)
+      .del()
+      .then((data) => {
+        return res
+          .status(200)
+          .json({ msg: 'Sucessfully removed game from list', data });
+      });
+  });
+
   // POST: A new list to the users collection
   router.post('/create', (req, res) => {
     const { user_id, list_title, category } = req.body;

@@ -40,7 +40,8 @@ module.exports = (db) => {
             'category',
             'background_image',
             'game.list_id',
-            'games_catalog.id as gameID'
+            'games_catalog.id as gameID',
+            'game.id as game_id'
           )
           .rightOuterJoin('games_catalog', 'game_id', '=', 'games_catalog.id')
           .rightOuterJoin('users_lists', 'users_lists.id', '=', 'game.list_id')
@@ -63,6 +64,7 @@ module.exports = (db) => {
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
                   id: item.gameID,
+                  game_id: item.game_id,
                 });
               }
               if (item.category !== 'Stats' && !lists[item.list_title]) {
@@ -78,6 +80,7 @@ module.exports = (db) => {
                   hours_played: item.num_hours_played,
                   background_image: item.background_image,
                   id: item.gameID,
+                  game_id: item.game_id,
                 });
               }
             }
