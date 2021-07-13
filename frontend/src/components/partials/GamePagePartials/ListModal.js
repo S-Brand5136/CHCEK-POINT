@@ -35,11 +35,13 @@ const ListModal = ({
   const submitHandler = (e) => {
     if (insert) {
       const id = userLists.filter((item) => item.title === insert)[0].id;
+
       const newGame = {
         num_hours_played: numHours,
         list_id: id,
         game_id: game.id,
       };
+      console.log(newGame);
       axios.put(`/api/lists/${id}/${game.id}`, newGame).then(() => {
         Notification({
           type: 'success',

@@ -6,12 +6,13 @@ import ListRow from '../userPartials/ListRow';
 import { Button, Col, Typography } from 'antd';
 import { UnorderedListOutlined } from '@ant-design/icons';
 
-const UserLists = ({ lists }) => {
-  const [userLists, setUserLists] = useState([]);
+const UserLists = ({ lists, reload }) => {
+  const [userLists, setUserLists] = useState(null);
 
   const history = useHistory();
 
   useEffect(() => {
+    // console.log(lists);
     if (lists) {
       const result = [];
       for (const list in lists) {
@@ -20,6 +21,7 @@ const UserLists = ({ lists }) => {
       setUserLists(result);
     }
   }, [lists]);
+  console.log('passed list', lists);
 
   return (
     <>
@@ -33,17 +35,17 @@ const UserLists = ({ lists }) => {
         </Button>
       </Typography.Title>
       <div>
-        {Object.keys(lists).length <= 0 ? (
+        {Object.keys(lists).length < 1 ? (
           <Col>
             <Typography.Title level={3}>
-              You havn't made any lists yet
+              Start by creating a new List
             </Typography.Title>
           </Col>
         ) : (
           <div>
-            {userLists.length > 0 &&
+            {userLists &&
               userLists.map((item, index) => (
-                <ListRow key={index} list={item} />
+                <ListRow key={index} list={item} reload={reload} />
               ))}
             <br />
           </div>

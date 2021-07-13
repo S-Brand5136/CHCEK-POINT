@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { Skeleton, Spin, Alert } from 'antd';
 import everyone from '../../../img/esrb_10.png';
 import mature from '../../../img/esrb_mature.png';
 import teen from '../../../img/esrb_teen.svg';
@@ -22,6 +22,7 @@ const GameHeader = ({
   const [esrbRating, setEsrbRating] = useState(pending);
   const [isVisible, setIsVisible] = useState(false);
   const [isRatingVisible, setIsRatingVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (game) {
@@ -46,19 +47,26 @@ const GameHeader = ({
     }
   }, [game]);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
   return (
     <header className='game-header'>
       <div className='game-header-title'>
         <Typography.Title level={1}>
-          {game && game.name} <span className='divider'> |</span>
+          {loading ? <Skeleton active paragraph={{ rows: 1 }} /> : game.name}{' '}
+          <span className='divider'> |</span>
         </Typography.Title>
       </div>
+
       <img
         style={{ borderRadius: '20px', height: '430px', width: '750px' }}
         className='game-card-image'
         alt={game && game.title}
         src={game && game.background_image}
       />
+
       <div className='header-items'>
         <div className='game-rating-bar'>
           {user && (

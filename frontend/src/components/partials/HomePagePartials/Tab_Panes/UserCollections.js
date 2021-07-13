@@ -1,44 +1,49 @@
 import { Row } from 'antd';
-import TaggedGames from '../userPartials/TaggedGames';
+import ListCards from '../userPartials/ListCards';
 
-const UserCollections = ({ collections }) => {
+const UserCollections = ({ collections, reload }) => {
   return (
     <div>
       <Row gutter='20'>
         {collections && (
-          <TaggedGames
+          <ListCards
             games={collections.Current.splice(2)}
             tag='Current'
             showAdd={true}
+            reload={reload}
           />
         )}
       </Row>
       <Row gutter='20'>
         {collections && (
-          <TaggedGames
+          <ListCards
             games={collections.Backlog.splice(2)}
             tag='Backlog'
             showAdd={true}
+            reload={reload}
           />
         )}
       </Row>
       <Row gutter='20'>
         {collections && (
-          <TaggedGames
+          <ListCards
             games={collections.Completed.splice(2)}
             tag='Completed'
             showAdd={true}
+            reload={reload}
           />
         )}
       </Row>
       <Row gutter='20' style={{ marginBottom: '2rem' }}>
         {collections && (
-          <TaggedGames
+          <ListCards
             games={collections.Dropped.splice(2)}
             tag='Dropped'
             showAdd={true}
+            reload={reload}
           />
         )}
+        {console.log(collections)}
       </Row>
     </div>
   );
