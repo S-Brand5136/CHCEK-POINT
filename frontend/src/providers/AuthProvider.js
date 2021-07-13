@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Notification from '../components/partials/Notification';
+import filterLists from '../helpers/filter_lists';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
@@ -80,7 +81,7 @@ export default function AuthProvider(props) {
     });
   };
 
-  const logout = function (email, password) {
+  const logout = function () {
     setUser(null);
     setUsersCollection(null);
     setUsersLists(null);
