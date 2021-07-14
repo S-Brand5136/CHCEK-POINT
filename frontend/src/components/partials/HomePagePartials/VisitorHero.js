@@ -22,7 +22,7 @@ const VisitorHero = () => {
   return (
     <>
       <Row justify='center'>
-        <Col lg={12} sm={24}>
+        <Col lg={12} sm={24} style={{ marginTop: '3rem' }}>
           <Typography.Title className='hero-text-large main-font'>
             Tired of forgetting your progress?
           </Typography.Title>
@@ -63,7 +63,7 @@ const VisitorHero = () => {
             />
           </div>
         </Col>
-        <Col lg={7} sm={24}>
+        <Col lg={7} sm={24} style={{ marginTop: '3rem' }}>
           <Row justify='center'>
             <Image height={400} preview={false} src={mascot} />
           </Row>

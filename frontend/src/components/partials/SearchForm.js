@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import GameCard from './SearchGameCard';
 import { Button, Form, Input, Modal, Row, Col, Spin, Alert } from 'antd';
+import Notification from './Notification';
 
 const SearchForm = ({ visible, setVisible }) => {
   const [Search, setSearch] = useState('');
@@ -22,7 +23,12 @@ const SearchForm = ({ visible, setVisible }) => {
           }, 1500);
         })
         .catch((err) => {
-          console.log(err);
+          setLoading(false);
+          Notification({
+            type: 'error',
+            description: 'Unable to find any games with that name!',
+            title: 'Error',
+          });
         });
     }
   };
@@ -35,7 +41,12 @@ const SearchForm = ({ visible, setVisible }) => {
       align='middle'
       justify='center'
     >
-      <GameCard image={game.background_image} title={game.name} id={game.id} />
+      <GameCard
+        visible={() => setVisible()}
+        image={game.background_image}
+        title={game.name}
+        id={game.id}
+      />
     </Row>
   ));
 
@@ -49,23 +60,28 @@ const SearchForm = ({ visible, setVisible }) => {
         setGames([]);
       }}
     >
-      <h2 style={{ textAlign: 'center' }}>Search by Name</h2>
+      <h1 className='searchModalTitle' style={{ textAlign: 'center' }}>
+        Search by Name
+      </h1>
       <Form name='Search' layout='vertical'>
-        <Form.Item name='search'>
+        <Form.Item name='search' className='searchModal'>
           <Input
             placeholder='Minecraft...'
             onChange={(e) => setSearch(e.target.value)}
+            className='searchModal'
           />
         </Form.Item>
 
-        <Form.Item name='submitButton'>
+        <Form.Item name='submitButton' className='searchModal'>
           <Button
             type='primary'
             onClick={(e) => submitHandler(e)}
             shape='round'
             block
+            style={{ height: 'auto' }}
+            className='searchModal'
           >
-            Search
+            Search&nbsp;<i class='fas fa-search'></i>
           </Button>
         </Form.Item>
         <Form.Item name='results' align='middle' justify='center'>

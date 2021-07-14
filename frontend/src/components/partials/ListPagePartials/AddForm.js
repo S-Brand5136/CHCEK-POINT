@@ -28,7 +28,8 @@ const AddForm = ({ userId, getDetails }) => {
   }, [userId]);
 
   const clickHandler = () => {
-    if (hours && game && list) {
+    if (game && list) {
+      if (hours === 0) setHours(1);
       setLoading(true);
       axios
         .put(`/api/lists/${list[0].id}/${game[0].id}`, {

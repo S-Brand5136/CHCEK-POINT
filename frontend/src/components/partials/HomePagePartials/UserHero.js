@@ -20,15 +20,15 @@ import filterLists from '../../../helpers/filter_lists';
 import filterCollections from '../../../helpers/filter_collections';
 
 const UserHero = ({ user }) => {
-  const [activeKey, setActiveKey] = useState('1');
+  // const [activeKey, setActiveKey] = useState('1');
   const [collection, setCollection] = useState(null);
   const [lists, setLists] = useState(null);
   const [reload, setReload] = useState(false);
-  let { key } = useParams();
+  // let { key } = useParams();
 
-  const change = function (event) {
-    setActiveKey(event);
-  };
+  // const change = function (event) {
+  //   setActiveKey(event);
+  // };
 
   useEffect(() => {
     console.log('here');

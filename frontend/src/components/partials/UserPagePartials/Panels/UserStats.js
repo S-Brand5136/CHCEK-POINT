@@ -55,7 +55,7 @@ const UserStats = () => {
             className='title-font'
             onClick={() => clickHandler(COMPELTED)}
           >
-            LONGEST TO COMPLETION
+            LONGEST COMPLETED RUN
           </Button>
         </div>
       </header>

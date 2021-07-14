@@ -90,9 +90,20 @@ const BrowsePage = () => {
                   <Spin
                     size='large'
                     tip='Fetching Games'
-                    style={{ color: 'inherit', textDecoration: 'inherit' }}
+                    style={{
+                      color: 'inherit',
+                      textDecoration: 'inherit',
+                      backgroundColor: 'none',
+                    }}
                   >
-                    <Alert message='' description='' type='info' />
+                    <Alert
+                      style={{
+                        color: 'inherit',
+                        textDecoration: 'inherit',
+                        backgroundColor: 'none',
+                      }}
+                      type='info'
+                    />
                   </Spin>
                 </>
               )}

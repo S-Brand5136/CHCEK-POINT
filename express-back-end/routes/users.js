@@ -27,7 +27,8 @@ module.exports = (db) => {
         'birthdate',
         'timezone',
         'discord_username',
-        'in_game_usernames'
+        'in_game_usernames',
+        'avatar'
       )
       .where({ id: req.params.id })
       .then((user) => {

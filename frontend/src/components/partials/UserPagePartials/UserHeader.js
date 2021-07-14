@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Typography } from 'antd';
 
-import avatar from '../../../img/avatars/villain.png';
-
 const UserHeader = ({ user }) => {
   return (
     <header className='user-header'>
@@ -13,8 +11,8 @@ const UserHeader = ({ user }) => {
       <img
         style={{ borderRadius: '20px', height: '200px', width: 'auto' }}
         className='game-card-image'
-        alt={'User Avatar'}
-        src={avatar}
+        alt='User Avatar'
+        src={user && user.avatar}
       />
     </header>
   );

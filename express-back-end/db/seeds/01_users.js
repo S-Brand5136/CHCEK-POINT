@@ -4,10 +4,12 @@ exports.seed = function (knex) {
     .del()
     .then(function () {
       // Inserts seed entries
+      //Pirtate avatar https://image.flaticon.com/icons/png/512/818/818123.png
       return knex('users').insert([
         {
           username: 'Pav ',
           password: '123',
+          avatar: 'https://image.flaticon.com/icons/png/512/1126/1126821.png',
           email: 'pav@example.com',
           platforms: 'PS4, PC, Wii',
           bio: 'I like Web Development',
@@ -21,6 +23,7 @@ exports.seed = function (knex) {
           username: 'Rinne',
           password: '67890',
           email: 'fakerinne@example.com',
+          avatar: 'https://image.flaticon.com/icons/png/512/818/818101.png',
           platforms: 'Switch, 3DS, Gameboy',
           bio: 'welcome to my cringe compilation',
           in_game_usernames: 'Rinrin',
@@ -32,6 +35,7 @@ exports.seed = function (knex) {
         {
           username: 'Brandon',
           password: '12345',
+          avatar: 'https://image.flaticon.com/icons/png/512/3380/3380350.png',
           email: 'Brandon.Shemilt@example.com',
           platforms: 'PS4, PC',
           bio: 'Hi',

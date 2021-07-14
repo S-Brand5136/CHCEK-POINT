@@ -8,7 +8,7 @@ import {
   InfoCircleFilled,
 } from '@ant-design/icons';
 
-const GameCard = ({ image, title, id, hours, onDelete }) => {
+const GameCard = ({ image, title, id, hours, onDelete, visible }) => {
   const history = useHistory();
 
   return (
@@ -29,7 +29,12 @@ const GameCard = ({ image, title, id, hours, onDelete }) => {
           <InfoCircleFilled onClick={() => history.push(`/games/${id}`)} />,
           <EditFilled key='edit' />,
           <CloseCircleFilled
-            onClick={() => onDelete()}
+            onClick={() => {
+              onDelete();
+              if (visible) {
+                visible();
+              }
+            }}
             className='close-button'
           />,
         ]

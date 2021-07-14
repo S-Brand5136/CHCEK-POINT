@@ -134,10 +134,12 @@ module.exports = (db) => {
       .select(
         'list_id',
         'users.username',
+        'users.avatar',
         'users_lists.list_title',
         'games_catalog.name',
         'num_hours_played',
-        'game_id'
+        'game_id',
+        'background_image'
       )
       .join('games_catalog', 'games_catalog.id', '=', 'game_id')
       .join('users_lists', 'users_lists.id', '=', 'list_id')

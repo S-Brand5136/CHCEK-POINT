@@ -149,7 +149,7 @@ const NavLinks = () => {
             <div className='logged-in-message'>
               <Dropdown overlay={userMenu} trigger={['click']}>
                 <div className='ant-dropdown-link animation drop-down'>
-                  <Image width={60} preview={false} src={avatar} />
+                  <Image width={60} preview={false} src={user && user.avatar} />
                   <DownOutlined style={{ fontSize: '18px' }} />
                 </div>
               </Dropdown>

@@ -18,13 +18,47 @@ const UserActivity = ({ limit }) => {
   function mappedActivity(res) {
     let mappedActivity = res.map((item) => {
       return (
-        <Link
-          to={`/games/${item.game_id}`}
-          style={{ color: 'inherit', textDecoration: 'inherit' }}
-        >
-          <i className='fas fa-list'></i> {item.username} added {item.name} to
-          their list: {item.list_title}
-        </Link>
+        <div className='user-activity'>
+          <Link
+            to={`/games/${item.game_id}`}
+            style={{
+              color: 'inherit',
+              textDecoration: 'inherit',
+            }}
+          >
+            <Typography.Title
+              level={4}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <img src={item.avatar} alt='' style={{ height: '5rem' }} />
+              {item.username}
+              <span
+                className='divider-highlight'
+                style={{ marginLeft: '.7rem' }}
+              >
+                |
+              </span>
+              <img
+                src={item.background_image}
+                alt=''
+                style={{
+                  height: '5rem',
+                }}
+                className='gameLogo'
+              />
+            </Typography.Title>
+            <div style={{ marginLeft: '5rem' }}>
+              <Typography.Text style={{ fontSize: '18px' }}>
+                Recently added <strong>{item.name}</strong> to their list:{' '}
+                <strong>{item.list_title}</strong>
+              </Typography.Text>
+            </div>
+          </Link>
+        </div>
       );
     });
     setActivity(mappedActivity);
@@ -48,7 +82,7 @@ const UserActivity = ({ limit }) => {
   }, [limit]);
 
   return (
-    <Row>
+    <Row style={{ paddingBottom: '2rem' }}>
       {limit ? (
         ''
       ) : (
@@ -56,7 +90,7 @@ const UserActivity = ({ limit }) => {
           <Typography.Title level={3}>
             Check out the latest from other users!
           </Typography.Title>
-          <Divider orientation='left'>User Activity</Divider>{' '}
+          <Divider orientation='left'>User Activity</Divider>
         </>
       )}
       {loading ? (

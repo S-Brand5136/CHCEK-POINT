@@ -1,19 +1,10 @@
 exports.up = function (knex) {
   return knex.schema.createTable('users', (t) => {
     t.increments().primary();
-    // t.integer('currently_playing')
-    //   .unsigned()
-    //   .references('id')
-    //   .inTable('game')
-    //   .onDelete('CASCADE');
-    // t.integer('previously_played')
-    //   .unsigned()
-    //   .references('id')
-    //   .inTable('game')
-    //   .onDelete('CASCADE');
     t.string('username').notNullable();
     t.string('password').notNullable();
     t.string('email').notNullable();
+    t.string('avatar').notNullable();
     t.string('platforms');
     t.string('bio');
     t.string('in_game_usernames');

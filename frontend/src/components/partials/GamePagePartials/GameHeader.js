@@ -55,7 +55,11 @@ const GameHeader = ({
     <header className='game-header'>
       <div className='game-header-title'>
         <Typography.Title level={1}>
-          {loading ? <Skeleton active paragraph={{ rows: 1 }} /> : game.name}{' '}
+          {loading && !game ? (
+            <Skeleton active paragraph={{ rows: 0 }} />
+          ) : (
+            game.name
+          )}{' '}
           <span className='divider'> |</span>
         </Typography.Title>
       </div>
