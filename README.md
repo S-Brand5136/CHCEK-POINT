@@ -54,7 +54,7 @@ Target Audience:
 
 #### Home Page
 
-![Home Page](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/homepage_user.png)
+![Home Page](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/homepage_visitor.png)
 
 #### User Home Page
 
