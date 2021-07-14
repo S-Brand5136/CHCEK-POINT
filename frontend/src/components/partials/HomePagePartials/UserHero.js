@@ -31,14 +31,11 @@ const UserHero = ({ user }) => {
   // };
 
   useEffect(() => {
-    console.log('here');
     let mounted = true;
     axios.get(`/api/lists/user/${user.id}`).then((res) => {
-      console.log(res.data);
       const lists = filterLists(res.data);
       const collection = filterCollections(res.data);
 
-      console.log(collection, lists);
       if (mounted) {
         setCollection(collection);
         setLists(lists);

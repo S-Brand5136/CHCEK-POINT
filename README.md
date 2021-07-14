@@ -9,9 +9,10 @@ This video game tracker app has a catalogue for any user to browse through games
 
 1. [Dependencies](#dependencies)
 2. [Screenshots](#screenshots)
-3. [Set up](#setUp)
-4. [How to](#howTo)
-5. [Contributors](#contributors)
+3. [Database Setup](#database)
+4. [Set up](#setUp)
+5. [How to](#howTo)
+6. [Contributors](#contributors)
 
 ## Target Audienece 🙇
 
@@ -52,6 +53,8 @@ Target Audience:
 ## Screenshots <a name='screenshots'></a>
 
 THEY WILL EVENTUALLY GO HERE
+
+## Databse Set up <a name='database'></a>
 
 ## Set up <a name='setUp'></a>
 
@@ -118,7 +121,3 @@ You can now start querying for games, and checking out their stats before or aft
 - Astrid Aguilar
   - [Github](https://github.com/astridcha1x)
   - [Linkedin](https://www.linkedin.com/in/pavneet-k-a139b3108/)
-
-## Contact
-
-Please contact me on Slack (@garrettgsb) or Nima at `nima@lighthouselabs.com` if you have any questions, requests, or feedback, or post an issue to this repo. If you are using the boilerplate, I'd love to hear from you as well!

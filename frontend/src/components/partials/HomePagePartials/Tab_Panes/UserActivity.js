@@ -87,7 +87,7 @@ const UserActivity = ({ limit }) => {
         ''
       ) : (
         <>
-          <Typography.Title className='title-font' level={2}>
+          <Typography.Title className='title-font' level={1}>
             Check out the latest from other users!
           </Typography.Title>
           <Divider orientation='left'>User Activity</Divider>

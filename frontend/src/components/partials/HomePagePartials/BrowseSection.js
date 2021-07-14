@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import { Typography, Row, Col } from 'antd';
 
-// import QueueAnim from 'rc-queue-anim';
-
 // Components
 import GameCard from './GameCard';
 
@@ -32,13 +30,11 @@ const BrowseSection = () => {
         {games &&
           games.map((game) => (
             <Col lg={5} key={game.id} style={{ marginBottom: '3rem' }}>
-              {/* <QueueAnim> */}
               <GameCard
                 image={game.background_image}
                 title={game.name}
                 id={game.id}
               />
-              {/* </QueueAnim> */}
             </Col>
           ))}
       </Row>

@@ -37,7 +37,7 @@ const UserLists = ({ lists, reload }) => {
       <div>
         {Object.keys(lists).length < 1 ? (
           <Col>
-            <Typography.Title level={3}>
+            <Typography.Title level={2}>
               Start by creating a new List
             </Typography.Title>
           </Col>

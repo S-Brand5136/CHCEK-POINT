@@ -85,27 +85,22 @@ const BrowsePage = () => {
                   </Row>
                 )
               ) : (
-                <>
-                  <br />
-                  <Spin
-                    size='large'
-                    tip='Fetching Games'
+                <Spin
+                  size='large'
+                  tip='Fetching Games'
+                  style={{
+                    color: 'inherit',
+                    textDecoration: 'inherit',
+                    backgroundColor: 'none',
+                  }}
+                >
+                  <Alert
                     style={{
-                      color: 'inherit',
                       textDecoration: 'inherit',
-                      backgroundColor: 'none',
                     }}
-                  >
-                    <Alert
-                      style={{
-                        color: 'inherit',
-                        textDecoration: 'inherit',
-                        backgroundColor: 'none',
-                      }}
-                      type='info'
-                    />
-                  </Spin>
-                </>
+                    type='info'
+                  />
+                </Spin>
               )}
             </Tabs.TabPane>
           )}

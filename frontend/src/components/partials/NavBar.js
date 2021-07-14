@@ -4,7 +4,6 @@ import { authContext } from '../../providers/AuthProvider';
 
 // components
 import Title from './Title';
-import avatar from '../../img/avatars/villain.png';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
 import SearchForm from '../partials/SearchForm';
@@ -56,20 +55,20 @@ const NavLinks = () => {
   const userMenu = (
     <Menu className='menu'>
       <Menu.Item key='0' className='menu-item'>
-        <a href='/users/:id'>
+        <Link to='/users/:id'>
           <ProfileOutlined
             style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
           />{' '}
           View Profile
-        </a>
+        </Link>
       </Menu.Item>
       <Menu.Item key='1' className='menu-item'>
-        <a href='/list/create'>
+        <Link to='/list/create'>
           <UnorderedListOutlined
             style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
           />{' '}
           Create List
-        </a>
+        </Link>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key='3' onClick={() => logoutHandler()} className='menu-item'>
@@ -106,12 +105,12 @@ const NavLinks = () => {
             Collection
           </button>
         ) : (
-          <a
-            href='/collections'
+          <Link
+            to='/collections'
             style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
             <button className='nav-link'>Collection</button>
-          </a>
+          </Link>
         )}
       </div>
       <div className='nav-user-links'>

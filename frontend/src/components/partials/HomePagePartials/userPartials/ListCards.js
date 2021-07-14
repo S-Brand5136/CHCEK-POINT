@@ -18,8 +18,6 @@ const ListCards = ({ games, tag, showAdd, reload }) => {
     });
   };
 
-  console.log(games);
-
   const gameCards = games.map((game, index) => (
     <Col lg={5} style={{ marginBottom: '2rem' }} key={index}>
       <GameCard

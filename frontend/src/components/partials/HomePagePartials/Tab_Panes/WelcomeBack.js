@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Row, Typography, Spin, Alert } from 'antd';
 import axios from 'axios';
 
-// components
 import TaggedGames from '../userPartials/TaggedGames';
 
 const WelcomeBack = () => {
@@ -52,9 +51,15 @@ const WelcomeBack = () => {
                 style={{
                   color: 'inherit',
                   textDecoration: 'inherit',
+                  textAlign: 'center',
                 }}
               >
-                <Alert message='' description='' type='info' />
+                <Alert
+                  style={{ textAlign: 'center', width: '10rem' }}
+                  message=''
+                  description=''
+                  type='info'
+                />
               </Spin>
             </div>
           )}
