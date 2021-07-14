@@ -1,6 +1,6 @@
 # CHECK-POINT 🕹️
 
-Track and get stats of what to play, when to play, and what you’ve played with CHECK-POINT !
+Track and get stats of games you play, how long you've played, and browse a catalog of games with CHECK-POINT !
 <br />
 <br />
 This video game tracker app has a catalogue for any user to browse through games, and view details on specific titles they’re interested in. Users can add ratings to the game, which will contribute to the game’s overall rating as well as their profile stats. On the main feed, users can view their collections of games they’re currently playing, wanting to play, have completed, and have dropped, as well as view other user’s activity. Outside of collections, users are also able to create their own lists of their choosing, and add games to them accordingly.
@@ -52,7 +52,17 @@ Target Audience:
 
 ## Screenshots <a name='screenshots'></a>
 
-THEY WILL EVENTUALLY GO HERE
+#### Home Page
+
+![Home Page](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/homepage_user.png)
+
+#### User Home Page
+
+![User Home Page](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/homepage_user.png)
+
+#### User Profile Page
+
+![User Profile](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/user_profile.png)
 
 ## Databse Set up <a name='database'></a>
 
