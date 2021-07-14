@@ -64,11 +64,11 @@ Target Audience:
 
 ![User Profile](https://github.com/S-Brand5136/CHECK-POINT/blob/master/docs/user_profile.png)
 
-## Databse Set up <a name='database'></a>
-
 ## Set up <a name='setUp'></a>
 
-make a git clone of this repository.
+#### All commands are run from the command line
+
+1. make a git clone of this repository.
 
 ```bash
   $ git clone https://github.com/S-Brand5136/CHECK-POINT
@@ -86,15 +86,33 @@ make a git clone of this repository.
   $ npm install
 ```
 
-4. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8000/>.
+#### Databse Set up <a name='database'></a>
+
+4. Within the express-back-end directory theres a .env.example file that can be found. It details the .env you should follow when setting up the database
+   [.env.example](https://github.com/S-Brand5136/CHECK-POINT/blob/master/express-back-end/.env.example)
+
+   - After the .env file has been set up and all dependencies installed, from the backend root directory run these 2 commands to create the tables and seed the database
+
+   ```bash
+     $ npx knex migrate:latest
+     $ npx knex seed:run
+   ```
+
+5. Start the web server using the `npm run server` command from within the backend directory. The app will be served at <http://localhost:8000/>.
 
 ```bash
   $ npm run local
 ```
 
-5. Go to <http://localhost:8000/> in your browser.
+6. Then from inside the front-end directory run `npm start` to start the react server
 
-## How to <a name='howTo'></a>
+```bash
+  $ npm start
+```
+
+7. Go to <http://localhost:8000/> in your browser.
+
+## How to login <a name='howTo'></a>
 
 Once the project has succesfully installed and been started up, feel free to log in with one of the following built in users.
 
@@ -115,6 +133,13 @@ Once the project has succesfully installed and been started up, feel free to log
 ```
 
 You can now start querying for games, and checking out their stats before or after logging in!
+
+## Future Developments <a name='future'></a>
+
+1. Forum for users to discuss games
+2. Reviews for users to share their thoughts on any title
+3. More stats
+4. Ability to add/follow friends
 
 ## Contributors <a name='contributors'></a>
 
