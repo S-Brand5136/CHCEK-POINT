@@ -61,9 +61,9 @@ const BrowsePage = () => {
         style={{ margin: '0 3rem 0  3rem', padding: '1rem 2rem 1rem 2rem' }}
       >
         <Typography.Title
-          level={3}
+          level={2}
           style={{ margin: '0rem 0rem 2rem 1rem', paddingTop: '1rem' }}
-          className='main-font'
+          className='title-font'
         >
           Explore through our Titles! Find something new!
         </Typography.Title>
