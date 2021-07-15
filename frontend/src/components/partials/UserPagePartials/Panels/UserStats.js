@@ -44,7 +44,7 @@ const UserStats = () => {
             className='title-font'
             onClick={() => clickHandler(BACKLOG)}
           >
-            LONGEST IN BACKLOG
+            LONGEST TIME BACKLOG
           </Button>
           <span className='divider-highlight'> | </span>
           <Button
@@ -55,7 +55,7 @@ const UserStats = () => {
             className='title-font'
             onClick={() => clickHandler(COMPELTED)}
           >
-            LONGEST COMPLETED RUN
+            TOP SPEED RUNS
           </Button>
         </div>
       </header>

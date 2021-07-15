@@ -12,10 +12,10 @@ const Footer = () => {
         Created by Brandon, Astrid, and Pavneet during their time at Lighthouse
         Labs
       </Typography.Paragraph>
-      <div style={{ color: 'white', textAlign: 'center' }}>
+      {/* <div style={{ color: 'white', textAlign: 'center' }}>
         Github Repo:{' '}
         <GithubOutlined style={{ marginLeft: '1rem', fontSize: '24px' }} />
-      </div>
+      </div> */}
     </div>
   );
 };

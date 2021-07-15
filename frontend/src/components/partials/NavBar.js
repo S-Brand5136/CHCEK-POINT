@@ -2,14 +2,12 @@ import { React, useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 
-// components
 import Title from './Title';
 import LoginForm from '../partials/LoginForm';
 import RegisterForm from '../partials/RegisterForm';
 import SearchForm from '../partials/SearchForm';
 import Notification from './Notification';
 
-// ant
 import { Button, Menu, Dropdown, Image } from 'antd';
 import {
   DownOutlined,
@@ -55,7 +53,7 @@ const NavLinks = () => {
   const userMenu = (
     <Menu className='menu'>
       <Menu.Item key='0' className='menu-item'>
-        <Link to='/users/:id'>
+        <Link to={user ? `/users/${user.id}` : '/'}>
           <ProfileOutlined
             style={{ marginRight: '.7rem', fontSize: '16px', color: 'purple' }}
           />{' '}

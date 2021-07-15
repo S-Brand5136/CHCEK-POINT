@@ -13,7 +13,7 @@ const GameCard = ({ image, title, id, hours, onDelete, visible }) => {
 
   return (
     <Card
-      style={{ borderRadius: '20px' }}
+      style={{ borderRadius: '20px 20px 0 0' }}
       hoverable
       cover={
         <img

@@ -88,7 +88,7 @@ const UserInfo = ({ user }) => {
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
-            Discord Tag:
+            Discord Username:
           </Typography.Text>
         </Col>
         <Col>

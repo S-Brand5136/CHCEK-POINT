@@ -38,7 +38,7 @@ exports.seed = function (knex) {
           avatar: 'https://image.flaticon.com/icons/png/512/3380/3380350.png',
           email: 'Brandon.Shemilt@example.com',
           platforms: 'PS4, PC',
-          bio: 'Hi',
+          bio: "Avid gamer who mainly plays on PS4 and PC. I love to play anything strategy especially if its warhammer related! If I'm gaming I am programming ! Don't be afraid to message me on discord.",
           in_game_usernames: "DJ Brandy'B",
           pronoun: 'he/him',
           birthdate: '1994-03-20',
