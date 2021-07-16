@@ -7,12 +7,13 @@ This video game tracker app has a catalogue for any user to browse through games
 
 ## Table of Contents 📖
 
-1. [Dependencies](#dependencies)
-2. [Screenshots](#screenshots)
-3. [Database Setup](#database)
-4. [Set up](#setUp)
-5. [How to](#howTo)
-6. [Contributors](#contributors)
+1. [Tech Stack](#techstack)
+2. [Dependencies](#dependencies)
+3. [Screenshots](#screenshots)
+4. [Database Setup](#database)
+5. [Set up](#setUp)
+6. [How to](#howTo)
+7. [Contributors](#contributors)
 
 ## Target Audienece 🙇
 
@@ -22,7 +23,7 @@ Target Audience:
 - those who may have trouble keeping track of their gaming
 - anyone that wants to see reliable reviews for games before trying them out/purchasing
 
-## Tech Stack
+## Tech Stack <a name='techstack'></a>
 
 For this project we used the PERN stack
 
