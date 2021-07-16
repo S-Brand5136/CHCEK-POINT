@@ -22,6 +22,15 @@ Target Audience:
 - those who may have trouble keeping track of their gaming
 - anyone that wants to see reliable reviews for games before trying them out/purchasing
 
+## Tech Stack
+
+For this project we used the PERN stack
+
+- Postgresql
+- Express
+- React
+- Nodejs
+
 ## Dependencies <a name='dependencies'></a>
 
 - Backend
@@ -32,10 +41,11 @@ Target Audience:
   - [knex](https://knexjs.org/)
   - [nodemon](https://www.npmjs.com/package/nodemon)
   - [pg](https://www.npmjs.com/package/pg)
+  - [postgresql](https://github.com/S-Brand5136/CHECK-POINT)
 
 - Frontend
-  - [Axios](https://axios-http.com/docs/intro)
   - [React](https://reactjs.org/)
+  - [Axios](https://axios-http.com/docs/intro)
   - [Ant.Design](https://ant.design/)
   - [Craco](https://www.npmjs.com/package/@craco/craco)
   - [Less](https://lesscss.org/)
@@ -91,7 +101,9 @@ Target Audience:
 4. Within the express-back-end directory theres a .env.example file that can be found. It details the .env you should follow when setting up the database
    [.env.example](https://github.com/S-Brand5136/CHECK-POINT/blob/master/express-back-end/.env.example)
 
-   - After the .env file has been set up and all dependencies installed, from the backend root directory run these 2 commands to create the tables and seed the database
+   - After the .env file has been set up and all dependencies installed, create a new postgresql database. This will match what you input in the .env file.
+
+   - Next, run these 2 commands to create the tables and seed the database
 
    ```bash
      $ npx knex migrate:latest
