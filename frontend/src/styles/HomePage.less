@@ -1,14 +1,13 @@
 .background-container {
-  background-image: url('../img/60-lines.png');
+  background-image: @primary-image;
 }
 
 .hero-section {
   margin-top: 4rem;
   min-height: 100vh;
-  background-color: #ecf0f3;
+  background-color: @bg-primary;
   border-radius: 20px;
-  box-shadow: 15px 18px 18px #afb4bd;
-  // box-shadow: 15px -18px -18px #fff;
+  box-shadow: @shadow-primary;
 
   .ant-tabs-nav-list {
     min-height: 100vh;
@@ -54,11 +53,11 @@
 
 button.visitor-btn {
   border-color: @gengar;
-  background-color: #ecf0f3;
+  background-color: @bg-primary;
 }
 
 button.visitor-btn:hover {
-  color: #fff;
+  color: @font-light;
   background-color: @gengar;
 }
 
@@ -70,20 +69,15 @@ div.fetch {
   align-items: center;
 }
 
-.close-button:hover {
-  color: rgb(182, 7, 7) !important;
-  cursor: pointer;
-}
-
 .user-activity {
-  box-shadow: 5px 5px 5px #afb4bd;
+  box-shadow: @shadow-primary-small;
   padding: 2rem;
   border-radius: 10px;
   width: 45rem;
 }
 
 .user-activity:hover {
-  box-shadow: 10px 10px 10px #afb4bd;
+  box-shadow: @shadow-hover;
 }
 .gameLogo {
   display: flex;
