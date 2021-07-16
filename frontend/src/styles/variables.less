@@ -5,6 +5,8 @@
 // GOOGLE FONTS: VT323, Ubuntu
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=VT323&display=swap');
 
+// colours
+
 @mascot-purple-1: rgba(188, 135, 227, 1);
 @mascot-purple-2: rgba(156, 83, 211, 1);
 @mascot-purple-3: rgba(174, 163, 255, 1);
@@ -18,8 +20,16 @@
 @steel-blue: rgba(150, 187, 232, 1);
 @dark-blue: rgba(18, 0, 82, 1);
 
-@fade-in: 0.3s ease-in-out;
 @game-title-bg: rgba(150, 187, 232, 0.3);
+
+// hover
+@card-userpage-hover: rgba(54, 69, 79, 0.9);
+
+@title-gradient: linear-gradient(
+  rgba(123, 88, 156, 0.8),
+  rgba(204, 172, 230, 0.2)
+);
+@nav-gradient: linear-gradient(to right, @pinky-purple, @gengar);
 
 // Fonts
 @title-font: 'VT323', monospace;
@@ -32,14 +42,30 @@
 @primary-image: url('../img/60-lines.png');
 
 // Background color
-@bg-primary: #ecf0f3;
+@bg-primary: rgba(236, 240, 243, 1);
+@secondary-gradient: linear-gradient(
+  to bottom,
+  @pinky-purple 10%,
+  @gengar 88%,
+  @gengar 5%
+);
 
 // Boxshadow
-@shadow-primary: 15px 18px 18px #afb4bd;
-@shadow-primary-small: 5px 5px 5px #afb4bd;
-@shadow-hover: 10px 10px 10px #afb4bd;
+@shadow-primary: 15px 18px 18px rgba(175, 180, 189, 1);
+@shadow-primary-small: 5px 5px 5px rgba(175, 180, 189, 1);
+@shadow-hover: 10px 10px 10px rgba(175, 180, 189, 1);
 
-// ANT DESIGN VARIABLES
+// transition
+@fade-in: 0.3s ease-in-out;
+
+.nav-link-hover {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+// ant design overriden variables
 @primary-color: @gengar;
 @info-color: @steel-blue;
 @card-shadow: 0 1px 2px -2px rgba(150, 187, 232, 0.479),

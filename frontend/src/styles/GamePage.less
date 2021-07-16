@@ -1,7 +1,7 @@
 section.game-page {
   min-height: 100vh;
   padding-bottom: 5rem;
-  background-image: url('../img/60-lines.png');
+  background-image: @primary-image;
 
   // HEADER
   .game-header {
@@ -12,11 +12,8 @@ section.game-page {
     .game-header-title {
       border-top: 2px solid rgba(123, 88, 156, 0.8);
       border-bottom: 2px solid linear-gradient(rgba(123, 88, 156, 0.8), #fff);
-      border-right: 2px solid linear-gradient(rgba(123, 88, 156, 0.5), #fff);
-      background: linear-gradient(
-        rgba(123, 88, 156, 0.8),
-        rgba(204, 172, 230, 0.2)
-      );
+      border-right: 2px solid linear-gradient(rgba(204, 172, 230, 0.2), #fff);
+      background: @title-gradient;
       border-radius: 3px;
       font-family: @title-font;
       width: 95%;
@@ -44,11 +41,11 @@ section.game-page {
 
     .game-add-btn:hover {
       color: white;
-      border-color: #96bbe8;
+      border-color: @steel-blue;
     }
 
     .game-add-btn:focus {
-      border-color: #96bbe8;
+      border-color: @steel-blue;
     }
 
     img {
@@ -117,10 +114,8 @@ section.game-page {
     margin-top: 5rem;
 
     aside.game-tags {
-      // border: 1px solid black;
-      box-shadow: 15px 18px 18px #afb4bd;
-      // box-shadow: 15px -18px -18px #fff;
-      background-color: #ecf0f3;
+      box-shadow: @shadow-primary;
+      background-color: @bg-primary;
       padding: 20px;
       position: relative;
       left: 5.5rem;
@@ -137,9 +132,8 @@ section.game-page {
       padding: 2rem;
       width: 45%;
       height: 40%;
-      box-shadow: 15px 18px 18px #afb4bd;
-      box-shadow: 15px -18px -18px #fff;
-      background-color: #ecf0f3;
+      box-shadow: @shadow-primary;
+      background-color: @bg-primary;
       p {
         font-size: 16px;
       }
@@ -150,8 +144,8 @@ section.game-page {
     }
 
     .tag-button:hover {
-      color: white;
-      border-color: #96bbe8;
+      color: @font-light;
+      border-color: @steel-blue;
     }
   }
 
@@ -193,9 +187,8 @@ section.game-page {
   div.user-dashboard {
     margin: 5rem 5.5rem 0 10.5rem;
     padding: 5rem;
-    box-shadow: 15px 18px 18px #afb4bd;
-    box-shadow: 15px -18px -18px #fff;
-    background-color: #ecf0f3;
+    box-shadow: @shadow-primary;
+    background-color: @bg-primary;
   }
 }
 

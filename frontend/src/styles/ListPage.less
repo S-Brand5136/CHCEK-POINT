@@ -4,11 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('../img/60-lines.png');
+  background-image: @primary-image;
 
   .container {
-    background-image: url('../img/60-lines.png'),
-      linear-gradient(to bottom, @pinky-purple 10%, @gengar 88%, @gengar 5%);
+    background-image: @primary-image, @secondary-gradient;
     height: 90%;
     width: 70%;
     border-radius: 20px;
@@ -16,9 +15,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    box-shadow: 15px 18px 18px #afb4bd;
-    box-shadow: 15px -18px -18px #fff;
-    background-color: #ecf0f3;
+    box-shadow: @shadow-primary;
 
     .form-info {
       display: flex;
@@ -38,7 +35,7 @@
 
       h1 {
         align-self: baseline;
-        color: #fff;
+        color: @font-light;
         margin-top: 1rem;
         font-family: @title-font;
         text-align: center;
@@ -46,7 +43,7 @@
       }
 
       h3 {
-        color: #fff;
+        color: @font-light;
         margin-bottom: 25rem;
         font-family: @title-font;
       }
@@ -71,7 +68,7 @@
     .add-form {
       height: 100%;
       width: 50%;
-      background-color: #ecf0f3;
+      background-color: @bg-primary;
       border-radius: 30px 19px 19px 30px;
     }
   }
