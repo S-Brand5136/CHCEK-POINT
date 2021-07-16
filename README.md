@@ -98,7 +98,7 @@ For this project we used the PERN stack
 
 #### Databse Set up <a name='database'></a>
 
-4. Within the express-back-end directory theres a .env.example file that can be found. It details the .env you should follow when setting up the database
+4. Within the express-back-end directory theres a .env.example file that can be found. It details the .env you should follow when setting up the database. Including an example username and password. These values can be kept, but if they're not make sure you update them when copying them over into the main .env file.
    [.env.example](https://github.com/S-Brand5136/CHECK-POINT/blob/master/express-back-end/.env.example)
 
    - After the .env file has been set up and all dependencies installed, create a new postgresql database. This will match what you input in the .env file.
