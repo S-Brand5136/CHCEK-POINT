@@ -44,7 +44,7 @@ const UserStats = () => {
             className='title-font'
             onClick={() => clickHandler(BACKLOG)}
           >
-            LONGEST TIME BACKLOG
+            LONGEST TIME IN BACKLOG
           </Button>
           <span className='divider-highlight'> | </span>
           <Button
