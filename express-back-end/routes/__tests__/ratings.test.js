@@ -9,6 +9,7 @@ beforeAll(async () => {
 });
 
 describe('Testing /ratings route..', () => {
+  // Route: /api/ratings/:id
   test('it should return a game ratings when given a valid ID', async () => {
     const response = await request(app).get('/api/ratings/5');
     expect(response.statusCode).toBe(200);
@@ -19,6 +20,7 @@ describe('Testing /ratings route..', () => {
     expect(response.statusCode).toBe(404);
   });
 
+  // Route: /api/ratings
   test('it should add a new rating to a game when sent valid data', async () => {
     const response = await request(app)
       .post('/api/ratings')
