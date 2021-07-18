@@ -8,7 +8,7 @@ beforeAll(async () => {
   await db.seed.run();
 });
 
-describe('Test the /ratings path', () => {
+describe('Testing /ratings route..', () => {
   test('it should return a game ratings when given a valid ID', async () => {
     const response = await request(app).get('/api/ratings/5');
     expect(response.statusCode).toBe(200);
