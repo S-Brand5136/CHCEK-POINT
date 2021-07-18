@@ -3,21 +3,21 @@ const router = require('express').Router();
 // TODO: Add delete route
 
 module.exports = (db) => {
-  // GET: User lists
-  router.get('/:userId', (req, res) => {
-    db('users_lists')
-      .select('users_lists.list_title', 'users_lists.id')
-      .count('game.id')
-      .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
-      .groupBy('users_lists.list_title', 'users_lists.id')
-      .where('user_id', req.params.userId)
-      .then((data) => {
-        return res.status(200).json({ data });
-      });
-  });
+  // // GET: User lists
+  // router.get('/:userId', (req, res) => {
+  //   db('users_lists')
+  //     .select('users_lists.list_title', 'users_lists.id')
+  //     .count('game.id')
+  //     .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
+  //     .groupBy('users_lists.list_title', 'users_lists.id')
+  //     .where('user_id', req.params.userId)
+  //     .then((data) => {
+  //       return res.status(200).json({ data });
+  //     });
+  // });
 
   // GET: User lists
-  router.get('/user/:userId', (req, res) => {
+  router.get('/:userId', (req, res) => {
     db('game')
       .select(
         'users_lists.id as listID',
@@ -35,50 +35,6 @@ module.exports = (db) => {
       .where('users_lists.user_id', req.params.userId)
       .orderBy('list_id')
       .then((list) => {
-        // const collection = {};
-        // const lists = {};
-
-        // for (const item of list) {
-        //   if (item.category === 'Stats' && !collection[item.list_title]) {
-        //     collection[item.list_title] = [];
-        //     const category = item.category;
-        //     const id = item.listID;
-        //     collection[item.list_title].push(category);
-        //     collection[item.list_title].push(id);
-        //   }
-
-        //   if (item.category === 'Stats' && collection[item.list_title]) {
-        //     collection[item.list_title].push({
-        //       name: item.name,
-        //       hours_played: item.num_hours_played,
-        //       background_image: item.background_image,
-        //       id: item.gameID,
-        //       game_id: item.game_id,
-        //     });
-        //   }
-        // }
-
-        // for (const item of list) {
-        //   if (item.category !== 'Stats' && !lists[item.list_title]) {
-        //     lists[item.list_title] = [];
-        //     const category = item.category;
-        //     const id = item.listID;
-        //     lists[item.list_title].push(category);
-        //     lists[item.list_title].push(id);
-        //   }
-
-        //   if (item.category !== 'Stats' && lists[item.list_title]) {
-        //     lists[item.list_title].push({
-        //       name: item.name,
-        //       hours_played: item.num_hours_played,
-        //       background_image: item.background_image,
-        //       id: item.gameID,
-        //       game_id: item.game_id,
-        //     });
-        //   }
-        // }
-
-        // return res.status(200).json({ list, collection, lists });
         return res.status(200).json({ list });
       })
       .catch((err) => {
@@ -86,6 +42,7 @@ module.exports = (db) => {
       });
   });
 
+  // DELETE: A game from a users list
   router.delete('/delete/:id', (req, res) => {
     db('game')
       .where('game.id', req.params.id)
@@ -107,7 +64,7 @@ module.exports = (db) => {
       })
       .catch((err) => {
         console.log(err);
-        res.status(500).json({
+        res.status(400).json({
           Error: 'Sorry, there was an error while creating the list!',
         });
       });
