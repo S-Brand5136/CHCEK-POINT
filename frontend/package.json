@@ -45,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "install-peers": "^1.0.3",
-    "sass": "^1.35.1"
+    "install-peers": "^1.0.3"
   }
 }
