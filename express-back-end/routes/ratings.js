@@ -13,9 +13,8 @@ module.exports = (db) => {
         return res.status(200).json({ success: true });
       })
       .catch((err) => {
-        console.log(err);
         res
-          .status(500)
+          .status(400)
           .json({ Error: 'Sorry, there was an error during rating post!' });
       });
   });
@@ -35,13 +34,15 @@ module.exports = (db) => {
       )
       .groupBy('games_catalog.name')
       .then((game) => {
-        return res.status(200).json({ game });
+        if (!game.length <= 0) {
+          return res.status(200).json({ game });
+        }
+        throw Error;
       })
       .catch((err) => {
-        console.log(err);
-        res
-          .status(500)
-          .json({ Error: 'Sorry, there was an error during rating post!' });
+        res.status(404).json({
+          Error: 'Sorry, there was an error finding this titles ratings!',
+        });
       });
   });
 
