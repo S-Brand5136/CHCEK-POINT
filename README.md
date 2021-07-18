@@ -13,7 +13,8 @@ This video game tracker app has a catalogue for any user to browse through games
 4. [Database Setup](#database)
 5. [Set up](#setUp)
 6. [How to](#howTo)
-7. [Contributors](#contributors)
+7. [Testing](#tests)
+8. [Contributors](#contributors)
 
 ## Target Audienece 🙇
 
@@ -45,6 +46,7 @@ For this project we used the PERN stack
   - [postgresql](https://github.com/S-Brand5136/CHECK-POINT)
 
 - Frontend
+
   - [React](https://reactjs.org/)
   - [Axios](https://axios-http.com/docs/intro)
   - [Ant.Design](https://ant.design/)
@@ -53,13 +55,12 @@ For this project we used the PERN stack
   - [Chartjs](https://www.chartjs.org/)
   - [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)
 
-#### - Dev Dependencies
+- Dev Dependencies + Testing Libraries
 
-- [Storybook](https://storybook.js.org/)
-- [node-sass](https://www.npmjs.com/package/node-sass)
-- [prop-types](https://www.npmjs.com/package/prop-types)
-- [react-hooks-testing-library](https://react-hooks-testing-library.com/)
-- [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
+  - [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
+  - [react-hooks-testing-library](https://react-hooks-testing-library.com/)
+  - [Jest](https://jestjs.io/)
+  - [supertest](https://www.npmjs.com/package/supertest)
 
 ## Screenshots <a name='screenshots'></a>
 
@@ -147,12 +148,26 @@ Once the project has succesfully installed and been started up, feel free to log
 
 You can now start querying for games, and checking out their stats before or after logging in!
 
-## Future Developments <a name='future'></a>
+## Testing <a name='tests'></a>
 
-1. Forum for users to discuss games
-2. Reviews for users to share their thoughts on any title
-3. More stats
-4. Ability to add/follow friends
+As of right now, only the backend has some tests implemented.
+<br />
+Backend route tests were created with Jest and Supertest. Follow these steps to start testing..
+
+1. Create a new test database in psql. In order for it work, the database name **must** be `checkpoint_test`. This is because the name has been hardcoded into the `knexfile.js` inside of the test object.
+
+```bash
+  $ psql
+  $ [postgresql] - CREATE DATABASE checkpoint_test;
+```
+
+2. After the database has been created, from the root `express-back-end` folder run this command.
+
+```bash
+  $ npm run test
+```
+
+Jest will automatically set the NODE_ENV variable to test, knex will switch form the production to test database, and start running all of the tests from the **tests** directory.
 
 ## Contributors <a name='contributors'></a>
 
@@ -169,3 +184,10 @@ You can now start querying for games, and checking out their stats before or aft
 - Astrid Aguilar
   - [Github](https://github.com/astridcha1x)
   - [Linkedin](https://www.linkedin.com/in/pavneet-k-a139b3108/)
+
+## Future Developments <a name='future'></a>
+
+1. Forum for users to discuss games
+2. Reviews for users to share their thoughts on any title
+3. More stats
+4. Ability to add/follow friends
