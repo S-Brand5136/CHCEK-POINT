@@ -11,48 +11,51 @@ beforeAll(async () => {
 describe('Testing /auth route...', () => {
   // Route /api/auth/register
   test('When given valid data, create a new user', async () => {
-    const response = await request(app).post('api/auth/register').send({
+    const response = await request(app).post('/api/auth/register').send({
       username: 'example_user',
       email: 'example@example.com',
       password: '12345',
+      avatar: 'https://image.flaticon.com/icons/png/512/3506/3506917.png',
     });
     expect(response.statusCode).toBe(200);
-    expect(response.user.username).toBe('example_user');
-    expect(response.user.email).toBe('example@example.com');
-    expect(response.user.password).toBe('12345');
-    expect(response.success).toBe(true);
+    expect(response.body.user.username).toBe('example_user');
+    expect(response.body.user.email).toBe('example@example.com');
+    expect(response.body.user.avatar).toBe(
+      'https://image.flaticon.com/icons/png/512/3506/3506917.png'
+    );
+    expect(response.body.success).toBe(true);
   });
 
-  test('When invalid data is given, return 400 code with error message', async () => {
-    const response = await request(app).post('api/auth/register').send({
+  test('When invalid data is given, return 401 code with error message', async () => {
+    const response = await request(app).post('/api/auth/register').send({
       username: null,
       email: undefined,
       password: '12345',
     });
     expect(response.statusCode).toBe(401);
-    expect(response.error).toBe(
+    expect(response.body.error).toBe(
       'There was an error during registration! Try again'
     );
   });
 
   // Route /api/auth/login
   test('When given valid user credentials, login', async () => {
-    const response = await request(app).post('/api/auth/loign').send({
+    const response = await request(app).post('/api/auth/login').send({
       email: 'Brandon.Shemilt@example.com',
       password: '12345',
     });
     expect(response.statusCode).toBe(200);
-    expect(response.user.email).toBe('Brandon.Shemilt@example.com');
-    expect(response.user.userName).toBe('Brandon');
+    expect(response.body.user.email).toBe('Brandon.Shemilt@example.com');
+    expect(response.body.user.username).toBe('Brandon');
   });
 
   test('When given invalid user credentials, return 401 with error message', async () => {
-    const response = await request(app).post('/api/auth/loign').send({
+    const response = await request(app).post('/api/auth/login').send({
       email: null,
       password: undefined,
     });
     expect(response.statusCode).toBe(401);
-    expect(response.error).toBe('Invalid Credentials');
+    expect(response.body.error).toBe('Invalid Credentials');
   });
 
   afterAll((done) => {
