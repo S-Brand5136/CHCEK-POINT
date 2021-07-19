@@ -11,32 +11,32 @@ beforeAll(async () => {
 describe('Testsing /lists route..', () => {
   // Route: /api/lists/:userId
   test('it should return a users lists when passed valid user_id', async () => {
-    const response = request(app).get('api/lists/3');
+    const response = await request(app).get('api/lists/3');
     expect(response.statusCode).toBe(200);
     expect(response.body.list.length).toBeGreatherThanOrEqual(4);
   });
 
   test('it should return a 404 when passed an invalid user_id', async () => {
-    const response = request(app).get('api/lists/5');
+    const response = await request(app).get('api/lists/5');
     expect(response.statusCode).toBe(404);
   });
 
   // Route: /api/lists/delete/:id
   test('it should delete a game from a users list when passed a valid id', async () => {
-    const response = request(app).delete('api/lists/delete/3');
+    const response = await request(app).delete('api/lists/delete/3');
     expect(response.statusCode).toBe(200);
     expect(response.body.msg).toBe('Sucessfully removed game from list');
     expect(response.body.game);
   });
 
   test('it should return a 400 when when passed an invalid id', async () => {
-    const response = request(app).delete('api/lists/delete/101');
+    const response = await request(app).delete('api/lists/delete/101');
     expect(response.statusCode).toBe(400);
   });
 
   // Route: /api/lists/create
   test('it should create a new list when given a valid user_id', async () => {
-    const response = request(app)
+    const response = await request(app)
       .post('/api/lists/create')
       .send({ user_id: 3, list_title: 'Wishlist', category: 'user_made' });
     expect(response.statusCode).toBe(200);
@@ -45,7 +45,7 @@ describe('Testsing /lists route..', () => {
   });
 
   test('it should return a 400 when given a valid user_id but bad form data', async () => {
-    const response = request(app)
+    const response = await request(app)
       .post('/api/lists/create')
       .send({ user_id: -1, list_title: 'Wishlist', category: 'user_made' });
     expect(response.statusCode).toBe(400);
@@ -55,7 +55,7 @@ describe('Testsing /lists route..', () => {
   });
 
   test('it should return a 400 when missing any form data', async () => {
-    const response = request(app)
+    const response = await request(app)
       .post('/api/lists/create')
       .send({ user_id: undefined, list_title: null, category: null });
     expect(response.statusCode).toBe(400);
@@ -66,7 +66,7 @@ describe('Testsing /lists route..', () => {
 
   // Route: /api/lists/:id/:game_id
   test('it should add a new game to an existing list when given a valid list id and game id', async () => {
-    const response = request(app).put('/api/lists/2/15').send({
+    const response = await request(app).put('/api/lists/2/15').send({
       num_hours_played: 50,
       list_id: 2,
       game_id: 15,
@@ -77,7 +77,7 @@ describe('Testsing /lists route..', () => {
   });
 
   test('it should return a 400 when given invalid data', async () => {
-    const response = request(app).put('/api/lists/4/-1').send({
+    const response = await request(app).put('/api/lists/4/-1').send({
       num_hours_played: null,
       list_id: null,
       game_id: null,
@@ -90,14 +90,14 @@ describe('Testsing /lists route..', () => {
 
   // Route: /api/lists/users/activity
   test('it should return a list of recent user activity', async () => {
-    const response = request(app).get('/api/lists/users/activity');
+    const response = await request(app).get('/api/lists/users/activity');
     expect(response.statusCode).toBe(200);
     expect(response.list).toBeGreatherThanOrEqual(5);
   });
 
   test('it should return a 404 when theres a problem fetching data', async () => {
     db.migrate.rollback();
-    const response = request(app).get('/api/lists/users/activity');
+    const response = await request(app).get('/api/lists/users/activity');
     expect(response.statusCode).toBe(404);
     expect(response.list).toBe(undefined);
   });
