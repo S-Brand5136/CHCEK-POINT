@@ -3,18 +3,18 @@ const router = require('express').Router();
 // TODO: Add delete route
 
 module.exports = (db) => {
-  // // GET: User lists
-  // router.get('/:userId', (req, res) => {
-  //   db('users_lists')
-  //     .select('users_lists.list_title', 'users_lists.id')
-  //     .count('game.id')
-  //     .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
-  //     .groupBy('users_lists.list_title', 'users_lists.id')
-  //     .where('user_id', req.params.userId)
-  //     .then((data) => {
-  //       return res.status(200).json({ data });
-  //     });
-  // });
+  // GET: User lists
+  router.get('/:userId', (req, res) => {
+    db('users_lists')
+      .select('users_lists.list_title', 'users_lists.id')
+      .count('game.id')
+      .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
+      .groupBy('users_lists.list_title', 'users_lists.id')
+      .where('user_id', req.params.userId)
+      .then((data) => {
+        return res.status(200).json({ data });
+      });
+  });
 
   // GET: User lists
   router.get('/:userId', (req, res) => {
