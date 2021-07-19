@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 module.exports = (db) => {
   // POST: a new user
-  router.post('/', (req, res) => {
+  router.post('/register', (req, res) => {
     const { username, password, email } = req.body;
     db('users')
       .insert({ email, username, password })
@@ -18,7 +18,7 @@ module.exports = (db) => {
 
   // GET: a users details for login
   // RETURNS: A user object
-  router.get('/', async (req, res) => {
+  router.post('/login', async (req, res) => {
     const { email, password } = req.query;
     db('users')
       .select()
