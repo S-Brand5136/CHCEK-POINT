@@ -1,7 +1,7 @@
 import { Row, Col, Statistic, Card, Typography } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 
-const UserDashboard = ({ list, title }) => {
+const UserDashboard = ({ title }) => {
   return (
     <div className='user-dashboard'>
       <Row>
