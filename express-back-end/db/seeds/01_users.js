@@ -33,17 +33,17 @@ exports.seed = function (knex) {
           discord_username: 'RINNE#6330',
         },
         {
-          username: 'Brandon',
+          username: 'Example User',
           password: '12345',
           avatar: 'https://image.flaticon.com/icons/png/512/3380/3380350.png',
-          email: 'Brandon.Shemilt@example.com',
+          email: 'Example.User@example.com',
           platforms: 'PS4, PC',
           bio: "Avid gamer who mainly plays on PS4 and PC. I love to play anything strategy especially if its warhammer related! If I'm gaming I am programming ! Don't be afraid to message me on discord.",
-          in_game_usernames: "DJ Brandy'B",
+          in_game_usernames: 'ExampleUser50',
           pronoun: 'he/him',
           birthdate: '1994-03-20',
           timezone: 'UTC-6',
-          discord_username: 'Brandon Shemilt',
+          discord_username: 'Examp-man',
         },
       ]);
     });
