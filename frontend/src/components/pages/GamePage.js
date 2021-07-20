@@ -1,25 +1,26 @@
 import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { authContext } from '../../providers/AuthProvider';
-import { Skeleton } from 'antd';
 import GameHeader from '../partials/GamePage/GameHeader';
 import TagsAside from '../partials/GamePage/TagsAside';
 import GameStats from '../partials/GamePage/GameStats';
-
+import { Skeleton } from 'antd';
 import { CalendarOutlined } from '@ant-design/icons';
 
-const GamePage = ({ location }) => {
+const GamePage = () => {
   const [game, setGame] = useState(null);
   const [tags, setTags] = useState(null);
   const [reload, setReload] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { user, userCollection, getUserDetails } = useContext(authContext);
+  const { user, userLists, userCollection, getUserDetails } =
+    useContext(authContext);
+  const { id } = useParams();
 
   useEffect(() => {
-    const gameId = location.pathname.slice(-2);
     axios
-      .get(`/api/games/${gameId}`)
+      .get(`/api/games/${id}`)
       .then((res) => {
         setGame(res.data.game[0]);
         setTags(res.data.tag_list);
@@ -30,7 +31,7 @@ const GamePage = ({ location }) => {
         }, 1000);
       });
     setReload(null);
-  }, [location.pathname, reload]);
+  }, [id, reload]);
 
   return (
     <section className='game-page'>
@@ -39,6 +40,7 @@ const GamePage = ({ location }) => {
         user={user}
         userCollection={userCollection}
         getDetails={getUserDetails}
+        lists={userLists}
         reload={() => setReload(true)}
       />
       <main>
