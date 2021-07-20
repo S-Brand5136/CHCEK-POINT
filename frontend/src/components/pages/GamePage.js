@@ -49,16 +49,17 @@ const GamePage = ({ location }) => {
           <h2>
             Released <span className='divider'> |</span>
           </h2>
-          <p>
-            <CalendarOutlined />{' '}
-            {loading ? <Skeleton active /> : game.released.slice(0, 10)}
-          </p>
+          {loading ? (
+            <Skeleton active />
+          ) : (
+            <p>
+              <CalendarOutlined /> {game && game.released.slice(0, 10)}
+            </p>
+          )}
           <h2>
             About <span className='divider'> |</span>
           </h2>
-          <div>
-            <p>{loading ? <Skeleton active /> : game.description}</p>
-          </div>
+          <div>{loading ? <Skeleton active /> : <p>{game.description}</p>}</div>
         </section>
       </main>
       <footer>
