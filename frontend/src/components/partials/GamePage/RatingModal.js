@@ -15,10 +15,9 @@ const RatingModal = ({ visible, cancel, game, user, reload }) => {
   const submitHandler = () => {
     if (userRating) {
       axios.post(`/api/ratings/`, { userRating }).then((res) => {
-        console.log(res);
+        reload();
+        cancel();
       });
-      reload();
-      cancel();
     }
   };
 
