@@ -18,8 +18,8 @@ const AddForm = ({ userId, getDetails }) => {
 
   useEffect(() => {
     if (userId) {
-      axios.get(`/api/lists/${userId}`).then((res) => {
-        setUserLists(res.data.data);
+      axios.get(`/api/lists/stats/${userId}`).then((res) => {
+        setUserLists(res.data.list);
       });
     }
     axios.get(`/api/games`).then((res) => {
@@ -29,7 +29,7 @@ const AddForm = ({ userId, getDetails }) => {
 
   const clickHandler = () => {
     if (game && list) {
-      if (hours === 0) setHours(1);
+      if (hours <= 0) setHours(0);
       setLoading(true);
       axios
         .put(`/api/lists/${list[0].id}/${game[0].id}`, {

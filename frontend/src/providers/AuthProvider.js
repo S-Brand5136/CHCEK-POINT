@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Notification from '../components/partials/Notification';
+import filterLists from '../helpers/filter_lists';
+import filterCollections from '../helpers/filter_collections';
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
@@ -9,9 +11,10 @@ export default function AuthProvider(props) {
   const [userLists, setUsersLists] = useState(null);
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setUser(JSON.parse(localStorage.getItem('user')));
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+      getUserDetails(storedUser.id);
     }
   }, []);
 
@@ -69,9 +72,9 @@ export default function AuthProvider(props) {
   };
 
   const getUserDetails = async function (id) {
-    await axios.get(`/api/users/${id}`).then((res) => {
-      setUsersCollection(res.data.collection);
-      setUsersLists(res.data.lists);
+    await axios.get(`/api/lists/${id}`).then((res) => {
+      setUsersCollection(filterCollections(res.data));
+      setUsersLists(filterLists(res.data));
     });
   };
 

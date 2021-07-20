@@ -41,10 +41,8 @@ const UserLists = ({ lists }) => {
 
     let counter = 0;
     for (const list in lists) {
-      console.log(list);
-
       result.push(
-        <section onClick={() => clickHandler()}>
+        <section key={counter} onClick={() => clickHandler()}>
           <div style={colours[counter]}>
             <Typography.Title level={3}>{list}</Typography.Title>
             <Typography.Title level={4}>

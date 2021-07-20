@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { Row, Col, Typography, Divider, Button, Spin } from 'antd';
 import Notification from '../Notification';
 
-// TODO: Hook up fake way of udpating info ( ant.design typography editable is being dumb )
-
 const UserInfo = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [editInfo, setEditInfo] = useState(false);
@@ -46,7 +44,6 @@ const UserInfo = ({ user }) => {
         </Col>
       </Row>
 
-      {/* user name */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -65,7 +62,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* email */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -84,7 +80,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* discord_name */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -103,7 +98,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* timezone */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -122,7 +116,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* Pronoun */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -141,7 +134,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* Birfdate */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
@@ -160,7 +152,6 @@ const UserInfo = ({ user }) => {
         <Divider style={{ borderColor: 'light-gray', margin: '.4rem' }} />
       </Row>
 
-      {/* Joined On */}
       <Row justify='space-between' align='middle'>
         <Col>
           <Typography.Text strong level={4} style={{ margin: '0' }}>
