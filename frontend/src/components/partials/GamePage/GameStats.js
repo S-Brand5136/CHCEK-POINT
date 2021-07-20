@@ -1,7 +1,7 @@
 import { Row, Col, Statistic, Card, Typography } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 
-const UserDashboard = ({ title }) => {
+const GameStats = ({ title }) => {
   return (
     <div className='user-dashboard'>
       <Row>
@@ -63,4 +63,4 @@ const UserDashboard = ({ title }) => {
   );
 };
 
-export default UserDashboard;
+export default GameStats;

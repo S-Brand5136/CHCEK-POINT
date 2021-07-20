@@ -4,7 +4,7 @@ import { authContext } from '../../providers/AuthProvider';
 import { Skeleton } from 'antd';
 import GameHeader from '../partials/GamePage/GameHeader';
 import TagsAside from '../partials/GamePage/TagsAside';
-import UserDashboard from '../partials/GamePage/UserDashboard';
+import GameStats from '../partials/GamePage/GameStats';
 
 import { CalendarOutlined } from '@ant-design/icons';
 
@@ -14,8 +14,7 @@ const GamePage = ({ location }) => {
   const [reload, setReload] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { user, userLists, userCollection, getUserDetails } =
-    useContext(authContext);
+  const { user, userCollection, getUserDetails } = useContext(authContext);
 
   useEffect(() => {
     const gameId = location.pathname.slice(-2);
@@ -39,7 +38,6 @@ const GamePage = ({ location }) => {
         game={game}
         user={user}
         userCollection={userCollection}
-        lists={userLists}
         getDetails={getUserDetails}
         reload={() => setReload(true)}
       />
@@ -63,7 +61,7 @@ const GamePage = ({ location }) => {
         </section>
       </main>
       <footer>
-        <UserDashboard />
+        <GameStats />
       </footer>
     </section>
   );
