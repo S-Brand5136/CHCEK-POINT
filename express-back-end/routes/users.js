@@ -29,8 +29,7 @@ module.exports = (db) => {
         .join('game', 'game.list_id', '=', 'users_lists.id')
         .join('games_catalog', 'games_catalog.id', '=', 'game.game_id')
         .where('users_lists.user_id', id)
-        .andWhere('users_lists.list_title', 'Completed')
-        .orderBy('game.created_on')
+        .orderBy('game.num_hours_played', 'desc')
         .limit(4),
       db('users_lists')
         .select('games_catalog.name', 'game.created_on')
@@ -54,7 +53,7 @@ module.exports = (db) => {
             userStats: [
               { longestPlayed: values[0] },
               { longestInBacklog: values[1] },
-              { speedRuns: [2] },
+              { speedRuns: values[2] },
             ],
           });
         }
