@@ -18,7 +18,7 @@ const UserPage = () => {
         <UserInfo user={user} />
         <UserAbout user={user} />
       </div>
-      <UserPanel lists={userLists} collections={userCollection} />
+      <UserPanel user={user} lists={userLists} collections={userCollection} />
     </main>
   );
 };
