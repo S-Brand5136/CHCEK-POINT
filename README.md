@@ -132,16 +132,8 @@ Once the project has succesfully installed and been started up, feel free to log
 
 ```JSON
         {
-          "password": "123",
-          "email": "pav@example.com"
-        },
-        {
-          "password": "67890",
-          "email": "fakerinne@example.com"
-        },
-        {
           "password": "12345",
-          "email": "Brandon.Shemilt@example.com"
+          "email": "Example.User@example.com"
         },
 
 ```
