@@ -1,5 +1,5 @@
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Button, Spin } from 'antd';
 import MostPlayedChart from '../charts/MostPlayedChart';
 import BacklogChart from '../charts/BacklogChart';
@@ -10,8 +10,22 @@ const BACKLOG = 'BACKLOG';
 const COMPELTED = 'COMPLETED';
 const LOADING = 'LOADING';
 
-const UserStats = () => {
+const UserStats = ({ user }) => {
   const [chartSelect, setChartSelect] = useState(MOST_PLAYED);
+  const [mostPlayed, setMostPlayed] = useState(null);
+  const [backlog, setBacklog] = useState(null);
+  const [speedRun, setSpeedRun] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      axios.get(`/api/users/${user.id}/stats/`).then((res) => {
+        console.log(res.data);
+        setMostPlayed(res.data.userStats[0]);
+        setBacklog(res.data.userStats[1]);
+        setSpeedRun(res.data.userStats[2]);
+      });
+    }
+  }, [user]);
 
   const clickHandler = (chart) => {
     setChartSelect(LOADING);
@@ -60,9 +74,11 @@ const UserStats = () => {
         </div>
       </header>
       <main className='panel-body chart-body'>
-        {chartSelect === MOST_PLAYED && <MostPlayedChart />}
-        {chartSelect === BACKLOG && <BacklogChart />}
-        {chartSelect === COMPELTED && <CompletedChart />}
+        {chartSelect === MOST_PLAYED && (
+          <MostPlayedChart mostPlayed={mostPlayed} />
+        )}
+        {chartSelect === BACKLOG && <BacklogChart backlog={backlog} />}
+        {chartSelect === COMPELTED && <CompletedChart speedRun={speedRun} />}
         {chartSelect === LOADING && <Spin />}
       </main>
     </div>

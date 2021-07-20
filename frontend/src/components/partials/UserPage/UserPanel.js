@@ -5,13 +5,13 @@ import UserActivity from './Panels/UserActivity';
 import UserLists from './Panels/UserLists';
 import UserCollections from './Panels/UserCollections';
 
-const UserPanel = ({ lists, collections }) => {
+const UserPanel = ({ user, lists, collections }) => {
   return (
     <div className='user-collections-container'>
       <UserCollections collections={collections} />
       <UserLists lists={lists} />
       <UserActivity />
-      <UserStats />
+      <UserStats user={user} />
     </div>
   );
 };
