@@ -185,7 +185,7 @@ Jest will automatically set the NODE_ENV variable to test, knex will switch form
   - [Github](https://github.com/astridcha1x)
   - [Linkedin](https://www.linkedin.com/in/pavneet-k-a139b3108/)
 
-## Future Developments <a name='future'></a>
+## Upcoming Features <a name='future'></a>
 
 1. Forum for users to discuss games
 2. Reviews for users to share their thoughts on any title
