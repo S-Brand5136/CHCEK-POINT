@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Skeleton, Spin, Alert } from 'antd';
+import { Skeleton } from 'antd';
 import everyone from '../../../img/esrb_10.png';
 import mature from '../../../img/esrb_mature.png';
 import teen from '../../../img/esrb_teen.svg';
@@ -33,16 +33,14 @@ const GameHeader = ({
         setScoreColour('yellow');
         setTextColour('black');
       }
-      if (game.esrb_rating !== 'null') {
-        if (game.esrb_rating.toLowerCase().startsWith('t')) {
-          setEsrbRating(teen);
-        }
-        if (game.esrb_rating.toLowerCase().startsWith('m')) {
-          setEsrbRating(mature);
-        }
-        if (game.esrb_rating.toLowerCase().startsWith('e')) {
-          setEsrbRating(everyone);
-        }
+      if (game.esrb_rating.toLowerCase().startsWith('t')) {
+        setEsrbRating(teen);
+      }
+      if (game.esrb_rating.toLowerCase().startsWith('m')) {
+        setEsrbRating(mature);
+      }
+      if (game.esrb_rating.toLowerCase().startsWith('e')) {
+        setEsrbRating(everyone);
       }
     }
   }, [game]);

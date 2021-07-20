@@ -1,38 +1,26 @@
 import { Typography, Tabs } from 'antd';
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import WelcomeBack from './Tab_Panes/WelcomeBack';
+import UserCollections from './Tab_Panes/UserCollections';
+import UserLists from './Tab_Panes/UserLists';
+import UserActivity from './Tab_Panes/UserActivity';
+import filterLists from '../../../helpers/filter_lists';
+import filterCollections from '../../../helpers/filter_collections';
 import {
   CompassOutlined,
   BarsOutlined,
   CommentOutlined,
 } from '@ant-design/icons';
 
-// components
-import WelcomeBack from './Tab_Panes/WelcomeBack';
-import UserCollections from './Tab_Panes/UserCollections';
-import UserLists from './Tab_Panes/UserLists';
-import UserActivity from './Tab_Panes/UserActivity';
-
-// helpers
-import filterLists from '../../../helpers/filter_lists';
-import filterCollections from '../../../helpers/filter_collections';
-
 const UserHero = ({ user }) => {
-  // const [activeKey, setActiveKey] = useState('1');
   const [collection, setCollection] = useState(null);
   const [lists, setLists] = useState(null);
   const [reload, setReload] = useState(false);
-  // let { key } = useParams();
-
-  // const change = function (event) {
-  //   setActiveKey(event);
-  // };
 
   useEffect(() => {
     let mounted = true;
-    axios.get(`/api/lists/user/${user.id}`).then((res) => {
+    axios.get(`/api/lists/${user.id}`).then((res) => {
       const lists = filterLists(res.data);
       const collection = filterCollections(res.data);
 
@@ -44,12 +32,8 @@ const UserHero = ({ user }) => {
     return function cleanup() {
       mounted = false;
     };
-  }, [reload]);
+  }, [reload, user.id]);
 
-  // useEffect(() => {
-  //   if (key === 'collections') setActiveKey('4');
-  // }, []);
-  // console.log('lists:', lists, 'collections:', collections);
   return (
     <>
       <Typography.Title
@@ -62,13 +46,7 @@ const UserHero = ({ user }) => {
       >
         Welcome Back, {user.username}!
       </Typography.Title>
-      <Tabs
-        tabPosition='left'
-        // activeKey={activeKey}
-        // onChange={setTimeout(() => {
-        //   change();
-        // }, 200)}
-      >
+      <Tabs tabPosition='left'>
         <Tabs.TabPane
           tab={
             <>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PanelHeader from './PanelHeader';
-import Activity from '../../HomePagePartials/Tab_Panes/UserActivity';
+import Activity from '../../HomePage/Tab_Panes/UserActivity';
 
 const UserActivity = () => {
   return (

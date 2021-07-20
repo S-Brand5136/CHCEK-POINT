@@ -4,27 +4,27 @@ const router = require('express').Router();
 
 module.exports = (db) => {
   // GET: User lists
-  router.get('/:userId', (req, res) => {
-    const { userId } = req.params;
+  // router.get('/:userId', (req, res) => {
+  //   const { userId } = req.params;
 
-    db('users_lists')
-      .select('users_lists.list_title', 'users_lists.id')
-      .count('game.id')
-      .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
-      .groupBy('users_lists.list_title', 'users_lists.id')
-      .where('user_id', userId)
-      .then((list) => {
-        if (!list.length <= 0) {
-          return res.status(200).json({ list });
-        }
-        throw Error;
-      })
-      .catch((err) => {
-        res.status(404).json({
-          error: 'Sorry ! We could not find the lists your looking for',
-        });
-      });
-  });
+  //   db('users_lists')
+  //     .select('users_lists.list_title', 'users_lists.id')
+  //     .count('game.id')
+  //     .leftOuterJoin('game', 'game.list_id', '=', 'users_lists.id')
+  //     .groupBy('users_lists.list_title', 'users_lists.id')
+  //     .where('user_id', userId)
+  //     .then((list) => {
+  //       if (!list.length <= 0) {
+  //         return res.status(200).json({ list });
+  //       }
+  //       throw Error;
+  //     })
+  //     .catch((err) => {
+  //       res.status(404).json({
+  //         error: 'Sorry ! We could not find the lists your looking for',
+  //       });
+  //     });
+  // });
 
   // GET: User lists
   router.get('/:userId', (req, res) => {

@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 
-import UserHeader from '../partials/UserPagePartials/UserHeader';
-import UserAbout from '../partials/UserPagePartials/UserAbout';
-import UserInfo from '../partials/UserPagePartials/UserInfo';
-import UserPanel from '../partials/UserPagePartials/UserPanel';
+import UserHeader from '../partials/UserPage/UserHeader';
+import UserAbout from '../partials/UserPage/UserAbout';
+import UserInfo from '../partials/UserPage/UserInfo';
+import UserPanel from '../partials/UserPage/UserPanel';
 
 const UserPage = () => {
   const { user, userLists, userCollection } = useContext(authContext);

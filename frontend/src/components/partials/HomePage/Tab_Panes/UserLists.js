@@ -12,7 +12,6 @@ const UserLists = ({ lists, reload }) => {
   const history = useHistory();
 
   useEffect(() => {
-    // console.log(lists);
     if (lists) {
       const result = [];
       for (const list in lists) {
@@ -21,7 +20,6 @@ const UserLists = ({ lists, reload }) => {
       setUserLists(result);
     }
   }, [lists]);
-  console.log('passed list', lists);
 
   return (
     <>

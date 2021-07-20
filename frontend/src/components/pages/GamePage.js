@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { authContext } from '../../providers/AuthProvider';
 import { Skeleton } from 'antd';
-import GameHeader from '../partials/GamePagePartials/GameHeader';
-import TagsAside from '../partials/GamePagePartials/TagsAside';
-import UserDashboard from '../partials/GamePagePartials/UserDashboard';
+import GameHeader from '../partials/GamePage/GameHeader';
+import TagsAside from '../partials/GamePage/TagsAside';
+import UserDashboard from '../partials/GamePage/UserDashboard';
 
 import { CalendarOutlined } from '@ant-design/icons';
 

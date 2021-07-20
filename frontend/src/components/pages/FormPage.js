@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 
-import AddForm from '../partials/ListPagePartials/AddForm';
+import AddForm from '../partials/ListPage/AddForm';
 import logo from '../../img/mascot1.png';
 import buttons from '../../img/button-faces.webp';
 

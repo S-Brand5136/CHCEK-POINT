@@ -43,7 +43,6 @@ const UserCollections = ({ collections, reload }) => {
             reload={reload}
           />
         )}
-        {console.log(collections)}
       </Row>
     </div>
   );

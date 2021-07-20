@@ -3,9 +3,9 @@ import { authContext } from '../../providers/AuthProvider';
 import { Layout } from 'antd';
 
 // components
-import VisitorHero from '../partials/HomePagePartials/VisitorHero';
-import UserHero from '../partials/HomePagePartials/UserHero';
-import BrowseSection from '../partials/HomePagePartials/BrowseSection';
+import VisitorHero from '../partials/HomePage/VisitorHero';
+import UserHero from '../partials/HomePage/UserHero';
+import BrowseSection from '../partials/HomePage/BrowseSection';
 
 const HomePage = () => {
   const { user, userLists, userCollection } = useContext(authContext);

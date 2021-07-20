@@ -3,7 +3,7 @@ import { Typography, Tabs, Spin, Alert } from 'antd';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-import TaggedGames from '../partials/HomePagePartials/userPartials/TaggedGames';
+import TaggedGames from '../partials/HomePage/userPartials/TaggedGames';
 import { Row } from 'antd';
 
 const BrowsePage = () => {
