@@ -28,6 +28,7 @@ const ListModal = ({
   const [userLists, setUserLists] = useState(null);
   useEffect(() => {
     if (lists) {
+      console.log(lists);
       setUserLists(getNames(lists, collection));
     }
   }, [lists, collection]);
