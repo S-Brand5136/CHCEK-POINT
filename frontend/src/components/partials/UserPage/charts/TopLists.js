@@ -2,16 +2,15 @@ import React from 'react';
 
 import { Bar } from 'react-chartjs-2';
 
-const CompleteChart = ({ speedRun }) => {
+const TopLists = ({ lists }) => {
   let data = {};
-  if (speedRun) {
-    console.log(speedRun);
+  if (lists) {
     data = {
-      labels: speedRun.speedRuns.map((item) => item.name),
+      labels: lists.map((item) => item.list_title),
       datasets: [
         {
           label: 'Runtime',
-          data: speedRun.speedRuns.map((item) => item.num_hours_played),
+          data: lists.map((item) => item.count),
           backgroundColor: 'rgba(47, 164, 46, 0.4)',
           borderColor: 'rgba(47, 164, 46, 1)',
           borderWidth: 3,
@@ -39,4 +38,4 @@ const CompleteChart = ({ speedRun }) => {
   );
 };
 
-export default CompleteChart;
+export default TopLists;
