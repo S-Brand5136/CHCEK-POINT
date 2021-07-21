@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, Spin } from 'antd';
 import MostPlayedChart from '../charts/MostPlayedChart';
 import BacklogChart from '../charts/BacklogChart';
-import CompletedChart from '../charts/CompleteChart';
+import TopLists from '../charts/TopLists';
 
 const MOST_PLAYED = 'MOST PLAYED';
 const BACKLOG = 'BACKLOG';
@@ -14,15 +14,16 @@ const UserStats = ({ user }) => {
   const [chartSelect, setChartSelect] = useState(MOST_PLAYED);
   const [mostPlayed, setMostPlayed] = useState(null);
   const [backlog, setBacklog] = useState(null);
-  const [speedRun, setSpeedRun] = useState(null);
+  const [lists, setlists] = useState(null);
 
   useEffect(() => {
     if (user) {
       axios.get(`/api/users/${user.id}/stats/`).then((res) => {
-        console.log(res.data);
         setMostPlayed(res.data.userStats[0]);
         setBacklog(res.data.userStats[1]);
-        setSpeedRun(res.data.userStats[2]);
+      });
+      axios.get(`/api/lists/stats/${user.id}`).then((res) => {
+        setlists(res.data.list);
       });
     }
   }, [user]);
@@ -69,7 +70,7 @@ const UserStats = ({ user }) => {
             className='title-font'
             onClick={() => clickHandler(COMPELTED)}
           >
-            TOP SPEED RUNS
+            LARGEST COLLECTIONS
           </Button>
         </div>
       </header>
@@ -78,7 +79,7 @@ const UserStats = ({ user }) => {
           <MostPlayedChart mostPlayed={mostPlayed} />
         )}
         {chartSelect === BACKLOG && <BacklogChart backlog={backlog} />}
-        {chartSelect === COMPELTED && <CompletedChart speedRun={speedRun} />}
+        {chartSelect === COMPELTED && <TopLists lists={lists} />}
         {chartSelect === LOADING && <Spin />}
       </main>
     </div>
